@@ -1,0 +1,192 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Составить блюдо - Что приготовим сегодня</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-left">
+                <a href="{% url 'index' %}" class="btn btn-secondary">☰ На главную</a>
+            </div>
+            <h1>Составить блюдо</h1>
+            <div class="header-right">
+                {% if user.is_authenticated %}
+                <a class="btn btn-secondary" href="{% url 'profile' %}">👤 Профиль</a>
+                {% else %}
+                <a href="{% url 'log_in' %}" class="btn btn-secondary">👤 Войти</a>
+                {% endif %}
+            </div>
+        </header>
+        <main>
+            <section class="filters">
+                <div class="filter-item">
+                    <label for="kitchen">Кухня:</label>
+                    <select id="kitchen" name="kitchen">
+                        <option>Выберите кухню</option>
+                        <option value="asian">Азиатская</option>
+                        <option value="european">Европейская</option>
+                        <option value="eastern_european">Восточноевропейская</option>
+                        <option value="chinese">Китайская</option>
+                        <option value="french">Французская</option>
+                        <option value="greek">Греческая</option>
+                        <option value="japanese">Японская</option>
+                        <option value="middle_eastern">Ближний Восток</option>
+                        <option value="vietnamese">Вьетнамская</option>
+                    </select>
+                </div>
+                <div class="filter-item filter-item-large">
+                    <textarea id="ingredients" name="ingredients" placeholder="Введите ингредиенты через запятую..."></textarea>
+                </div>
+                <div class="filter-group-right">
+                    <div class="filter-item">
+                        <select id="meal-type" name="meal-type">
+                            <option>Прием пищи</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" id="search-btn">Подобрать блюда</button>
+                </div>
+            </section>
+
+            <h2 class="ingredients-title" id="ingredients-title" style="display: none;">Возможные ингредиенты</h2>
+            <div id="possible-ingredients" class="possible-ingredients-grid" style="display: none;">
+                {% for ingredient in ingridients %}
+                <div>
+                    <h3>{{ ingredient.name }}</h3>
+                    {% if ingredient.image %}
+                    <img src="{{ ingredient.image.url }}" width="200">
+                    {% endif %}
+                </div>
+                    {% endfor %}
+            </div>
+
+            <h2 class="ingredients-title" id="results-title" style="display: none;">Найденные блюда</h2>
+            <div id="search-results" class="possible-ingredients-grid" style="display: none;"></div>
+            <div id="search-loading" style="display: none; text-align: center; padding: 40px;">
+                <p style="font-size: 18px;">🔍 Ищем подходя блюда...</p>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.getElementById('kitchen').addEventListener('change', function() {
+            const ingredientsContainer = document.getElementById('possible-ingredients');
+            const ingredientsTitle = document.getElementById('ingredients-title');
+            ingredientsContainer.innerHTML = ''; // Очищаем контейнер
+            ingredientsContainer.style.display = 'none';
+            ingredientsTitle.style.display = 'none';
+
+            if (this.value === 'asian') {
+                ingredientsContainer.style.display = '';
+                ingredientsTitle.style.display = '';
+
+                const ingredients = [
+                    { name: 'Кокосовое молоко', image: '{% static "images/kokososovoemoloko.png" %}' },
+                    { name: 'Соевый соус', image: '{% static "images/soevy_souse.jpg" %}' },
+                    { name: 'Кунжутное масло', image: '{% static "images/kunzhut_maslo.jpg" %}' },
+                    { name: 'Чеснок', image: '{% static "images/onion.png" %}' },
+                    { name: 'Имбирь', image: '{% static "images/imbir.png" %}' },
+                    { name: 'Рис', image: '{% static "images/rice.png" %}' },
+                    { name: 'Лайм', image: '{% static "images/lime.jpg" %}' }
+                ];
+
+                ingredients.forEach(ingredient => {
+                    const ingredientElement = document.createElement('div');
+                    ingredientElement.classList.add('ingredient-item');
+                    ingredientElement.innerHTML = `
+                        <img src="${ingredient.image}" alt="${ingredient.name}">
+                        <p>${ingredient.name}</p>
+                    `;
+                    ingredientsContainer.appendChild(ingredientElement);
+                });
+            }
+        });
+
+        document.getElementById('search-btn').addEventListener('click', function() {
+            const ingredients = document.getElementById('ingredients').value.trim();
+            const kitchen = document.getElementById('kitchen').value;
+
+            if (!ingredients && kitchen === 'Выберите кухню') {
+                alert('Введите ингредиенты или выберите кухню');
+                return;
+            }
+
+            const resultsDiv = document.getElementById('search-results');
+            const resultsTitle = document.getElementById('results-title');
+            const loadingDiv = document.getElementById('search-loading');
+            const ingredientsContainer = document.getElementById('possible-ingredients');
+            const ingredientsTitle = document.getElementById('ingredients-title');
+
+            // Скрываем возможные ингредиенты, показываем загрузку
+            ingredientsContainer.style.display = 'none';
+            ingredientsTitle.style.display = 'none';
+            resultsDiv.style.display = 'none';
+            resultsTitle.style.display = 'none';
+            loadingDiv.style.display = 'block';
+            loadingDiv.innerHTML = '<p style="font-size: 18px;">🔍 Ищем подходя блюда...</p>';
+
+            const params = new URLSearchParams();
+            if (ingredients) params.set('ingredients', ingredients);
+            if (kitchen !== 'Выберите кухню') params.set('kitchen', kitchen);
+
+            console.log('Отправляем запрос:', params.toString());
+            const url = '{% url "search_recipes" %}?' + params.toString();
+            console.log('URL:', url);
+
+            fetch(url)
+                .then(function(response) {
+                    if (response.status === 402) {
+                        return response.json().then(function(data) {
+                            throw new Error(data.error || 'Лимит запросов исчерпан');
+                        });
+                    }
+                    if (!response.ok) throw new Error('Ошибка сервера');
+                    return response.json();
+                })
+                .then(function(data) {
+                    loadingDiv.style.display = 'none';
+                    resultsDiv.innerHTML = '';
+
+                    if (data.results && data.results.length > 0) {
+                        resultsTitle.style.display = '';
+                        resultsDiv.style.display = '';
+
+                        data.results.forEach(function(recipe) {
+                            const recipeEl = document.createElement('div');
+                            recipeEl.classList.add('ingredient-item');
+                            const displayName = recipe.title_ru || recipe.title;
+                            const recipeUrl = '/recipe/' + recipe.id + '/';
+                            recipeEl.innerHTML =
+                                '<a href="' + recipeUrl + '" style="text-decoration:none;color:inherit;">' +
+                                    (recipe.image ? '<img src="' + recipe.image + '" alt="' + displayName + '" style="width:100%;height:180px;object-fit:cover;">' : '') +
+                                    '<p style="font-weight:bold;">' + displayName + '</p>' +
+                                    '<p style="font-size:13px;color:#666;">' +
+                                        (recipe.readyInMinutes ? '⏱ ' + recipe.readyInMinutes + ' мин' : '') +
+                                        (recipe.servings ? ' | 🍽 ' + recipe.servings + ' порц.' : '') +
+                                    '</p>' +
+                                '</a>';
+                            resultsDiv.appendChild(recipeEl);
+                        });
+                    } else {
+                        resultsTitle.style.display = '';
+                        resultsDiv.style.display = '';
+                        resultsDiv.innerHTML = '<p style="padding:20px;font-size:16px;">Блюда не найдены. Попробуйте другие ингредиенты или уберите кухню.</p>';
+                    }
+                })
+                .catch(function(err) {
+                    loadingDiv.style.display = 'none';
+                    resultsTitle.style.display = '';
+                    resultsDiv.style.display = '';
+                    resultsDiv.innerHTML = '<p style="padding:20px;font-size:16px;color:red;">Ошибка: ' + err.message + '</p>';
+                });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1566 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Составить рацион питания - Что приготовим сегодня</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #e76f51;
+            --color-primary-hover: #d65a3f;
+            --color-primary-light: #fdf0ed;
+            --color-accent: #f4a261;
+            --color-text: #333;
+            --color-text-light: #888;
+            --bg-cream: #fff8f0;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .meal-plan-page {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .meal-plan-page h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 36px;
+            color: var(--color-text);
+            margin: 0;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        /* === Настройки рациона === */
+        .meal-plan-settings {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,248,240,0.92));
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(5px);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(231,111,81,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .meal-plan-settings::before {
+            content: '🍳  🍲  🍝';
+            position: absolute;
+            top: 8px;
+            right: 20px;
+            font-size: 20px;
+            opacity: 0.3;
+            letter-spacing: 8px;
+        }
+
+        .setting-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+            gap: 15px;
+        }
+
+        .setting-row label {
+            min-width: 160px;
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .goal-selector {
+            display: flex;
+            gap: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--color-primary);
+        }
+
+        .goal-selector button {
+            padding: 10px 22px;
+            border: none;
+            background: var(--bg-cream);
+            cursor: pointer;
+            font-size: 14px;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.25s;
+            color: var(--color-primary);
+            font-weight: 500;
+        }
+
+        .goal-selector button.active {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .goal-selector button:hover:not(.active) {
+            background: var(--color-primary-light);
+        }
+
+        .calorie-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .calorie-control button {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid var(--color-primary);
+            background: var(--bg-cream);
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            color: var(--color-primary);
+        }
+
+        .calorie-control button:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .calorie-control input {
+            width: 100px;
+            padding: 8px 10px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .calorie-control input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .calorie-control span {
+            font-size: 14px;
+            color: var(--color-text-light);
+            font-weight: 500;
+        }
+
+        /* Чекбоксы приёмов пищи */
+        .meal-type-checks {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .meal-type-checks label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-weight: 400;
+            font-size: 14px;
+            min-width: auto;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: var(--bg-cream);
+            transition: all 0.2s;
+            color: var(--color-text);
+        }
+
+        .meal-type-checks label:hover {
+            background: var(--color-primary-light);
+        }
+
+        .meal-type-checks input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--color-primary);
+        }
+
+        /* Количество блюд */
+        .meal-dish-counts {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .dish-count-control {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 16px;
+            background: white;
+            border: 2px solid #e0d5cc;
+            transition: all 0.2s;
+        }
+
+        .dish-count-control.active {
+            border-color: var(--color-primary);
+            background: var(--color-primary-light);
+        }
+
+        .dish-count-label {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--color-text);
+            white-space: nowrap;
+        }
+
+        .dish-count-control .btn-dish-count {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 2px solid var(--color-primary);
+            background: var(--bg-cream);
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            color: var(--color-primary);
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .dish-count-control .btn-dish-count:hover:not(:disabled) {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .dish-count-control .btn-dish-count:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .dish-count-value {
+            width: 24px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        /* Эконом режим */
+        .budget-toggle {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-text);
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: var(--bg-cream);
+            transition: all 0.3s;
+        }
+
+        .budget-toggle:hover {
+            background: var(--color-primary-light);
+        }
+
+        .budget-toggle .toggle-switch.active {
+            background: #2a9d8f;
+        }
+
+        .budget-toggle.active {
+            background: #e8f5e9;
+            border: 1px solid #2a9d8f;
+        }
+
+        .budget-badge {
+            display: inline-block;
+            background: #2a9d8f;
+            color: white;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 6px;
+            font-weight: 500;
+        }
+
+        /* Теги ингредиентов */
+        .ingredient-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .tag {
+            background: var(--color-primary-light);
+            border: 1px solid var(--color-primary);
+            border-radius: 25px;
+            padding: 6px 16px;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-primary);
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .tag:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .tag .remove {
+            cursor: pointer;
+            color: var(--color-primary);
+            font-size: 18px;
+            line-height: 1;
+            opacity: 0.7;
+        }
+
+        .tag:hover .remove {
+            color: white;
+            opacity: 1;
+        }
+
+        .tag.tag-exclude {
+            background: #fdecea;
+            border-color: #e74c3c;
+            color: #e74c3c;
+        }
+
+        .tag.tag-exclude:hover {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .tag.tag-exclude .remove {
+            color: #e74c3c;
+        }
+
+        .tag.tag-exclude:hover .remove {
+            color: white;
+        }
+
+        .tag-add {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px dashed var(--color-accent);
+            background: none;
+            cursor: pointer;
+            font-size: 20px;
+            color: var(--color-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .tag-add:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            background: var(--color-primary-light);
+        }
+
+        .btn-generate {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 14px 40px;
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            margin: 25px auto 0;
+            box-shadow: 0 4px 15px rgba(231,111,81,0.3);
+        }
+
+        .btn-generate:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(231,111,81,0.4);
+        }
+
+        .btn-generate:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* === План питания === */
+        .meal-plan-content {
+            display: flex;
+            gap: 25px;
+        }
+
+        .meal-plan-table-wrapper {
+            flex: 1;
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,248,240,0.92));
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(5px);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(231,111,81,0.1);
+        }
+
+        .meal-plan-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .meal-plan-header h2 {
+            font-family: 'Pacifico', cursive;
+            font-size: 28px;
+            color: var(--color-primary);
+            margin: 0;
+        }
+
+        .btn-rebuild {
+            background: none;
+            border: none;
+            color: var(--color-accent);
+            cursor: pointer;
+            font-size: 14px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .btn-rebuild:hover {
+            color: var(--color-primary);
+        }
+
+        .meal-plan-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .meal-plan-table th {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: white;
+            padding: 12px 8px;
+            font-size: 13px;
+            font-weight: 600;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .meal-plan-table td {
+            border: 1px solid #f0e6dc;
+            padding: 12px;
+            text-align: center;
+            vertical-align: top;
+            min-width: 120px;
+            background: white;
+        }
+
+        .meal-plan-table .day-cell {
+            font-weight: 700;
+            font-size: 18px;
+            background: var(--color-primary-light);
+            width: 60px;
+            color: var(--color-primary);
+        }
+
+        .meal-plan-table .total-cell {
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--color-primary);
+            background: var(--color-primary-light);
+            width: 90px;
+        }
+
+        .meal-item {
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-bottom: 8px;
+        }
+
+        .meal-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .meal-item + .meal-item {
+            border-top: 1px dashed #e0d5cc;
+            padding-top: 8px;
+        }
+
+        .meal-item:hover {
+            transform: scale(1.03);
+        }
+
+        .meal-item img {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .meal-emoji {
+            width: 80px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            background: linear-gradient(135deg, var(--color-primary-light), #fff5ee);
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+        }
+
+        .meal-item .meal-name {
+            font-size: 12px;
+            margin-top: 6px;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .meal-item .meal-cal {
+            font-size: 11px;
+            color: var(--color-primary);
+            font-weight: 500;
+        }
+
+        .meal-item.empty {
+            color: #ddd;
+            font-size: 28px;
+        }
+
+        /* === Список покупок === */
+        .shopping-list {
+            width: 300px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,248,240,0.92));
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(5px);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(231,111,81,0.1);
+        }
+
+        .shopping-list h3 {
+            font-family: 'Pacifico', cursive;
+            font-size: 24px;
+            color: var(--color-primary);
+            margin: 0 0 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .shopping-list h3::before {
+            content: '🛒';
+            font-size: 22px;
+        }
+
+        .shopping-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            background: var(--bg-cream);
+            transition: all 0.2s;
+        }
+
+        .shopping-item:hover {
+            background: var(--color-primary-light);
+        }
+
+        .shopping-item input[type="checkbox"] {
+            accent-color: var(--color-primary);
+            width: 18px;
+            height: 18px;
+        }
+
+        .shopping-item.checked {
+            text-decoration: line-through;
+            color: #bbb;
+            opacity: 0.7;
+        }
+
+        .btn-shopping {
+            width: 100%;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 18px;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(231,111,81,0.25);
+        }
+
+        .btn-shopping:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231,111,81,0.35);
+        }
+
+        .btn-save-fav {
+            width: 100%;
+            background: none;
+            border: 2px solid var(--color-primary);
+            border-radius: 12px;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--color-primary);
+            transition: all 0.3s;
+        }
+
+        .btn-save-fav:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        /* Действия внизу */
+        .meal-plan-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+            justify-content: center;
+        }
+
+        .btn-action {
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .btn-action.primary {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: white;
+            box-shadow: 0 3px 10px rgba(231,111,81,0.3);
+        }
+
+        .btn-action.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231,111,81,0.4);
+        }
+
+        .btn-action.secondary {
+            background: white;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-action.secondary:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        /* Уведомления */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 16px 24px;
+            border-radius: 12px;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            z-index: 10000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transform: translateX(120%);
+            transition: transform 0.4s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            background: linear-gradient(135deg, #2a9d8f, #264653);
+        }
+
+        .notification.error {
+            background: linear-gradient(135deg, #e76f51, #c0392b);
+        }
+
+        .notification.info {
+            background: linear-gradient(135deg, #f4a261, #e76f51);
+        }
+
+        /* Спиннер загрузки */
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.8);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loading-overlay.active {
+            display: flex;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid var(--color-primary-light);
+            border-top: 5px solid var(--color-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Адаптивность */
+        @media (max-width: 900px) {
+            .meal-plan-content {
+                flex-direction: column;
+            }
+            .shopping-list {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-left">
+                <a href="{% url 'index' %}" class="btn btn-secondary">☰ На главную</a>
+            </div>
+            <h1>Составить рацион питания</h1>
+            <div class="header-right">
+                {% if user.is_authenticated %}
+                <a class="btn btn-secondary" href="{% url 'profile' %}">👤 Профиль</a>
+                {% else %}
+                <a href="{% url 'log_in' %}" class="btn btn-secondary">👤 Войти</a>
+                {% endif %}
+            </div>
+        </header>
+
+        <div class="meal-plan-page">
+            <!-- Настройки -->
+            <div class="meal-plan-settings">
+                <div class="setting-row">
+                    <label>🎯 Цель:</label>
+                    <div class="goal-selector">
+                        <button type="button" data-goal="lose">Похудение</button>
+                        <button type="button" data-goal="maintain" class="active">Поддержание</button>
+                        <button type="button" data-goal="gain">Набор массы</button>
+                    </div>
+                </div>
+                <div class="setting-row">
+                    <label>🔥 Калории:</label>
+                    <div class="calorie-control">
+                        <button type="button" id="cal-minus">−</button>
+                        <input type="number" id="calories" value="{{ user_settings.default_calories|default:2000 }}">
+                        <span>ккал</span>
+                        <button type="button" id="cal-plus">+</button>
+                    </div>
+                </div>
+                <div class="setting-row">
+                    <label>🍽️ Приёмы пищи:</label>
+                    <div class="meal-type-checks">
+                        <label><input type="checkbox" value="breakfast" checked> Завтрак</label>
+                        <label><input type="checkbox" value="lunch" checked> Обед</label>
+                        <label><input type="checkbox" value="dinner" checked> Ужин</label>
+                        <label><input type="checkbox" value="snack"> Перекусы</label>
+                    </div>
+                </div>
+                <div class="setting-row">
+                    <label>🍽️ Кол-во блюд:</label>
+                    <div class="meal-dish-counts">
+                        <div class="dish-count-control active" data-meal-type="breakfast">
+                            <span class="dish-count-label">Завтрак:</span>
+                            <button type="button" class="btn-dish-count" data-action="minus">−</button>
+                            <span class="dish-count-value">2</span>
+                            <button type="button" class="btn-dish-count" data-action="plus">+</button>
+                        </div>
+                        <div class="dish-count-control active" data-meal-type="lunch">
+                            <span class="dish-count-label">Обед:</span>
+                            <button type="button" class="btn-dish-count" data-action="minus">−</button>
+                            <span class="dish-count-value">2</span>
+                            <button type="button" class="btn-dish-count" data-action="plus">+</button>
+                        </div>
+                        <div class="dish-count-control active" data-meal-type="dinner">
+                            <span class="dish-count-label">Ужин:</span>
+                            <button type="button" class="btn-dish-count" data-action="minus">−</button>
+                            <span class="dish-count-value">2</span>
+                            <button type="button" class="btn-dish-count" data-action="plus">+</button>
+                        </div>
+                        <div class="dish-count-control" data-meal-type="snack" style="display:none;">
+                            <span class="dish-count-label">Перекус:</span>
+                            <button type="button" class="btn-dish-count" data-action="minus">−</button>
+                            <span class="dish-count-value">1</span>
+                            <button type="button" class="btn-dish-count" data-action="plus">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="setting-row">
+                    <label>💰 Бюджет:</label>
+                    <div class="budget-toggle" id="budget-toggle">
+                        <span class="toggle-switch" id="toggle-budget"></span>
+                        <span>Эконом вариант</span>
+                        <span class="budget-badge" id="budget-badge" style="display:none;">дешевле</span>
+                    </div>
+                </div>
+                <div class="setting-row">
+                    <label>🥕 Добавить:</label>
+                    <div class="ingredient-tags" id="ingredient-tags-include">
+                        {% for pref in liked_ingredients %}
+                        <span class="tag">{{ pref.ingredient.name }} <span class="remove">&times;</span></span>
+                        {% empty %}
+                        <span class="tag">курица <span class="remove">&times;</span></span>
+                        <span class="tag">яйца <span class="remove">&times;</span></span>
+                        {% endfor %}
+                        <button class="tag-add" id="tag-add-btn-include" title="Добавить ингредиент">+</button>
+                    </div>
+                </div>
+                <div class="setting-row">
+                    <label>🚫 Не добавлять:</label>
+                    <div class="ingredient-tags" id="ingredient-tags-exclude">
+                        <button class="tag-add" id="tag-add-btn-exclude" title="Не добавлять ингредиент">+</button>
+                    </div>
+                </div>
+                <button class="btn-generate" id="generate-plan">🍳 Составить рацион</button>
+            </div>
+
+            <!-- План + Список покупок -->
+            <div class="meal-plan-content">
+                <div class="meal-plan-table-wrapper">
+                    <div class="meal-plan-header">
+                        <h2>Ваш рацион на неделю:</h2>
+                        <button class="btn-rebuild" id="rebuild-plan">🔄 Пересобрать</button>
+                    </div>
+                    <table class="meal-plan-table" id="meal-plan-table">
+                        <thead>
+                            <tr>
+                                <th>День</th>
+                                <th>Завтрак</th>
+                                <th>Обед</th>
+                                <th>Ужин</th>
+                                <th>Перекус</th>
+                                <th>Итого</th>
+                            </tr>
+                        </thead>
+                        <tbody id="meal-plan-tbody">
+                            <tr>
+                                <td colspan="6" style="padding: 40px; color: var(--color-text-light); font-size: 16px;">
+                                    Нажмите «Составить рацион» для генерации плана питания
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="meal-plan-actions">
+                        <button class="btn-action primary" id="btn-save-plan">💾 Сохранить план</button>
+                        <button class="btn-action secondary" id="btn-favorites">♡ В избранное</button>
+                    </div>
+                </div>
+
+                <!-- Список покупок -->
+                <div class="shopping-list">
+                    <h3>Список покупок:</h3>
+                    <div id="shopping-list-items">
+                        <p style="color: var(--color-text-light); font-size: 14px; text-align: center;">
+                            Список покупок появится после сохранения плана
+                        </p>
+                    </div>
+                    <button class="btn-shopping" id="btn-shopping-list">🛒 Сформировать список покупок</button>
+                    <button class="btn-save-fav" id="btn-clear-shopping">🗑️ Очистить список</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Спиннер загрузки -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Уведомление -->
+    <div class="notification" id="notification"></div>
+
+    <script>
+        // === ГЛОБАЛЬНОЕ СОСТОЯНИЕ ===
+        const state = {
+            goal: '{{ user_settings.default_goal|default:"maintain" }}',
+            calories: {{ user_settings.default_calories|default:2000 }},
+            mealTypes: ['breakfast', 'lunch', 'dinner'],
+            dishCounts: {
+                breakfast: 2,
+                lunch: 2,
+                dinner: 2,
+                snack: 1,
+            },
+            budgetMode: {{ user_settings.budget_mode|yesno:"true,false"|default:"false" }},
+            selectedIngredients: [],
+            excludedIngredients: [],
+            currentPlan: null,  // { day: { recipeId: {recipe, is_api_recipe} } }
+        };
+
+        const DAYS_RU = {
+            'mon': 'Пн', 'tue': 'Вт', 'wed': 'Ср', 'thu': 'Чт',
+            'fri': 'Пт', 'sat': 'Сб', 'sun': 'Вс'
+        };
+
+        const MEAL_EMOJI = {
+            'breakfast': '🥣',
+            'lunch': '🍲',
+            'dinner': '🥘',
+            'snack': '🍎',
+        };
+
+        const STATIC_URL = '{% static "images/" %}';
+        const CSRF_TOKEN = getCookie('csrftoken');
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        // === ИНИЦИАЛИЗАЦИЯ ===
+        document.addEventListener('DOMContentLoaded', function() {
+            initGoalSelector();
+            initCalorieControl();
+            initMealTypeCheckboxes();
+            initDishCountControls();
+            initBudgetToggle();
+            initIngredientTags();
+            initGenerateButton();
+            initRebuildButton();
+            initSavePlanButton();
+            initFavoritesButton();
+            initShoppingListButton();
+            initClearShoppingButton();
+        });
+
+        // === Цель ===
+        function initGoalSelector() {
+            document.querySelectorAll('.goal-selector button').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.goal-selector button').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    state.goal = this.dataset.goal;
+                    
+                    // Если план уже создан — автоматически перегенерировать с новой целью
+                    if (state.currentPlan) {
+                        generatePlan();
+                    }
+                });
+            });
+        }
+
+        // === Калории ===
+        function initCalorieControl() {
+            document.getElementById('cal-minus').addEventListener('click', function() {
+                const input = document.getElementById('calories');
+                input.value = Math.max(500, parseInt(input.value) - 100);
+                state.calories = parseInt(input.value);
+            });
+            document.getElementById('cal-plus').addEventListener('click', function() {
+                const input = document.getElementById('calories');
+                input.value = parseInt(input.value) + 100;
+                state.calories = parseInt(input.value);
+            });
+            document.getElementById('calories').addEventListener('change', function() {
+                state.calories = parseInt(this.value) || 2000;
+            });
+        }
+
+        // === Приёмы пищи ===
+        function initMealTypeCheckboxes() {
+            document.querySelectorAll('.meal-type-checks input[type="checkbox"]').forEach(cb => {
+                cb.addEventListener('change', function() {
+                    state.mealTypes = Array.from(
+                        document.querySelectorAll('.meal-type-checks input:checked')
+                    ).map(c => c.value);
+                });
+            });
+        }
+
+        // === Количество блюд ===
+        function initDishCountControls() {
+            document.querySelectorAll('.dish-count-control').forEach(control => {
+                const mealType = control.dataset.mealType;
+                const valueEl = control.querySelector('.dish-count-value');
+                const minusBtn = control.querySelector('[data-action="minus"]');
+                const plusBtn = control.querySelector('[data-action="plus"]');
+
+                // Обновляем состояние при загрузке
+                valueEl.textContent = state.dishCounts[mealType];
+
+                minusBtn.addEventListener('click', function() {
+                    if (state.dishCounts[mealType] > 1) {
+                        state.dishCounts[mealType]--;
+                        valueEl.textContent = state.dishCounts[mealType];
+                        updateDishControlState(control, mealType);
+                    }
+                });
+
+                plusBtn.addEventListener('click', function() {
+                    if (state.dishCounts[mealType] < 5) {
+                        state.dishCounts[mealType]++;
+                        valueEl.textContent = state.dishCounts[mealType];
+                        updateDishControlState(control, mealType);
+                    }
+                });
+            });
+
+            // Синхронизация с чекбоксами приёмов пищи
+            syncDishControlsWithMealTypes();
+        }
+
+        function updateDishControlState(control, mealType) {
+            const valueEl = control.querySelector('.dish-count-value');
+            const minusBtn = control.querySelector('[data-action="minus"]');
+            const plusBtn = control.querySelector('[data-action="plus"]');
+
+            minusBtn.disabled = state.dishCounts[mealType] <= 1;
+            plusBtn.disabled = state.dishCounts[mealType] >= 5;
+            valueEl.textContent = state.dishCounts[mealType];
+
+            if (state.dishCounts[mealType] > 1) {
+                control.classList.add('active');
+            } else {
+                control.classList.remove('active');
+            }
+        }
+
+        function syncDishControlsWithMealTypes() {
+            document.querySelectorAll('.dish-count-control').forEach(control => {
+                const mealType = control.dataset.mealType;
+                const checkbox = document.querySelector(`.meal-type-checks input[value="${mealType}"]`);
+                if (checkbox) {
+                    checkbox.addEventListener('change', function() {
+                        if (this.checked) {
+                            control.style.display = 'flex';
+                        } else {
+                            control.style.display = 'none';
+                        }
+                    });
+                }
+            });
+        }
+
+        // === Эконом режим ===
+        function initBudgetToggle() {
+            const toggle = document.getElementById('budget-toggle');
+            const sw = document.getElementById('toggle-budget');
+            const badge = document.getElementById('budget-badge');
+
+            // Инициализация из настроек пользователя
+            if (state.budgetMode) {
+                sw.classList.add('active');
+                toggle.classList.add('active');
+                badge.style.display = 'inline-block';
+            }
+
+            toggle.addEventListener('click', function() {
+                sw.classList.toggle('active');
+                state.budgetMode = sw.classList.contains('active');
+                this.classList.toggle('active', state.budgetMode);
+                badge.style.display = state.budgetMode ? 'inline-block' : 'none';
+            });
+        }
+
+        // === Теги ингредиентов ===
+        function initIngredientTags() {
+            // Удаление тегов "Добавить"
+            document.querySelectorAll('#ingredient-tags-include .tag .remove').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.parentElement.remove();
+                    updateSelectedIngredients();
+                });
+            });
+
+            // Добавление тега "Добавить"
+            document.getElementById('tag-add-btn-include').addEventListener('click', function() {
+                const name = prompt('Введите ингредиент для добавления:');
+                if (name && name.trim()) {
+                    addIngredientTag(name.trim(), 'include');
+                    updateSelectedIngredients();
+                }
+            });
+
+            // Удаление тегов "Не добавлять"
+            document.querySelectorAll('#ingredient-tags-exclude .tag .remove').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.parentElement.remove();
+                    updateExcludedIngredients();
+                });
+            });
+
+            // Добавление тега "Не добавлять"
+            document.getElementById('tag-add-btn-exclude').addEventListener('click', function() {
+                const name = prompt('Введите ингредиент для исключения:');
+                if (name && name.trim()) {
+                    addIngredientTag(name.trim(), 'exclude');
+                    updateExcludedIngredients();
+                }
+            });
+        }
+
+        function addIngredientTag(name, type) {
+            const containerId = type === 'exclude' ? 'ingredient-tags-exclude' : 'ingredient-tags-include';
+            const container = document.getElementById(containerId);
+            const addBtn = container.querySelector('.tag-add');
+            const tag = document.createElement('span');
+            const tagClass = type === 'exclude' ? 'tag tag-exclude' : 'tag';
+            tag.className = tagClass;
+            tag.innerHTML = `${name} <span class="remove">&times;</span>`;
+            container.insertBefore(tag, addBtn);
+
+            tag.querySelector('.remove').addEventListener('click', function() {
+                tag.remove();
+                if (type === 'exclude') {
+                    updateExcludedIngredients();
+                } else {
+                    updateSelectedIngredients();
+                }
+            });
+        }
+
+        function updateSelectedIngredients() {
+            state.selectedIngredients = Array.from(
+                document.querySelectorAll('#ingredient-tags-include .tag')
+            ).map(t => t.textContent.replace('×', '').trim());
+        }
+
+        function updateExcludedIngredients() {
+            state.excludedIngredients = Array.from(
+                document.querySelectorAll('#ingredient-tags-exclude .tag')
+            ).map(t => t.textContent.replace('×', '').trim());
+        }
+
+        // === Кнопка генерации ===
+        function initGenerateButton() {
+            document.getElementById('generate-plan').addEventListener('click', function() {
+                generatePlan();
+            });
+        }
+
+        function generatePlan() {
+            {% if not user.is_authenticated %}
+            showNotification('Для составления рациона необходимо войти в аккаунт', 'error');
+            setTimeout(() => window.location.href = '{% url "log_in" %}', 1500);
+            return;
+            {% endif %}
+
+            updateSelectedIngredients();
+            updateExcludedIngredients();
+
+            const btn = document.getElementById('generate-plan');
+            btn.disabled = true;
+            btn.textContent = '⏳ Генерация...';
+            showLoading(true);
+
+            const body = {
+                goal: state.goal,
+                calories: state.calories,
+                meal_types: state.mealTypes,
+                dish_counts: state.dishCounts,
+                budget_mode: state.budgetMode,
+                selected_ingredients: state.selectedIngredients,
+                excluded_ingredients: state.excludedIngredients,
+            };
+
+            fetch('{% url "generate_meal_plan" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': CSRF_TOKEN,
+                },
+                body: JSON.stringify(body),
+            })
+            .then(r => r.json())
+            .then(data => {
+                showLoading(false);
+                btn.disabled = false;
+                btn.textContent = '🍳 Составить рацион';
+
+                if (data.error) {
+                    showNotification(data.error, 'error');
+                    return;
+                }
+
+                state.currentPlan = data.meal_plan;
+                renderMealPlan(data.meal_plan, data.target_calories);
+                showNotification('Рацион успешно сгенерирован!', 'success');
+            })
+            .catch(err => {
+                showLoading(false);
+                btn.disabled = false;
+                btn.textContent = '🍳 Составить рацион';
+                showNotification('Ошибка при генерации рациона', 'error');
+                console.error(err);
+            });
+        }
+
+        // === Пересобрать ===
+        function initRebuildButton() {
+            document.getElementById('rebuild-plan').addEventListener('click', function() {
+                if (state.currentPlan) {
+                    generatePlan();
+                } else {
+                    showNotification('Сначала составьте рацион', 'info');
+                }
+            });
+        }
+
+        // === Рендер таблицы ===
+        function renderMealPlan(mealPlan, targetCalories) {
+            const tbody = document.getElementById('meal-plan-tbody');
+            tbody.innerHTML = '';
+
+            const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+            days.forEach(day => {
+                const tr = document.createElement('tr');
+                const dayCell = document.createElement('td');
+                dayCell.className = 'day-cell';
+                dayCell.textContent = DAYS_RU[day];
+                tr.appendChild(dayCell);
+
+                const dayData = mealPlan[day] || {};
+                const mealTypesOrder = ['breakfast', 'lunch', 'dinner', 'snack'];
+                let dayTotalCalories = 0;
+
+                mealTypesOrder.forEach(mealType => {
+                    const td = document.createElement('td');
+
+                    // Ищем ВСЕ рецепты этого типа приёма пищи
+                    const recipesForMealType = [];
+                    for (const [key, val] of Object.entries(dayData)) {
+                        if (val.recipe && val.recipe.meal_type === mealType) {
+                            recipesForMealType.push(val.recipe);
+                        }
+                    }
+
+                    if (recipesForMealType.length > 0) {
+                        let cellHtml = '';
+                        recipesForMealType.forEach(recipe => {
+                            const cal = recipe.calories || 0;
+                            dayTotalCalories += cal;
+
+                            const imgSrc = recipe.image || (recipe.image_url) || '';
+                            const recipeId = recipe.id || 0;
+                            const recipeName = recipe.name || recipe.title || 'Без названия';
+
+                            // Если есть изображение — показываем картинку, иначе — эмодзи
+                            let imageHtml;
+                            if (imgSrc) {
+                                imageHtml = `<img src="${imgSrc}" alt="" onerror="this.outerHTML='<div class=\\'meal-emoji\\'>${MEAL_EMOJI[mealType] || '🍽️'}</div>'">`;
+                            } else {
+                                imageHtml = `<div class="meal-emoji">${MEAL_EMOJI[mealType] || '🍽️'}</div>`;
+                            }
+
+                            cellHtml += `
+                                <div class="meal-item" data-recipe-id="${recipeId}">
+                                    ${imageHtml}
+                                    <div class="meal-name">${recipeName}</div>
+                                    <div class="meal-cal">${cal} ккал</div>
+                                </div>
+                            `;
+                        });
+                        td.innerHTML = cellHtml;
+                    } else {
+                        td.innerHTML = '<div class="meal-item empty">○</div>';
+                    }
+
+                    tr.appendChild(td);
+                });
+
+                // Итого
+                const totalTd = document.createElement('td');
+                totalTd.className = 'total-cell';
+                totalTd.textContent = `${dayTotalCalories} ккал`;
+                tr.appendChild(totalTd);
+
+                tbody.appendChild(tr);
+            });
+        }
+
+        // === Сохранить план ===
+        function initSavePlanButton() {
+            document.getElementById('btn-save-plan').addEventListener('click', function() {
+                {% if not user.is_authenticated %}
+                showNotification('Войдите в аккаунт', 'error');
+                return;
+                {% endif %}
+                savePlan();
+            });
+        }
+
+        function savePlan() {
+            if (!state.currentPlan) {
+                showNotification('Сначала составьте рацион', 'info');
+                return;
+            }
+
+            showLoading(true);
+
+            const planItems = [];
+            const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+            const mealTypesOrder = ['breakfast', 'lunch', 'dinner', 'snack'];
+
+            days.forEach(day => {
+                const dayData = state.currentPlan[day] || {};
+
+                mealTypesOrder.forEach(mealType => {
+                    // Ищем ВСЕ рецепты этого типа
+                    for (const [key, val] of Object.entries(dayData)) {
+                        if (val.recipe && val.recipe.meal_type === mealType) {
+                            const recipe = val.recipe;
+                            planItems.push({
+                                day: day,
+                                meal_type: mealType,
+                                recipe_id: typeof recipe.id === 'number' ? recipe.id : null,
+                                recipe_name: recipe.name || recipe.title || 'Без названия',
+                                calories: recipe.calories || 0,
+                                image: recipe.image || '',
+                                description: recipe.description || '',
+                                portion: 1.0,
+                            });
+                        }
+                    }
+                });
+            });
+
+            fetch('{% url "save_meal_plan" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': CSRF_TOKEN,
+                },
+                body: JSON.stringify({
+                    goal: state.goal,
+                    calories: state.calories,
+                    budget_mode: state.budgetMode,
+                    plan_items: planItems,
+                }),
+            })
+            .then(r => r.json())
+            .then(data => {
+                showLoading(false);
+                if (data.error) {
+                    showNotification(data.error, 'error');
+                } else {
+                    showNotification(`План сохранён! ID: ${data.plan_id}`, 'success');
+                }
+            })
+            .catch(err => {
+                showLoading(false);
+                showNotification('Ошибка сохранения', 'error');
+                console.error(err);
+            });
+        }
+
+        // === В избранное ===
+        function initFavoritesButton() {
+            document.getElementById('btn-favorites').addEventListener('click', function() {
+                {% if not user.is_authenticated %}
+                showNotification('Войдите в аккаунт', 'error');
+                return;
+                {% endif %}
+                saveToFavorites();
+            });
+        }
+
+        function saveToFavorites() {
+            if (!state.currentPlan) {
+                showNotification('Сначала составьте рацион', 'info');
+                return;
+            }
+
+            const recipeIds = [];
+            for (const day of Object.values(state.currentPlan)) {
+                for (const val of Object.values(day)) {
+                    if (val.recipe && typeof val.recipe.id === 'number') {
+                        recipeIds.push(val.recipe.id);
+                    }
+                }
+            }
+
+            if (recipeIds.length === 0) {
+                showNotification('Нет рецептов из базы данных для сохранения', 'info');
+                return;
+            }
+
+            fetch('{% url "save_to_favorites" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': CSRF_TOKEN,
+                },
+                body: JSON.stringify({ recipe_ids: recipeIds }),
+            })
+            .then(r => r.json())
+            .then(data => {
+                if (data.error) {
+                    showNotification(data.error, 'error');
+                } else {
+                    showNotification(`Сохранено ${data.saved_count} рецептов в избранное`, 'success');
+                }
+            })
+            .catch(err => {
+                showNotification('Ошибка', 'error');
+                console.error(err);
+            });
+        }
+
+        // === Список покупок ===
+        function initShoppingListButton() {
+            document.getElementById('btn-shopping-list').addEventListener('click', function() {
+                {% if not user.is_authenticated %}
+                showNotification('Войдите в аккаунт', 'error');
+                return;
+                {% endif %}
+                generateShoppingList();
+            });
+        }
+
+        function generateShoppingList() {
+            if (!state.currentPlan) {
+                showNotification('Сначала составьте рацион', 'info');
+                return;
+            }
+
+            showLoading(true);
+
+            const planItems = [];
+            const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+            const mealTypesOrder = ['breakfast', 'lunch', 'dinner', 'snack'];
+
+            days.forEach(day => {
+                const dayData = state.currentPlan[day] || {};
+                let mealIndex = 0;
+                for (const [key, val] of Object.entries(dayData)) {
+                    if (val.recipe && mealIndex < mealTypesOrder.length) {
+                        const recipe = val.recipe;
+                        if (typeof recipe.id === 'number') {
+                            planItems.push({
+                                recipe_id: recipe.id,
+                                portion: 1.0,
+                            });
+                        }
+                        mealIndex++;
+                    }
+                }
+            });
+
+            if (planItems.length === 0) {
+                showLoading(false);
+                showNotification('Нет рецептов из базы для формирования списка', 'info');
+                return;
+            }
+
+            fetch('{% url "generate_shopping_list" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': CSRF_TOKEN,
+                },
+                body: JSON.stringify({ plan_items: planItems }),
+            })
+            .then(r => r.json())
+            .then(data => {
+                showLoading(false);
+                if (data.error) {
+                    showNotification(data.error, 'error');
+                } else {
+                    renderShoppingList(data.shopping_list);
+                    showNotification('Список покупок сформирован!', 'success');
+                }
+            })
+            .catch(err => {
+                showLoading(false);
+                showNotification('Ошибка формирования списка', 'error');
+                console.error(err);
+            });
+        }
+
+        function renderShoppingList(items) {
+            const container = document.getElementById('shopping-list-items');
+            if (!items || items.length === 0) {
+                container.innerHTML = '<p style="color: var(--color-text-light); font-size: 14px; text-align: center;">Нет ингредиентов</p>';
+                return;
+            }
+
+            container.innerHTML = items.map(item => `
+                <div class="shopping-item">
+                    <input type="checkbox" onchange="this.closest('.shopping-item').classList.toggle('checked', this.checked)">
+                    <span>${item.ingredient__name} — ${item.amount} ${item.ingredient__unit || ''}</span>
+                </div>
+            `).join('');
+        }
+
+        // === Очистить список покупок ===
+        function initClearShoppingButton() {
+            document.getElementById('btn-clear-shopping').addEventListener('click', function() {
+                {% if not user.is_authenticated %}
+                showNotification('Войдите в аккаунт', 'error');
+                return;
+                {% endif %}
+                document.getElementById('shopping-list-items').innerHTML =
+                    '<p style="color: var(--color-text-light); font-size: 14px; text-align: center;">Список очищен</p>';
+                showNotification('Список покупок очищен', 'info');
+            });
+        }
+
+        // === Уведомления ===
+        function showNotification(message, type = 'info') {
+            const el = document.getElementById('notification');
+            el.textContent = message;
+            el.className = `notification ${type}`;
+            el.classList.add('show');
+            setTimeout(() => el.classList.remove('show'), 3500);
+        }
+
+        function showLoading(show) {
+            document.getElementById('loading-overlay').classList.toggle('active', show);
+        }
+    </script>
+</body>
+</html>

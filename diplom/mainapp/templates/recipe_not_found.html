@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рецепт не найден</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-left">
+                <a href="{% url 'index' %}" class="btn btn-secondary">← Назад на главную</a>
+            </div>
+            <h1>Ошибка</h1>
+            <div class="header-right"></div>
+        </header>
+
+        <main>
+            <div class="recipe-not-found">
+                <div class="not-found-icon">😕</div>
+                <h2>Рецепт не найден</h2>
+                <p>К сожалению, запрашиваемый рецепт не найден в нашей базе данных.</p>
+                <a href="{% url 'index' %}" class="btn btn-primary">Вернуться на главную</a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

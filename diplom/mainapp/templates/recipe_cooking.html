@@ -1,0 +1,291 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приготовление: {{ api_recipe_data.title_ru|default:recipe.name }}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .cooking-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .cooking-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cooking-title {
+            font-size: 1.8em;
+            margin: 0;
+        }
+        .back-link {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        .back-link:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        .timer-section {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            padding: 35px;
+            text-align: center;
+            color: white;
+        }
+        .timer-section h2 {
+            margin: 0 0 20px 0;
+            font-size: 1.5em;
+        }
+        .timer-display {
+            font-size: 5em;
+            font-weight: bold;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .timer-controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .timer-controls button {
+            padding: 14px 28px;
+            font-size: 1.05em;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .timer-controls button:hover {
+            transform: translateY(-2px);
+        }
+        .btn-start { 
+            background: #27ae60; 
+            color: white; 
+        }
+        .btn-pause { 
+            background: #f39c12; 
+            color: white; 
+        }
+        .btn-reset { 
+            background: #e74c3c; 
+            color: white; 
+        }
+        .btn-preset { 
+            background: rgba(255,255,255,0.25); 
+            color: white; 
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+        .btn-preset:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        
+        .steps-section {
+            padding: 30px 40px 40px 40px;
+        }
+        .steps-title {
+            color: #667eea;
+            font-size: 1.5em;
+            margin: 0 0 25px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .recipe-step {
+            background: white;
+            border: 2px solid #e8e8e8;
+            border-radius: 12px;
+            padding: 22px;
+            display: flex;
+            align-items: flex-start;
+            transition: all 0.3s;
+        }
+        .recipe-step:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.15);
+        }
+        .recipe-step.completed {
+            background: linear-gradient(135deg, #f0f9f0 0%, #e8f5e9 100%);
+            border-color: #27ae60;
+        }
+        .recipe-step input[type="checkbox"] {
+            margin-right: 20px;
+            margin-top: 6px;
+            transform: scale(1.4);
+            cursor: pointer;
+            accent-color: #27ae60;
+        }
+        .step-content {
+            flex-grow: 1;
+        }
+        .step-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 12px;
+            font-size: 0.9em;
+        }
+        .step-text {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #333;
+        }
+        .recipe-step.completed .step-text {
+            text-decoration: line-through;
+            color: #888;
+        }
+        .step-timer-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-left: 15px;
+            white-space: nowrap;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        .step-timer-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="cooking-container">
+        <div class="cooking-header">
+            <h1 class="cooking-title">Приготовление</h1>
+            <a href="{% url 'recipe_detail' recipe_id %}" class="back-link">← Назад к рецепту</a>
+        </div>
+
+        <div class="timer-section">
+            <h2>⏱ Таймер</h2>
+            <div id="timer-display" class="timer-display">00:00</div>
+            <div class="timer-controls">
+                <button class="btn-start" id="timer-start">▶ Старт</button>
+                <button class="btn-pause" id="timer-pause">⏸ Пауза</button>
+                <button class="btn-reset" id="timer-reset">↺ Сброс</button>
+                <button class="btn-preset" onclick="setTimer(5)">5 мин</button>
+                <button class="btn-preset" onclick="setTimer(10)">10 мин</button>
+                <button class="btn-preset" onclick="setTimer(20)">20 мин</button>
+                <button class="btn-preset" onclick="setTimer(30)">30 мин</button>
+                <button class="btn-preset" onclick="setTimer(40)">40 мин</button>
+            </div>
+        </div>
+
+        <div class="steps-section">
+            <h2 class="steps-title">Шаги приготовления</h2>
+            <div class="steps-container">
+                {% if api_recipe_data.analyzedInstructions %}
+                    {% for instruction_group in api_recipe_data.analyzedInstructions %}
+                        {% for step in instruction_group.steps %}
+                            <div class="recipe-step">
+                                <input type="checkbox" id="step{{ step.number }}">
+                                <div class="step-content">
+                                    <span class="step-number">Шаг {{ step.number }}</span>
+                                    <p class="step-text">{{ step.step_ru|default:step.step|default:step.step }}</p>
+                                </div>
+                                {% if step.length %}
+                                    <button class="step-timer-btn" onclick="setTimer({{ step.length.number }})">
+                                        ⏱ {{ step.length.number }} мин
+                                    </button>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                {% else %}
+                    <p>Инструкции для этого рецепта не найдены.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.recipe-step input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                this.closest('.recipe-step').classList.toggle('completed', this.checked);
+            });
+        });
+
+        let timerInterval;
+        let timeInSeconds = 0;
+        const timerDisplay = document.getElementById('timer-display');
+
+        function updateDisplay() {
+            const minutes = Math.floor(timeInSeconds / 60);
+            const seconds = timeInSeconds % 60;
+            timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        function setTimer(minutes) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            timeInSeconds = minutes * 60;
+            updateDisplay();
+        }
+
+        document.getElementById('timer-start').addEventListener('click', () => {
+            if (timeInSeconds > 0 && !timerInterval) {
+                timerInterval = setInterval(() => {
+                    timeInSeconds--;
+                    updateDisplay();
+                    if (timeInSeconds <= 0) {
+                        clearInterval(timerInterval);
+                        timerInterval = null;
+                        alert('⏰ Время вышло! Готовность проверьте.');
+                        timeInSeconds = 0;
+                        updateDisplay();
+                    }
+                }, 1000);
+            } else if (timeInSeconds === 0) {
+                alert('Сначала установите время для таймера!');
+            }
+        });
+
+        document.getElementById('timer-pause').addEventListener('click', () => {
+            clearInterval(timerInterval);
+            timerInterval = null;
+        });
+
+        document.getElementById('timer-reset').addEventListener('click', () => {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            timeInSeconds = 0;
+            updateDisplay();
+        });
+
+        updateDisplay();
+    </script>
+</body>
+</html>

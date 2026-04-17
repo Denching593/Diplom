@@ -1,0 +1,253 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if recipe.name %}{{ recipe.name }}{% elif api_recipe_data.title_ru %}{{ api_recipe_data.title_ru }}{% else %}Рецепт{% endif %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Навигация -->
+        <header>
+            <div class="header-left">
+                <a href="{% url 'index' %}" class="btn btn-secondary">← Назад</a>
+            </div>
+            <h1>Рецепт</h1>
+            <div class="header-right">
+                <a href="{% url 'meal_plan' %}" class="btn btn-secondary">☰ Составить рацион</a>
+            </div>
+        </header>
+
+        <main class="recipe-detail">
+            {% if recipe %}
+            <!-- Локальный рецепт из базы данных -->
+            <div class="recipe-hero">
+                {% if recipe.image %}
+                <img src="{% if recipe.image.url %}{{ recipe.image.url }}{% else %}{% static 'images/' %}{{ recipe.image }}{% endif %}"
+                     alt="{{ recipe.name }}"
+                     class="recipe-hero-image">
+                {% endif %}
+                <div class="recipe-hero-content">
+                    <h2>{{ recipe.name }}</h2>
+                    <div class="recipe-meta">
+                        <div class="meta-item">
+                            <span class="meta-icon">🔥</span>
+                            <span class="meta-value">{{ recipe.calories }} ккал</span>
+                        </div>
+                        {% if recipe.meal_type %}
+                        <div class="meta-item">
+                            <span class="meta-icon">🍽️</span>
+                            <span class="meta-value">{{ recipe.get_meal_type_display }}</span>
+                        </div>
+                        {% endif %}
+                        {% if recipe.goal_suitability %}
+                        <div class="meta-item">
+                            <span class="meta-icon">🎯</span>
+                            <span class="meta-value">{{ recipe.get_goal_suitability_display }}</span>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="recipe-content-grid">
+                <!-- Ингредиенты -->
+                <div class="recipe-section">
+                    <h3><span class="section-icon">🥘</span> Ингредиенты</h3>
+                    {% if recipe_ingredients %}
+                    <ul class="ingredients-list">
+                        {% for item in recipe_ingredients %}
+                        <li>
+                            <span class="ingredient-name">{{ item.ingredient.name }}</span>
+                            <span class="ingredient-amount">{{ item.amount }} {{ item.ingredient.unit|default:"" }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <p class="no-data">Ингредиенты не указаны</p>
+                    {% endif %}
+                </div>
+
+                <!-- Описание/Инструкции -->
+                <div class="recipe-section">
+                    <h3><span class="section-icon">📝</span> Описание</h3>
+                    {% if recipe.description %}
+                    <div class="recipe-description">
+                        {{ recipe.description|linebreaks }}
+                    </div>
+                    {% else %}
+                    <p class="no-data">Описание не указано</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% elif api_recipe_data %}
+            <!-- Рецепт из Spoonacular API -->
+            <div class="recipe-hero">
+                {% if api_recipe_data.image %}
+                <img src="{{ api_recipe_data.image }}"
+                     alt="{{ api_recipe_data.title_ru }}"
+                     class="recipe-hero-image">
+                {% endif %}
+                <div class="recipe-hero-content">
+                    <h2>{{ api_recipe_data.title_ru }}</h2>
+                    <div class="recipe-meta">
+                        {% if api_recipe_data.nutrition and api_recipe_data.nutrition.nutrients %}
+                        {% for nutrient in api_recipe_data.nutrition.nutrients %}
+                            {% if nutrient.name == "Calories" %}
+                            <div class="meta-item">
+                                <span class="meta-icon">🔥</span>
+                                <span class="meta-value">{{ nutrient.amount|floatformat:0 }} ккал</span>
+                            </div>
+                            {% endif %}
+                            {% if nutrient.name == "Protein" %}
+                            <div class="meta-item">
+                                <span class="meta-icon">💪</span>
+                                <span class="meta-value">Белки: {{ nutrient.amount|floatformat:1 }} г</span>
+                            </div>
+                            {% endif %}
+                            {% if nutrient.name == "Fat" %}
+                            <div class="meta-item">
+                                <span class="meta-icon">🧈</span>
+                                <span class="meta-value">Жиры: {{ nutrient.amount|floatformat:1 }} г</span>
+                            </div>
+                            {% endif %}
+                            {% if nutrient.name == "Carbohydrates" %}
+                            <div class="meta-item">
+                                <span class="meta-icon">🌾</span>
+                                <span class="meta-value">Углеводы: {{ nutrient.amount|floatformat:1 }} г</span>
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                        {% endif %}
+
+                        {% if api_recipe_data.readyInMinutes %}
+                        <div class="meta-item">
+                            <span class="meta-icon">⏱️</span>
+                            <span class="meta-value">{{ api_recipe_data.readyInMinutes }} мин</span>
+                        </div>
+                        {% endif %}
+
+                        {% if api_recipe_data.servings %}
+                        <div class="meta-item">
+                            <span class="meta-icon">👥</span>
+                            <span class="meta-value">{{ api_recipe_data.servings }} порций</span>
+                        </div>
+                        {% endif %}
+
+                        {% if api_recipe_data.cuisages %}
+                        <div class="meta-item">
+                            <span class="meta-icon">🌍</span>
+                            <span class="meta-value">{{ api_recipe_data.cuisages|join:", " }}</span>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="recipe-content-grid">
+                <!-- Ингредиенты из API -->
+                <div class="recipe-section">
+                    <h3><span class="section-icon">🥘</span> Ингредиенты</h3>
+                    {% if api_recipe_data.extendedIngredients %}
+                    <ul class="ingredients-list">
+                        {% for ingredient in api_recipe_data.extendedIngredients %}
+                        <li>
+                            <span class="ingredient-name">{{ ingredient.name_ru|default:ingredient.name }}</span>
+                            <span class="ingredient-amount">
+                                {{ ingredient.amount|floatformat:0 }} {{ ingredient.unit|default:ingredient.measures.metric.unitshort|default:"" }}
+                            </span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <p class="no-data">Ингредиенты не указаны</p>
+                    {% endif %}
+                </div>
+
+                <!-- Инструкции из API -->
+                {% if api_recipe_data.analyzedInstructions %}
+                <div class="recipe-section">
+                    <h3><span class="section-icon">📝</span> Пошаговая инструкция</h3>
+                    <div class="instructions">
+                        {% for instruction_group in api_recipe_data.analyzedInstructions %}
+                            {% if instruction_group.steps %}
+                                {% for step in instruction_group.steps %}
+                                <div class="instruction-step">
+                                    <div class="step-number">{{ step.number }}</div>
+                                    <div class="step-content">
+                                        <p>{{ step.step_ru|default:step.step }}</p>
+                                        {% if step.ingredients %}
+                                        <div class="step-ingredients">
+                                            <small>Ингредиенты:
+                                                {% for ingr in step.ingredients %}
+                                                    {{ ingr.name_ru|default:ingr.name }}{% if not forloop.last %}, {% endif %}
+                                                {% endfor %}
+                                            </small>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Описание из API -->
+                {% if api_recipe_data.summary %}
+                <div class="recipe-section">
+                    <h3><span class="section-icon">📖</span> О блюде</h3>
+                    <div class="recipe-description">
+                        {{ api_recipe_data.summary|safe }}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Дополнительные свойства -->
+                {% if api_recipe_data.veryHealthy or api_recipe_data.vegetarian or api_recipe_data.vegan or api_recipe_data.glutenFree %}
+                <div class="recipe-section">
+                    <h3><span class="section-icon">✨</span> Особенности</h3>
+                    <div class="recipe-badges">
+                        {% if api_recipe_data.veryHealthy %}
+                        <span class="badge badge-healthy">✓ Полезно</span>
+                        {% endif %}
+                        {% if api_recipe_data.vegetarian %}
+                        <span class="badge badge-vegetarian">🌱 Вегетарианское</span>
+                        {% endif %}
+                        {% if api_recipe_data.vegan %}
+                        <span class="badge badge-vegan">🌿 Веганское</span>
+                        {% endif %}
+                        {% if api_recipe_data.glutenFree %}
+                        <span class="badge badge-gluten-free">✓ Без глютена</span>
+                        {% endif %}
+                        {% if api_recipe_data.dairyFree %}
+                        <span class="badge badge-dairy-free">✓ Без молока</span>
+                        {% endif %}
+                        {% if api_recipe_data.cheap %}
+                        <span class="badge badge-cheap">💰 Бюджетно</span>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            {% else %}
+            <!-- Рецепт не найден -->
+            <div class="recipe-not-found">
+                <div class="not-found-icon">😕</div>
+                <h2>Рецепт не найден</h2>
+                <p>К сожалению, запрашиваемый рецепт не найден в нашей базе данных.</p>
+                <a href="{% url 'index' %}" class="btn btn-primary">Вернуться на главную</a>
+            </div>
+            {% endif %}
+        </main>
+    </div>
+</body>
+</html>
