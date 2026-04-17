@@ -30,7 +30,7 @@ urlpatterns = [
     path('meal-plan/', views.meal_plan, name='meal_plan'),
     path('api/search_recipes/', views.search_recipes, name='search_recipes'),
     path('recipe/<str:recipe_id>/', views.recipe_detail, name='recipe_detail'),
-    #path('recipe/<str:recipe_id>/cooking/', views.recipe_cooking, name='recipe_cooking'),
+    path('recipe/<str:recipe_id>/cooking/', views.recipe_cooking, name='recipe_cooking'),
 
     # API для рациона питания
     path('api/meal-plan/generate/', views.generate_meal_plan, name='generate_meal_plan'),

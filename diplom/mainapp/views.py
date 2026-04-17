@@ -9,6 +9,7 @@ from .forms import UserLoginForm, RegistrationForm
 import logging
 import requests
 import random
+import json
 from googletrans import Translator
 
 logger = logging.getLogger(__name__)
@@ -71,71 +72,217 @@ def recipe_detail(request, recipe_id):
     api_recipe_data = None
     recipe_ingredients = []
 
-    # Проверяем, является ли recipe_id числом (локальный рецепт)
+    # Сначала пробуем найти рецепт в локальной БД (если recipe_id число)
     if recipe_id.isdigit():
         recipe = Recipes.objects.filter(id=int(recipe_id)).first()
         if recipe:
-            # Получаем ингредиенты рецепта
+            # Получаем ингредиенты рецепта из локальной БД
             recipe_ingredients = recipe.recipeingredient_set.all().select_related('ingredient')
-    else:
-        # Это может быть ID рецепта из Spoonacular API
-        try:
-            spoonacular_id = int(recipe_id)
-            api_url = f'https://api.spoonacular.com/recipes/{spoonacular_id}/information'
-            params = {
-                'apiKey': settings.SPOONACULAR_API_KEY,
-                'includeNutrition': True,
+            context = {
+                'recipe': recipe,
+                'is_api_recipe': False,
+                'api_recipe_data': None,
+                'recipe_ingredients': recipe_ingredients,
             }
+            return render(request, 'recipe_detail.html', context)
 
-            response = requests.get(api_url, params=params, timeout=10)
-            response.raise_for_status()
-            api_recipe_data = response.json()
-            is_api_recipe = True
+    # Если локальный рецепт не найден или recipe_id не число — пробуем Spoonacular API
+    try:
+        spoonacular_id = int(recipe_id)
+        api_url = f'https://api.spoonacular.com/recipes/{spoonacular_id}/information'
+        params = {
+            'apiKey': settings.SPOONACULAR_API_KEY,
+            'includeNutrition': True,
+        }
 
-            # Переводим название на русский
-            if api_recipe_data.get('title'):
-                try:
-                    translated = translator.translate(api_recipe_data['title'], dest='ru')
-                    api_recipe_data['title_ru'] = translated.text
-                except Exception as e:
-                    logger.warning(f'Ошибка перевода названия: {e}')
-                    api_recipe_data['title_ru'] = api_recipe_data['title']
+        response = requests.get(api_url, params=params, timeout=10)
 
-            # Переводим ингредиенты
-            if api_recipe_data.get('extendedIngredients'):
-                for ingredient in api_recipe_data['extendedIngredients']:
-                    original_name = ingredient.get('name', '')
-                    if original_name:
-                        try:
-                            translated = translator.translate(original_name, dest='ru')
-                            ingredient['name_ru'] = translated.text
-                        except Exception:
-                            ingredient['name_ru'] = original_name
-
-            # Переводим инструкции
-            if api_recipe_data.get('analyzedInstructions'):
-                for instruction_group in api_recipe_data['analyzedInstructions']:
-                    if instruction_group.get('steps'):
-                        for step in instruction_group['steps']:
-                            step_text = step.get('step', '')
-                            if step_text:
-                                try:
-                                    translated = translator.translate(step_text, dest='ru')
-                                    step['step_ru'] = translated.text
-                                except Exception:
-                                    step['step_ru'] = step_text
-
-        except (ValueError, requests.RequestException) as e:
-            logger.error(f'Ошибка получения рецепта из Spoonacular: {e}')
+        if response.status_code == 404:
+            # Рецепт действительно не найден
+            logger.warning(f'Рецепт с ID {spoonacular_id} не найден в Spoonacular API')
             return render(request, 'recipe_not_found.html', status=404)
+
+        response.raise_for_status()
+        api_recipe_data = response.json()
+        is_api_recipe = True
+
+        # Переводим название на русский
+        if api_recipe_data.get('title'):
+            try:
+                translated = translator.translate(api_recipe_data['title'], dest='ru')
+                api_recipe_data['title_ru'] = translated.text
+            except Exception as e:
+                logger.warning(f'Ошибка перевода названия: {e}')
+                api_recipe_data['title_ru'] = api_recipe_data['title']
+
+        # Переводим ингредиенты
+        if api_recipe_data.get('extendedIngredients'):
+            for ingredient in api_recipe_data['extendedIngredients']:
+                original_name = ingredient.get('name', '')
+                if original_name:
+                    try:
+                        translated = translator.translate(original_name, dest='ru')
+                        ingredient['name_ru'] = translated.text
+                    except Exception:
+                        ingredient['name_ru'] = original_name
+
+        # Переводим инструкции
+        if api_recipe_data.get('analyzedInstructions'):
+            for instruction_group in api_recipe_data['analyzedInstructions']:
+                if instruction_group.get('steps'):
+                    for step in instruction_group['steps']:
+                        step_text = step.get('step', '')
+                        if step_text:
+                            try:
+                                translated = translator.translate(step_text, dest='ru')
+                                step['step_ru'] = translated.text
+                            except Exception:
+                                step['step_ru'] = step_text
+
+    except ValueError:
+        # recipe_id не является числом
+        logger.warning(f'Неверный формат recipe_id: {recipe_id}')
+        return render(request, 'recipe_not_found.html', status=404)
+    except requests.RequestException as e:
+        logger.error(f'Ошибка получения рецепта из Spoonacular: {e}')
+        return render(request, 'recipe_not_found.html', status=404)
+
+    context = {
+        'recipe': None,
+        'is_api_recipe': is_api_recipe,
+        'api_recipe_data': api_recipe_data,
+        'recipe_ingredients': [],
+    }
+    return render(request, 'recipe_detail.html', context)
+
+
+def recipe_cooking(request, recipe_id):
+    """Страница приготовления рецепта с таймером и чекбоксами"""
+    recipe = None
+    is_api_recipe = False
+    api_recipe_data = None
+    recipe_steps = []
+
+    # Сначала пробуем найти рецепт в локальной БД (если recipe_id число)
+    if recipe_id.isdigit():
+        recipe = Recipes.objects.filter(id=int(recipe_id)).first()
+        if recipe:
+            # Для локальных рецептов используем описание как шаги
+            if recipe.description:
+                # Разбиваем описание на шаги по предложениям
+                import re
+                sentences = re.split(r'(?<=[.!?])\s+', recipe.description)
+                for i, sentence in enumerate(sentences, 1):
+                    if sentence.strip():
+                        recipe_steps.append({
+                            'number': i,
+                            'text': sentence.strip(),
+                            'ingredients': []
+                        })
+            context = {
+                'recipe': recipe,
+                'is_api_recipe': False,
+                'api_recipe_data': None,
+                'recipe_steps': recipe_steps,
+                'recipe_id': recipe_id,
+            }
+            return render(request, 'recipe_cooking.html', context)
+
+    # Если локальный рецепт не найден или recipe_id не число — пробуем Spoonacular API
+    try:
+        spoonacular_id = int(recipe_id)
+        api_url = f'https://api.spoonacular.com/recipes/{spoonacular_id}/information'
+        params = {
+            'apiKey': settings.SPOONACULAR_API_KEY,
+            'includeNutrition': True,
+        }
+
+        response = requests.get(api_url, params=params, timeout=10)
+
+        if response.status_code == 404:
+            logger.warning(f'Рецепт с ID {spoonacular_id} не найден в Spoonacular API')
+            return render(request, 'recipe_not_found.html', status=404)
+
+        response.raise_for_status()
+        api_recipe_data = response.json()
+        is_api_recipe = True
+
+        # Переводим название на русский
+        if api_recipe_data.get('title'):
+            try:
+                translated = translator.translate(api_recipe_data['title'], dest='ru')
+                api_recipe_data['title_ru'] = translated.text
+            except Exception as e:
+                logger.warning(f'Ошибка перевода названия: {e}')
+                api_recipe_data['title_ru'] = api_recipe_data['title']
+
+        # Переводим ингредиенты
+        if api_recipe_data.get('extendedIngredients'):
+            for ingredient in api_recipe_data['extendedIngredients']:
+                original_name = ingredient.get('name', '')
+                if original_name:
+                    try:
+                        translated = translator.translate(original_name, dest='ru')
+                        ingredient['name_ru'] = translated.text
+                    except Exception:
+                        ingredient['name_ru'] = original_name
+
+        # Получаем шаги из инструкций
+        if api_recipe_data.get('analyzedInstructions'):
+            for instruction_group in api_recipe_data['analyzedInstructions']:
+                if instruction_group.get('steps'):
+                    for step in instruction_group['steps']:
+                        step_text = step.get('step', '')
+                        if step_text:
+                            # Переводим текст шага
+                            try:
+                                translated = translator.translate(step_text, dest='ru')
+                                translated_text = translated.text
+                            except Exception:
+                                translated_text = step_text
+
+                            # Переводим ингредиенты шага
+                            step_ingredients = []
+                            for ing in step.get('ingredients', []):
+                                ing_name = ing.get('name') or ''
+                                if ing_name:
+                                    try:
+                                        translated_ing = translator.translate(ing_name, dest='ru')
+                                        step_ingredients.append({
+                                            'name': ing_name,
+                                            'name_ru': translated_ing.text
+                                        })
+                                    except Exception:
+                                        step_ingredients.append({
+                                            'name': ing_name,
+                                            'name_ru': ing_name
+                                        })
+
+                            # Получаем время шага
+                            step_length = step.get('length', None)
+
+                            recipe_steps.append({
+                                'number': step.get('number', len(recipe_steps) + 1),
+                                'text': translated_text,
+                                'ingredients': step_ingredients,
+                                'length': step_length
+                            })
+
+    except ValueError:
+        logger.warning(f'Неверный формат recipe_id: {recipe_id}')
+        return render(request, 'recipe_not_found.html', status=404)
+    except requests.RequestException as e:
+        logger.error(f'Ошибка получения рецепта из Spoonacular: {e}')
+        return render(request, 'recipe_not_found.html', status=404)
 
     context = {
         'recipe': recipe,
         'is_api_recipe': is_api_recipe,
         'api_recipe_data': api_recipe_data,
-        'recipe_ingredients': recipe_ingredients if recipe else [],
+        'recipe_steps': recipe_steps,
+        'recipe_id': recipe_id,
     }
-    return render(request, 'recipe_detail.html', context)
+    return render(request, 'recipe_cooking.html', context)
 
 
 def compose_dish(request):

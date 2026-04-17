@@ -9,6 +9,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .cooking-action {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 15px;
+        }
+        .btn-large {
+            padding: 15px 40px;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -86,6 +100,12 @@
                 </div>
             </div>
 
+            <div class="cooking-action">
+                <a href="{% url 'recipe_cooking' recipe.id %}" class="btn btn-primary btn-large">
+                    🍳 Перейти к приготовлению
+                </a>
+            </div>
+
             {% elif api_recipe_data %}
             <!-- Рецепт из Spoonacular API -->
             <div class="recipe-hero">
@@ -140,10 +160,10 @@
                         </div>
                         {% endif %}
 
-                        {% if api_recipe_data.cuisages %}
+                        {% if api_recipe_data.cuisines %}
                         <div class="meta-item">
                             <span class="meta-icon">🌍</span>
-                            <span class="meta-value">{{ api_recipe_data.cuisages|join:", " }}</span>
+                            <span class="meta-value">{{ api_recipe_data.cuisines|join:", " }}</span>
                         </div>
                         {% endif %}
                     </div>
@@ -160,7 +180,7 @@
                         <li>
                             <span class="ingredient-name">{{ ingredient.name_ru|default:ingredient.name }}</span>
                             <span class="ingredient-amount">
-                                {{ ingredient.amount|floatformat:0 }} {{ ingredient.unit|default:ingredient.measures.metric.unitshort|default:"" }}
+                                {{ ingredient.amount|floatformat:0 }} {% if ingredient.unit %}{{ ingredient.unit }}{% elif ingredient.measures.metric.unitshort %}{{ ingredient.measures.metric.unitshort }}{% endif %}
                             </span>
                         </li>
                         {% endfor %}
@@ -236,6 +256,12 @@
                     </div>
                 </div>
                 {% endif %}
+            </div>
+
+            <div class="cooking-action">
+                <a href="{% url 'recipe_cooking' api_recipe_data.id %}" class="btn btn-primary btn-large">
+                    🍳 Перейти к приготовлению
+                </a>
             </div>
 
             {% else %}

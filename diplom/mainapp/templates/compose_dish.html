@@ -67,8 +67,8 @@
                     {% endfor %}
             </div>
 
-            <h2 class="ingredients-title" id="results-title" style="display: none;">Найденные блюда</h2>
-            <div id="search-results" class="possible-ingredients-grid" style="display: none;"></div>
+            <h2 class="recommendation-title" id="results-title" style="display: none; margin-top: 40px;">Найденные блюда</h2>
+            <div id="search-results" class="recipe-grid" style="display: none;"></div>
             <div id="search-loading" style="display: none; text-align: center; padding: 40px;">
                 <p style="font-size: 18px;">🔍 Ищем подходя блюда...</p>
             </div>
@@ -160,18 +160,18 @@
 
                         data.results.forEach(function(recipe) {
                             const recipeEl = document.createElement('div');
-                            recipeEl.classList.add('ingredient-item');
+                            recipeEl.classList.add('recipe-card');
                             const displayName = recipe.title_ru || recipe.title;
                             const recipeUrl = '/recipe/' + recipe.id + '/';
+                            const timeText = (recipe.readyInMinutes ? '⏱ ' + recipe.readyInMinutes + ' мин' : '') +
+                                            (recipe.servings ? ' | 🍽 ' + recipe.servings + ' порц.' : '');
                             recipeEl.innerHTML =
-                                '<a href="' + recipeUrl + '" style="text-decoration:none;color:inherit;">' +
-                                    (recipe.image ? '<img src="' + recipe.image + '" alt="' + displayName + '" style="width:100%;height:180px;object-fit:cover;">' : '') +
-                                    '<p style="font-weight:bold;">' + displayName + '</p>' +
-                                    '<p style="font-size:13px;color:#666;">' +
-                                        (recipe.readyInMinutes ? '⏱ ' + recipe.readyInMinutes + ' мин' : '') +
-                                        (recipe.servings ? ' | 🍽 ' + recipe.servings + ' порц.' : '') +
-                                    '</p>' +
-                                '</a>';
+                                (recipe.image ? '<img src="' + recipe.image + '" alt="' + displayName + '">' : '') +
+                                '<div class="recipe-card-content">' +
+                                    '<h3>' + displayName + '</h3>' +
+                                    '<p>' + timeText + '</p>' +
+                                    '<a href="' + recipeUrl + '" class="btn btn-primary">Смотреть рецепт</a>' +
+                                '</div>';
                             resultsDiv.appendChild(recipeEl);
                         });
                     } else {
