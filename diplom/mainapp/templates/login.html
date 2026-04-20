@@ -21,6 +21,7 @@
                     <div class="card-body">
                         <form method="post">
                             {% csrf_token %}
+                            <input type="hidden" name="next" value="{{ next }}">
                             {{ form.as_p }}
                             <div class="form-actions">
                                 <a href="{% url 'register' %}" class="btn btn-secondary">Зарегистрироваться</a>

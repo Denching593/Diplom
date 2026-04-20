@@ -31,6 +31,7 @@ urlpatterns = [
     path('api/search_recipes/', views.search_recipes, name='search_recipes'),
     path('recipe/<str:recipe_id>/', views.recipe_detail, name='recipe_detail'),
     path('recipe/<str:recipe_id>/cooking/', views.recipe_cooking, name='recipe_cooking'),
+    path('api/recipe/fetch/<str:recipe_id>/', views.fetch_recipe_from_api, name='fetch_recipe_from_api'),
 
     # API для рациона питания
     path('api/meal-plan/generate/', views.generate_meal_plan, name='generate_meal_plan'),

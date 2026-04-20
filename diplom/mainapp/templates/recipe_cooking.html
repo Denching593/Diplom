@@ -213,28 +213,58 @@
             color: #666;
             margin-bottom: 30px;
         }
+
+        /* Loader for API fetch */
+        .api-loader {
+            text-align: center;
+            padding: 40px;
+        }
+        .api-loader .spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #e76f51;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .api-loader p {
+            margin-top: 15px;
+            color: #666;
+            font-size: 1.1em;
+        }
     </style>
 </head>
 <body>
     <div class="cooking-container">
         <div class="cooking-header">
             <h1 class="cooking-title">Приготовление</h1>
-            <a href="{% url 'recipe_detail' recipe_id %}" class="back-link">← Назад к рецепту</a>
+            <a href="{% url 'recipe_detail' recipe_id %}" class="back-link">&larr; Назад к рецепту</a>
         </div>
 
-        <!-- Progressive Step View -->
-        <div id="progressive-container" class="steps-section">
+        <!-- Загрузка шагов из API -->
+        <div class="api-loader" id="api-loader">
+            <div class="spinner"></div>
+            <p>Загрузка пошаговой инструкции...</p>
+        </div>
+
+        <!-- Progressive Step View (скрыт до загрузки) -->
+        <div id="progressive-container" class="steps-section" style="display:none;">
             <div class="progress-indicator" id="progress-indicator">
-                <span class="progress-text">Шаг <span id="current-step-num">1</span> из <span id="total-steps">{{ recipe_steps|length }}</span></span>
+                <span class="progress-text">Шаг <span id="current-step-num">1</span> из <span id="total-steps">0</span></span>
             </div>
             <div class="current-step-view">
                 <div class="current-step-card" id="step-card">
                     <span class="current-step-number" id="step-number">Шаг 1</span>
-                    <p class="current-step-text" id="step-text">{% if recipe_steps %}{{ recipe_steps.0.text }}{% else %}Загрузка...{% endif %}</p>
+                    <p class="current-step-text" id="step-text">Загрузка...</p>
                     <div class="current-step-ingredients" id="step-ingredients" style="display: none;">
                     </div>
                     <div class="step-actions" id="step-actions">
-                        <button type="button" class="btn-step-action btn-continue" id="btn-next" data-action="next">✅ Выполнено, далее →</button>
+                        <button type="button" class="btn-step-action btn-continue" id="btn-next" data-action="next">&#10003; Выполнено, далее &rarr;</button>
                     </div>
                 </div>
             </div>
@@ -244,7 +274,7 @@
     <!-- Completion Modal -->
     <div class="completion-modal" id="completion-modal">
         <div class="completion-content">
-            <div class="completion-icon">🎉</div>
+            <div class="completion-icon">&#127881;</div>
             <h2 class="completion-title">Рецепт приготовлен!</h2>
             <p class="completion-text">Поздравляем! Вы завершили приготовление блюда. Приятного аппетита!</p>
             <button class="btn-step-action btn-finish" onclick="closeCompletionModal()">Отлично</button>
@@ -252,13 +282,13 @@
     </div>
 
     <script>
-        // Простой и надёжный JavaScript для переключения шагов
         (function() {
             var currentStep = 1;
-            var totalSteps = {{ recipe_steps|length }};
+            var totalSteps = 0;
+            var recipeStepsData = [];
 
-            // Данные шагов
-            var recipeStepsData = [
+            // Серверные шаги (для API-рецептов, уже загруженных из Spoonacular)
+            var serverSteps = [
                 {% for step in recipe_steps %}
                 {
                     number: {{ step.number }},
@@ -271,6 +301,92 @@
                 }{% if not forloop.last %},{% endif %}
                 {% endfor %}
             ];
+
+            // Определяем, нужен ли запрос к API
+            // Если есть серверные шаги с инструкциями из API — используем их
+            // Если рецепт локальный — подгружаем из Spoonacular
+            var isLocalRecipe = {{ is_local_recipe|yesno:"true,false" }};
+            var recipeId = "{{ recipe_id }}";
+
+            if (isLocalRecipe) {
+                // Локальный рецепт — подгружаем инструкции из Spoonacular API
+                loadStepsFromApi();
+            } else if (serverSteps.length > 0) {
+                // API-рецепт — шаги уже есть с сервера
+                recipeStepsData = serverSteps;
+                initSteps();
+            } else {
+                // Нет шагов
+                showNoSteps();
+            }
+
+            function loadStepsFromApi() {
+                var fetchUrl = '{% url "fetch_recipe_from_api" "RECIPE_ID" %}'.replace('RECIPE_ID', recipeId);
+
+                fetch(fetchUrl)
+                    .then(function(response) {
+                        if (!response.ok) throw new Error('Ошибка сервера');
+                        return response.json();
+                    })
+                    .then(function(data) {
+                        var loader = document.getElementById('api-loader');
+                        loader.style.display = 'none';
+
+                        if (data.error || !data.instructions || data.instructions.length === 0) {
+                            // Если API не дал инструкций — пробуем серверные шаги
+                            if (serverSteps.length > 0) {
+                                recipeStepsData = serverSteps;
+                                initSteps();
+                            } else {
+                                showNoSteps();
+                            }
+                            return;
+                        }
+
+                        // Используем инструкции из API
+                        recipeStepsData = data.instructions.map(function(step, idx) {
+                            return {
+                                number: step.number || (idx + 1),
+                                text: step.text,
+                                ingredients: step.ingredients || []
+                            };
+                        });
+
+                        initSteps();
+                    })
+                    .catch(function(err) {
+                        var loader = document.getElementById('api-loader');
+                        loader.style.display = 'none';
+
+                        // Фоллбэк на серверные шаги
+                        if (serverSteps.length > 0) {
+                            recipeStepsData = serverSteps;
+                            initSteps();
+                        } else {
+                            showNoSteps();
+                        }
+                    });
+            }
+
+            function showNoSteps() {
+                var loader = document.getElementById('api-loader');
+                loader.style.display = 'none';
+                var container = document.getElementById('progressive-container');
+                container.style.display = 'block';
+                document.getElementById('step-number').textContent = '';
+                document.getElementById('step-text').textContent = 'Пошаговая инструкция недоступна для этого рецепта.';
+                var actionsDiv = document.getElementById('step-actions');
+                actionsDiv.innerHTML = '';
+            }
+
+            function initSteps() {
+                totalSteps = recipeStepsData.length;
+                var container = document.getElementById('progressive-container');
+                container.style.display = 'block';
+                if (totalSteps > 0) {
+                    showStep(1);
+                }
+            }
 
             function showStep(stepNum) {
                 if (stepNum > totalSteps) {
@@ -285,7 +401,7 @@
                 document.getElementById('step-number').textContent = 'Шаг ' + stepNum;
                 document.getElementById('step-text').textContent = stepData.text;
 
-                // Обновляем индикатор прогресса (только текст, не трогаем структуру)
+                // Обновляем индикатор прогресса
                 var progressText = document.querySelector('#progress-indicator .progress-text');
                 if (progressText) {
                     progressText.innerHTML = 'Шаг <span id="current-step-num">' + stepNum + '</span> из <span id="total-steps">' + totalSteps + '</span>';
@@ -313,12 +429,12 @@
                 var actionsDiv = document.getElementById('step-actions');
                 var html = '';
                 if (stepNum > 1) {
-                    html += '<button type="button" class="btn-step-action btn-back" onclick="goToStep(' + (stepNum - 1) + ')">← Назад</button>';
+                    html += '<button type="button" class="btn-step-action btn-back" onclick="goToStep(' + (stepNum - 1) + ')">&larr; Назад</button>';
                 }
                 if (stepNum < totalSteps) {
-                    html += '<button type="button" class="btn-step-action btn-continue" onclick="goToStep(' + (stepNum + 1) + ')">✅ Выполнено, далее →</button>';
+                    html += '<button type="button" class="btn-step-action btn-continue" onclick="goToStep(' + (stepNum + 1) + ')">&#10003; Выполнено, далее &rarr;</button>';
                 } else {
-                    html += '<button type="button" class="btn-step-action btn-finish" onclick="goToStep(' + (stepNum + 1) + ')">✅ Завершить приготовление</button>';
+                    html += '<button type="button" class="btn-step-action btn-finish" onclick="goToStep(' + (stepNum + 1) + ')">&#10003; Завершить приготовление</button>';
                 }
                 actionsDiv.innerHTML = html;
 
@@ -327,11 +443,9 @@
 
             function updateProgressDots(current) {
                 var container = document.getElementById('progress-indicator');
-                // Удаляем старые точки, если есть
                 var oldDots = container.querySelectorAll('.progress-dot');
                 oldDots.forEach(function(dot) { dot.remove(); });
 
-                // Добавляем новые точки в начало
                 for (var i = totalSteps; i >= 1; i--) {
                     var dot = document.createElement('div');
                     dot.className = 'progress-dot';
@@ -341,7 +455,6 @@
                 }
             }
 
-            // Глобальная функция для onclick
             window.goToStep = function(stepNum) {
                 showStep(stepNum);
             };
@@ -350,11 +463,6 @@
                 document.getElementById('completion-modal').style.display = 'none';
                 showStep(1);
             };
-
-            // Инициализация при загрузке
-            if (totalSteps > 0) {
-                showStep(1);
-            }
         })();
     </script>
 </body>
