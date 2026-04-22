@@ -110,6 +110,40 @@
         .badge-gluten-free { background: #fff3cd; color: #856404; }
         .badge-dairy-free { background: #f8d7da; color: #721c24; }
         .badge-cheap { background: #e8f5e9; color: #2e7d32; }
+        /* Favorite button */
+        .btn-favorite {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-size: 1.05em;
+            font-weight: 600;
+            cursor: pointer;
+            border: 2px solid #e76f51;
+            background: white;
+            color: #e76f51;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
+        }
+        .btn-favorite:hover {
+            background: #e76f51;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(231,111,81,0.3);
+        }
+        .btn-favorite.active {
+            background: #e76f51;
+            color: white;
+        }
+        .btn-favorite.active:hover {
+            background: #d65a3f;
+            border-color: #d65a3f;
+        }
+        .favorite-action {
+            text-align: center;
+            margin: 20px 0;
+        }
         .api-details-section .instruction-step {
             display: flex;
             gap: 15px;
@@ -434,6 +468,13 @@
                 </a>
             </div>
 
+            <!-- Кнопка "В избранное" (только для API-рецептов) -->
+            <div class="favorite-action">
+                <button type="button" class="btn-favorite" id="btn-add-favorite" onclick="addToFavorites({{ api_recipe_data.id }})">
+                    &#10084; В избранное
+                </button>
+            </div>
+
             {% else %}
             <!-- Рецепт не найден -->
             <div class="recipe-not-found">
@@ -499,6 +540,39 @@
             detailsSection.style.display = 'block';
             cookingAction.style.display = 'block';
             viewAction.style.display = 'none';
+        }
+
+        // Добавление в избранное (только для рецептов из Spoonacular API)
+        function addToFavorites(spoonacularId) {
+            var btn = document.getElementById('btn-add-favorite');
+            btn.disabled = true;
+            btn.textContent = 'Добавление...';
+
+            fetch('{% url "save_to_favorites" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}',
+                },
+                body: JSON.stringify({ spoonacular_id: spoonacularId }),
+            })
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (data.error) {
+                    alert(data.error);
+                    btn.disabled = false;
+                    btn.innerHTML = '&#10084; В избранное';
+                } else {
+                    btn.classList.add('active');
+                    btn.innerHTML = '&#10084; В избранном';
+                    btn.disabled = true;
+                }
+            })
+            .catch(function(err) {
+                alert('Ошибка при добавлении в избранное');
+                btn.disabled = false;
+                btn.innerHTML = '&#10084; В избранное';
+            });
         }
 
         // Рендеринг данных из API для локальных рецептов

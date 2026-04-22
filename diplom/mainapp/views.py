@@ -62,9 +62,32 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 
+@login_required(login_url='log_in')
 def profile(request):
+    """Профиль пользователя: избранные блюда, рационы, список покупок"""
     user = request.user
-    return HttpResponse(f"{user.email}  {user.username}")
+
+    # Избранные блюда
+    from .models import Favorite
+    favorites = Favorite.objects.filter(user=user).select_related('recipe')[:20]
+
+    # Сохранённые рационы питания
+    meal_plans = MealPlan.objects.filter(user=user, is_saved=True).prefetch_related('items__recipe').order_by('-created_at')[:5]
+
+    # Список покупок
+    shopping_list = ShoppingList.objects.filter(user=user).select_related('ingredient')
+
+    # Настройки пользователя
+    user_settings, _ = UserSettings.objects.get_or_create(user=user)
+
+    context = {
+        'user': user,
+        'favorites': favorites,
+        'meal_plans': meal_plans,
+        'shopping_list': shopping_list,
+        'user_settings': user_settings,
+    }
+    return render(request, 'profile.html', context)
 
 
 def recipe_detail(request, recipe_id):
@@ -782,7 +805,7 @@ def get_shopping_list(request):
 @require_POST
 @login_required(login_url='log_in')
 def save_to_favorites(request):
-    """Сохранение плана в избранное"""
+    """Сохранение рецепта в избранное (только из Spoonacular API)"""
     import json
 
     try:
@@ -790,18 +813,80 @@ def save_to_favorites(request):
     except json.JSONDecodeError:
         return JsonResponse({'error': 'Неверный формат данных'}, status=400)
 
-    recipe_ids = data.get('recipe_ids', [])
-    saved_count = 0
+    spoonacular_id = data.get('spoonacular_id')
 
-    from .models import Favorite
+    if not spoonacular_id:
+        return JsonResponse({'error': 'В избранное можно добавлять только рецепты из Spoonacular API'}, status=400)
 
-    for recipe_id in recipe_ids:
-        recipe = Recipes.objects.filter(id=recipe_id).first()
-        if recipe:
-            Favorite.objects.get_or_create(user=request.user, recipe=recipe)
-            saved_count += 1
+    from .models import Favorite, Kitchenname
 
-    return JsonResponse({'success': True, 'saved_count': saved_count})
+    # Проверяем, существует ли рецепт с таким spoonacular_id в локальной БД
+    recipe = Recipes.objects.filter(spoonacular_id=spoonacular_id).first()
+
+    if not recipe:
+        # Рецепта нет в БД — получаем данные из Spoonacular API и создаём запись
+        try:
+            api_url = f'https://api.spoonacular.com/recipes/{spoonacular_id}/information'
+            params = {
+                'apiKey': settings.SPOONACULAR_API_KEY,
+                'includeNutrition': True,
+            }
+            response = requests.get(api_url, params=params, timeout=10)
+
+            if response.status_code == 404:
+                return JsonResponse({'error': 'Рецепт не найден в Spoonacular API'}, status=404)
+
+            response.raise_for_status()
+            api_data = response.json()
+
+            # Получаем калории
+            calories = 0
+            if api_data.get('nutrition', {}).get('nutrients'):
+                for n in api_data['nutrition']['nutrients']:
+                    if n.get('name') == 'Calories':
+                        calories = int(n.get('amount', 0))
+                        break
+
+            # Переводим название
+            title = api_data.get('title', 'Без названия')
+            try:
+                translated = translator.translate(title, dest='ru')
+                title_ru = translated.text[:50]
+            except Exception:
+                title_ru = title[:50]
+
+            # Находим или создаём кухню
+            cuisines = api_data.get('cuisines', [])
+            kitchen_name = cuisines[0] if cuisines else 'Разное'
+            try:
+                translated_kitchen = translator.translate(kitchen_name, dest='ru')
+                kitchen_name = translated_kitchen.text[:50]
+            except Exception:
+                pass
+            default_kitchen, _ = Kitchenname.objects.get_or_create(name=kitchen_name[:50])
+
+            # Создаём рецепт в локальной БД
+            recipe = Recipes.objects.create(
+                name=title_ru,
+                description=api_data.get('summary', '')[:500] if api_data.get('summary') else '',
+                calories=calories,
+                image='',
+                KitchennameId=default_kitchen,
+                spoonacular_id=spoonacular_id,
+            )
+            logger.info(f'Создан рецепт из Spoonacular API: {recipe.name} (spoonacular_id={spoonacular_id})')
+
+        except requests.RequestException as e:
+            logger.error(f'Ошибка Spoonacular API при добавлении в избранное: {e}')
+            return JsonResponse({'error': 'Ошибка при проверке рецепта в Spoonacular API'}, status=502)
+
+    # Проверяем, не добавлен ли уже в избранное
+    favorite, created = Favorite.objects.get_or_create(user=request.user, recipe=recipe)
+
+    if not created:
+        return JsonResponse({'success': True, 'message': 'Рецепт уже в избранном', 'already_exists': True})
+
+    return JsonResponse({'success': True, 'recipe_name': recipe.name})
 
 
 @require_GET
@@ -962,6 +1047,72 @@ def fetch_recipe_from_api(request, recipe_id):
     except requests.RequestException as e:
         logger.error(f'Ошибка Spoonacular API: {e}')
         return JsonResponse({'error': 'Ошибка при запросе к API'}, status=502)
+
+
+@require_POST
+@login_required(login_url='log_in')
+def remove_favorite(request, fav_id):
+    """Удаление рецепта из избранного"""
+    from .models import Favorite
+    fav = Favorite.objects.filter(id=fav_id, user=request.user).first()
+    if fav:
+        fav.delete()
+        return JsonResponse({'success': True})
+    return JsonResponse({'error': 'Не найдено'}, status=404)
+
+
+@require_POST
+@login_required(login_url='log_in')
+def delete_meal_plan(request, plan_id):
+    """Удаление рациона питания"""
+    plan = MealPlan.objects.filter(id=plan_id, user=request.user).first()
+    if plan:
+        plan.delete()
+        return JsonResponse({'success': True})
+    return JsonResponse({'error': 'Не найдено'}, status=404)
+
+
+@require_POST
+@login_required(login_url='log_in')
+def toggle_shopping_item(request, item_id):
+    """Переключение чекбокса в списке покупок"""
+    item = ShoppingList.objects.filter(id=item_id, user=request.user).first()
+    if item:
+        import json as _json
+        try:
+            data = _json.loads(request.body)
+        except _json.JSONDecodeError:
+            data = {}
+        item.is_checked = data.get('is_checked', not item.is_checked)
+        item.save()
+        return JsonResponse({'success': True, 'is_checked': item.is_checked})
+    return JsonResponse({'error': 'Не найдено'}, status=404)
+
+
+@require_POST
+@login_required(login_url='log_in')
+def delete_shopping_item(request, item_id):
+    """Удаление элемента из списка покупок"""
+    item = ShoppingList.objects.filter(id=item_id, user=request.user).first()
+    if item:
+        item.delete()
+        return JsonResponse({'success': True})
+    return JsonResponse({'error': 'Не найдено'}, status=404)
+
+
+@require_POST
+@login_required(login_url='log_in')
+def clear_shopping_list(request):
+    """Очистка всего списка покупок"""
+    ShoppingList.objects.filter(user=request.user).delete()
+    return JsonResponse({'success': True})
+
+
+def logout_view(request):
+    """Выход из аккаунта"""
+    from django.contrib.auth import logout
+    logout(request)
+    return redirect('index')
 
 
 # === Вспомогательные функции ===

@@ -115,7 +115,6 @@ class MealPlan(models.Model):
 
 
 class MealPlanItem(models.Model):
-    """Отдельный приём пищи в плане питания"""
     MEAL_TYPES = [
         ('breakfast', 'Завтрак'),
         ('lunch', 'Обед'),

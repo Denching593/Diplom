@@ -1,0 +1,746 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль — {{ user.username }}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Profile header */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #e76f51 0%, #d65a3f 100%);
+            border-radius: 25px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+        }
+        .profile-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            font-weight: 700;
+            flex-shrink: 0;
+            border: 3px solid rgba(255,255,255,0.4);
+        }
+        .profile-info {
+            flex: 1;
+        }
+        .profile-info h2 {
+            font-family: 'Pacifico', cursive;
+            font-size: 2em;
+            margin: 0 0 5px 0;
+        }
+        .profile-info p {
+            margin: 0;
+            opacity: 0.85;
+            font-size: 0.95em;
+        }
+        .profile-stats {
+            display: flex;
+            gap: 25px;
+            margin-top: 12px;
+        }
+        .profile-stat {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        .profile-logout {
+            position: relative;
+            z-index: 1;
+        }
+        .profile-logout .btn {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .profile-logout .btn:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        /* Tabs */
+        .profile-tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 30px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+        .profile-tab {
+            flex: 1;
+            padding: 18px 20px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1em;
+            color: #888;
+            border: none;
+            background: none;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+        }
+        .profile-tab:hover {
+            color: #555;
+            background: #fafafa;
+        }
+        .profile-tab.active {
+            color: #e76f51;
+            background: #fff5f2;
+        }
+        .profile-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 20%;
+            right: 20%;
+            height: 3px;
+            background: #e76f51;
+            border-radius: 3px 3px 0 0;
+        }
+        .profile-tab .tab-icon {
+            display: block;
+            font-size: 1.4em;
+            margin-bottom: 4px;
+        }
+
+        /* Tab content */
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section titles */
+        .section-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.6em;
+            color: #333;
+            margin: 0 0 25px 0;
+        }
+
+        /* Favorites grid */
+        .favorites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+        .favorite-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+        .favorite-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .favorite-card img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+        }
+        .favorite-card-body {
+            padding: 18px;
+        }
+        .favorite-card-body h4 {
+            margin: 0 0 8px 0;
+            font-size: 1.05em;
+            color: #333;
+        }
+        .favorite-card-meta {
+            display: flex;
+            gap: 12px;
+            font-size: 0.85em;
+            color: #888;
+        }
+        .favorite-card-actions {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            z-index: 10;
+        }
+        .btn-remove-fav {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: all 0.2s ease;
+        }
+        .btn-remove-fav:hover {
+            background: #ff4444;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Meal plans */
+        .meal-plan-card {
+            background: white;
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            transition: transform 0.2s ease;
+        }
+        .meal-plan-card:hover {
+            transform: translateY(-2px);
+        }
+        .meal-plan-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .meal-plan-card-header h4 {
+            margin: 0;
+            font-size: 1.1em;
+            color: #333;
+        }
+        .meal-plan-date {
+            font-size: 0.85em;
+            color: #aaa;
+        }
+        .meal-plan-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meal-plan-badge {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+        .badge-goal-lose { background: #fff0f0; color: #e74c3c; }
+        .badge-goal-maintain { background: #f0f7ff; color: #3498db; }
+        .badge-goal-gain { background: #f0fff4; color: #27ae60; }
+        .badge-budget { background: #fff8e1; color: #f57f17; }
+
+        .meal-plan-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        .meal-plan-item {
+            padding: 10px 14px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            font-size: 0.9em;
+        }
+        .meal-plan-item .item-day {
+            font-weight: 600;
+            color: #e76f51;
+            font-size: 0.8em;
+            display: block;
+            margin-bottom: 2px;
+        }
+        .meal-plan-item .item-name {
+            color: #333;
+        }
+        .btn-delete-plan {
+            background: none;
+            border: 1px solid #ffcccc;
+            color: #e74c3c;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.2s ease;
+        }
+        .btn-delete-plan:hover {
+            background: #e74c3c;
+            color: white;
+        }
+
+        /* Shopping list */
+        .shopping-list-container {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+        .shopping-list-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .shopping-list-toolbar .item-count {
+            color: #888;
+            font-size: 0.9em;
+        }
+        .btn-clear-list {
+            background: none;
+            border: 1px solid #ffcccc;
+            color: #e74c3c;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.2s ease;
+        }
+        .btn-clear-list:hover {
+            background: #e74c3c;
+            color: white;
+        }
+        .shopping-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .shopping-item {
+            display: flex;
+            align-items: center;
+            padding: 14px 18px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background 0.2s ease;
+            gap: 14px;
+        }
+        .shopping-item:last-child {
+            border-bottom: none;
+        }
+        .shopping-item:hover {
+            background: #fafafa;
+        }
+        .shopping-item.checked {
+            opacity: 0.5;
+        }
+        .shopping-item.checked .item-name-text {
+            text-decoration: line-through;
+        }
+        .shopping-checkbox {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            border: 2px solid #ddd;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+            background: white;
+        }
+        .shopping-checkbox:hover {
+            border-color: #e76f51;
+        }
+        .shopping-checkbox.checked {
+            background: #27ae60;
+            border-color: #27ae60;
+            color: white;
+        }
+        .shopping-checkbox.checked::after {
+            content: '\2713';
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .item-name-text {
+            flex: 1;
+            font-size: 0.95em;
+            color: #333;
+        }
+        .item-amount-text {
+            font-size: 0.9em;
+            color: #888;
+            white-space: nowrap;
+        }
+        .btn-delete-item {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #ccc;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        .btn-delete-item:hover {
+            background: #fff0f0;
+            color: #e74c3c;
+        }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 50px 20px;
+            color: #bbb;
+        }
+        .empty-state .empty-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        .empty-state p {
+            font-size: 1.05em;
+            margin-bottom: 20px;
+            color: #aaa;
+        }
+        .empty-state .btn {
+            font-size: 0.95em;
+            padding: 12px 30px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .profile-stats {
+                justify-content: center;
+            }
+            .profile-tabs {
+                flex-wrap: wrap;
+            }
+            .profile-tab {
+                flex: 1 1 33%;
+            }
+            .favorites-grid {
+                grid-template-columns: 1fr;
+            }
+            .meal-plan-items {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-left">
+                <a href="{% url 'index' %}" class="btn btn-secondary">&larr; Главная</a>
+                <a href="{% url 'meal_plan' %}" class="btn btn-secondary">&#9776; Составить рацион</a>
+            </div>
+            <h1>Профиль</h1>
+            <div class="header-right">
+                <a href="{% url 'compose_dish' %}" class="btn btn-secondary">Составить блюда</a>
+            </div>
+        </header>
+
+        <!-- Profile header -->
+        <div class="profile-header">
+            <div class="profile-avatar">{{ user.username|truncatechars:2 }}</div>
+            <div class="profile-info">
+                <h2>{{ user.username }}</h2>
+                <p>{{ user.email|default:"Email не указан" }}</p>
+                <div class="profile-stats">
+                    <span class="profile-stat">&#10084;&#65039; {{ favorites|length }} избранных</span>
+                    <span class="profile-stat">&#128197; {{ meal_plans|length }} рационов</span>
+                    <span class="profile-stat">&#128722; {{ shopping_list|length }} покупок</span>
+                </div>
+            </div>
+            <div class="profile-logout">
+                <a href="{% url 'logout' %}" class="btn">Выйти</a>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="profile-tabs">
+            <button class="profile-tab active" onclick="switchTab('favorites')">
+                <span class="tab-icon">&#10084;&#65039;</span>
+                Избранные блюда
+            </button>
+            <button class="profile-tab" onclick="switchTab('mealplans')">
+                <span class="tab-icon">&#128197;</span>
+                Рационы питания
+            </button>
+            <button class="profile-tab" onclick="switchTab('shopping')">
+                <span class="tab-icon">&#128722;</span>
+                Список покупок
+            </button>
+        </div>
+
+        <!-- Tab: Избранные блюда -->
+        <div class="tab-content active" id="tab-favorites">
+            <h3 class="section-title">Избранные блюда</h3>
+            {% if favorites %}
+            <div class="favorites-grid">
+                {% for fav in favorites %}
+                <div class="favorite-card" id="fav-{{ fav.id }}" onclick="goToRecipe('{% url "recipe_detail" fav.recipe.spoonacular_id|default:fav.recipe.id %}')">
+                    {% if fav.recipe.image %}
+                    <img src="{% if fav.recipe.image.url %}{{ fav.recipe.image.url }}{% else %}{% static 'images/' %}{{ fav.recipe.image }}{% endif %}" alt="{{ fav.recipe.name }}">
+                    {% else %}
+                    <img src="{% static 'images/default_recipe.jpg' %}" alt="{{ fav.recipe.name }}" style="background:#f0f0f0;">
+                    {% endif %}
+                    <div class="favorite-card-body">
+                        <h4>{{ fav.recipe.name }}</h4>
+                        <div class="favorite-card-meta">
+                            <span>&#128293; {{ fav.recipe.calories }} ккал</span>
+                            {% if fav.recipe.spoonacular_id %}
+                            <span style="color:#2a9d8f; font-weight:600;">&#127760; Spoonacular</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="favorite-card-actions">
+                        <button class="btn-remove-fav" onclick="removeFavorite(event, {{ fav.id }})" title="Удалить из избранного">&times;</button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="empty-state">
+                <div class="empty-icon">&#128148;</div>
+                <p>У вас пока нет избранных блюд</p>
+                <a href="{% url 'index' %}" class="btn btn-primary">Найти рецепты</a>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Tab: Рационы питания -->
+        <div class="tab-content" id="tab-mealplans">
+            <h3 class="section-title">Сохранённые рационы</h3>
+            {% if meal_plans %}
+                {% for plan in meal_plans %}
+                <div class="meal-plan-card" id="plan-{{ plan.id }}">
+                    <div class="meal-plan-card-header">
+                        <h4>Рацион от {{ plan.created_at|date:"d.m.Y" }}</h4>
+                        <button class="btn-delete-plan" onclick="deleteMealPlan({{ plan.id }})">Удалить</button>
+                    </div>
+                    <div class="meal-plan-meta">
+                        <span class="meal-plan-badge {% if plan.goal == 'lose' %}badge-goal-lose{% elif plan.goal == 'gain' %}badge-goal-gain{% else %}badge-goal-maintain{% endif %}">
+                            {% if plan.goal == 'lose' %}Похудение{% elif plan.goal == 'gain' %}Набор массы{% else %}Поддержание{% endif %}
+                        </span>
+                        <span class="meal-plan-badge badge-budget">&#128293; {{ plan.target_calories }} ккал</span>
+                        {% if plan.budget_mode %}
+                        <span class="meal-plan-badge badge-budget">&#128176; Эконом режим</span>
+                        {% endif %}
+                    </div>
+                    <div class="meal-plan-items">
+                        {% for item in plan.items.all %}
+                        <div class="meal-plan-item">
+                            <span class="item-day">{{ item.get_day_display }}, {{ item.get_meal_type_display }}</span>
+                            <span class="item-name">{{ item.recipe.name }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+            <div class="empty-state">
+                <div class="empty-icon">&#128197;</div>
+                <p>У вас пока нет сохранённых рационов</p>
+                <a href="{% url 'meal_plan' %}" class="btn btn-primary">Составить рацион</a>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Tab: Список покупок -->
+        <div class="tab-content" id="tab-shopping">
+            <div class="shopping-list-container">
+                <div class="shopping-list-toolbar">
+                    <h3 class="section-title" style="margin-bottom:0;">Список покупок</h3>
+                    <div>
+                        <span class="item-count" id="shopping-count">{{ shopping_list|length }} items</span>
+                        {% if shopping_list %}
+                        <button class="btn-clear-list" onclick="clearShoppingList()">Очистить список</button>
+                        {% endif %}
+                    </div>
+                </div>
+                {% if shopping_list %}
+                <ul class="shopping-items" id="shopping-items">
+                    {% for item in shopping_list %}
+                    <li class="shopping-item {% if item.is_checked %}checked{% endif %}" id="shop-{{ item.id }}">
+                        <div class="shopping-checkbox {% if item.is_checked %}checked{% endif %}" onclick="toggleShoppingItem({{ item.id }}, {{ item.is_checked|yesno:'false,true' }})"></div>
+                        <span class="item-name-text">{{ item.ingredient.name }}</span>
+                        <span class="item-amount-text">{{ item.amount }} {{ item.ingredient.unit|default:"шт" }}</span>
+                        <button class="btn-delete-item" onclick="deleteShoppingItem({{ item.id }})" title="Удалить">&times;</button>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <div class="empty-state">
+                    <div class="empty-icon">&#128722;</div>
+                    <p>Список покупок пуст</p>
+                    <a href="{% url 'meal_plan' %}" class="btn btn-primary">Составить рацион</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tabs
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(function(el) {
+                el.classList.remove('active');
+            });
+            document.querySelectorAll('.profile-tab').forEach(function(el) {
+                el.classList.remove('active');
+            });
+            document.getElementById('tab-' + tabName).classList.add('active');
+            var tabs = document.querySelectorAll('.profile-tab');
+            var tabMap = {favorites: 0, mealplans: 1, shopping: 2};
+            if (tabs[tabMap[tabName]]) {
+                tabs[tabMap[tabName]].classList.add('active');
+            }
+        }
+
+        // Переход на страницу рецепта
+        function goToRecipe(url) {
+            window.location.href = url;
+        }
+
+        // Удаление из избранного
+        function removeFavorite(e, favId) {
+            e.stopPropagation();
+            if (!confirm('Удалить из избранного?')) return;
+
+            var card = document.getElementById('fav-' + favId);
+
+            fetch('{% url "remove_favorite" 0 %}'.replace('0', favId), {
+                method: 'POST',
+                headers: {'X-CSRFToken': '{{ csrf_token }}'},
+            })
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (data.success && card) {
+                    card.style.transition = 'opacity 0.3s, transform 0.3s';
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.9)';
+                    setTimeout(function() { card.remove(); }, 300);
+                }
+            });
+        }
+
+        // Delete meal plan
+        function deleteMealPlan(planId) {
+            if (!confirm('Удалить этот рацион?')) return;
+
+            fetch('{% url "delete_meal_plan" 0 %}'.replace('0', planId), {
+                method: 'POST',
+                headers: {'X-CSRFToken': '{{ csrf_token }}'},
+            })
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (data.success) {
+                    var card = document.getElementById('plan-' + planId);
+                    if (card) {
+                        card.style.transition = 'opacity 0.3s';
+                        card.style.opacity = '0';
+                        setTimeout(function() { card.remove(); }, 300);
+                    }
+                }
+            });
+        }
+
+        // Toggle shopping item
+        function toggleShoppingItem(itemId, isChecked) {
+            fetch('{% url "toggle_shopping_item" 0 %}'.replace('0', itemId), {
+                method: 'POST',
+                headers: {'X-CSRFToken': '{{ csrf_token }}', 'Content-Type': 'application/json'},
+                body: JSON.stringify({is_checked: !isChecked}),
+            })
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (data.success) {
+                    var item = document.getElementById('shop-' + itemId);
+                    var checkbox = item.querySelector('.shopping-checkbox');
+                    if (data.is_checked) {
+                        item.classList.add('checked');
+                        checkbox.classList.add('checked');
+                    } else {
+                        item.classList.remove('checked');
+                        checkbox.classList.remove('checked');
+                    }
+                    checkbox.setAttribute('onclick', 'toggleShoppingItem(' + itemId + ', ' + data.is_checked + ')');
+                }
+            });
+        }
+
+        // Delete shopping item
+        function deleteShoppingItem(itemId) {
+            fetch('{% url "delete_shopping_item" 0 %}'.replace('0', itemId), {
+                method: 'POST',
+                headers: {'X-CSRFToken': '{{ csrf_token }}'},
+            })
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (data.success) {
+                    var item = document.getElementById('shop-' + itemId);
+                    if (item) {
+                        item.style.transition = 'opacity 0.3s, transform 0.3s';
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateX(30px)';
+                        setTimeout(function() { item.remove(); updateShoppingCount(); }, 300);
+                    }
+                }
+            });
+        }
+
+        // Clear shopping list
+        function clearShoppingList() {
+            if (!confirm('Очистить весь список покупок?')) return;
+
+            fetch('{% url "clear_shopping_list" %}', {
+                method: 'POST',
+                headers: {'X-CSRFToken': '{{ csrf_token }}'},
+            })
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (data.success) {
+                    var items = document.getElementById('shopping-items');
+                    if (items) items.innerHTML = '';
+                    updateShoppingCount();
+                }
+            });
+        }
+
+        function updateShoppingCount() {
+            var count = document.querySelectorAll('.shopping-item').length;
+            var el = document.getElementById('shopping-count');
+            if (el) el.textContent = count + ' items';
+        }
+    </script>
+</body>
+</html>

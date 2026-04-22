@@ -885,7 +885,6 @@
                     </table>
                     <div class="meal-plan-actions">
                         <button class="btn-action primary" id="btn-save-plan">💾 Сохранить план</button>
-                        <button class="btn-action secondary" id="btn-favorites">♡ В избранное</button>
                     </div>
                 </div>
 
@@ -971,7 +970,6 @@
             initGenerateButton();
             initRebuildButton();
             initSavePlanButton();
-            initFavoritesButton();
             initShoppingListButton();
             initClearShoppingButton();
         });
@@ -1393,59 +1391,6 @@
             .catch(err => {
                 showLoading(false);
                 showNotification('Ошибка сохранения', 'error');
-                console.error(err);
-            });
-        }
-
-        // === В избранное ===
-        function initFavoritesButton() {
-            document.getElementById('btn-favorites').addEventListener('click', function() {
-                {% if not user.is_authenticated %}
-                showNotification('Войдите в аккаунт', 'error');
-                return;
-                {% endif %}
-                saveToFavorites();
-            });
-        }
-
-        function saveToFavorites() {
-            if (!state.currentPlan) {
-                showNotification('Сначала составьте рацион', 'info');
-                return;
-            }
-
-            const recipeIds = [];
-            for (const day of Object.values(state.currentPlan)) {
-                for (const val of Object.values(day)) {
-                    if (val.recipe && typeof val.recipe.id === 'number') {
-                        recipeIds.push(val.recipe.id);
-                    }
-                }
-            }
-
-            if (recipeIds.length === 0) {
-                showNotification('Нет рецептов из базы данных для сохранения', 'info');
-                return;
-            }
-
-            fetch('{% url "save_to_favorites" %}', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': CSRF_TOKEN,
-                },
-                body: JSON.stringify({ recipe_ids: recipeIds }),
-            })
-            .then(r => r.json())
-            .then(data => {
-                if (data.error) {
-                    showNotification(data.error, 'error');
-                } else {
-                    showNotification(`Сохранено ${data.saved_count} рецептов в избранное`, 'success');
-                }
-            })
-            .catch(err => {
-                showNotification('Ошибка', 'error');
                 console.error(err);
             });
         }
