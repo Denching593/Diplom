@@ -251,43 +251,43 @@
             color: var(--color-primary);
         }
 
-        /* Эконом режим */
-        .budget-toggle {
+        /* Бюджет — 3 варианта */
+        .budget-selector {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--color-text);
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .budget-option {
             padding: 8px 16px;
             border-radius: 20px;
             background: var(--bg-cream);
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
             transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .budget-toggle:hover {
+        .budget-option:hover {
             background: var(--color-primary-light);
         }
 
-        .budget-toggle .toggle-switch.active {
-            background: #2a9d8f;
+        .budget-option.active {
+            border-color: var(--color-primary);
+            background: var(--color-primary-light);
+            color: var(--color-primary);
         }
 
-        .budget-toggle.active {
-            background: #e8f5e9;
-            border: 1px solid #2a9d8f;
-        }
-
-        .budget-badge {
-            display: inline-block;
-            background: #2a9d8f;
+        .budget-option .budget-badge {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 8px;
+            background: var(--color-primary);
             color: white;
-            font-size: 11px;
-            padding: 2px 8px;
-            border-radius: 10px;
-            margin-left: 6px;
-            font-weight: 500;
         }
 
         /* Теги ингредиентов */
@@ -830,10 +830,18 @@
                 </div>
                 <div class="setting-row">
                     <label>💰 Бюджет:</label>
-                    <div class="budget-toggle" id="budget-toggle">
-                        <span class="toggle-switch" id="toggle-budget"></span>
-                        <span>Эконом вариант</span>
-                        <span class="budget-badge" id="budget-badge" style="display:none;">дешевле</span>
+                    <div class="budget-selector" id="budget-selector">
+                        <div class="budget-option" data-budget="economy">
+                            💵 Эконом
+                            <span class="budget-badge">дешевле</span>
+                        </div>
+                        <div class="budget-option" data-budget="medium">
+                            💶 Средний
+                        </div>
+                        <div class="budget-option" data-budget="premium">
+                            💷 Премиум
+                            <span class="budget-badge">дороже</span>
+                        </div>
                     </div>
                 </div>
                 <div class="setting-row">
@@ -923,7 +931,7 @@
                 dinner: 2,
                 snack: 1,
             },
-            budgetMode: {{ user_settings.budget_mode|yesno:"true,false"|default:"false" }},
+            budgetTier: '{{ user_settings.budget_tier|default:"medium" }}',
             selectedIngredients: [],
             excludedIngredients: [],
             currentPlan: null,  // { day: { recipeId: {recipe, is_api_recipe} } }
@@ -965,7 +973,7 @@
             initCalorieControl();
             initMealTypeCheckboxes();
             initDishCountControls();
-            initBudgetToggle();
+            initBudgetSelector();
             initIngredientTags();
             initGenerateButton();
             initRebuildButton();
@@ -1082,24 +1090,23 @@
             });
         }
 
-        // === Эконом режим ===
-        function initBudgetToggle() {
-            const toggle = document.getElementById('budget-toggle');
-            const sw = document.getElementById('toggle-budget');
-            const badge = document.getElementById('budget-badge');
+        // === Бюджет — 3 варианта ===
+        function initBudgetSelector() {
+            const options = document.querySelectorAll('.budget-option');
 
             // Инициализация из настроек пользователя
-            if (state.budgetMode) {
-                sw.classList.add('active');
-                toggle.classList.add('active');
-                badge.style.display = 'inline-block';
-            }
+            options.forEach(opt => {
+                if (opt.dataset.budget === state.budgetTier) {
+                    opt.classList.add('active');
+                }
+            });
 
-            toggle.addEventListener('click', function() {
-                sw.classList.toggle('active');
-                state.budgetMode = sw.classList.contains('active');
-                this.classList.toggle('active', state.budgetMode);
-                badge.style.display = state.budgetMode ? 'inline-block' : 'none';
+            options.forEach(opt => {
+                opt.addEventListener('click', function() {
+                    options.forEach(o => o.classList.remove('active'));
+                    this.classList.add('active');
+                    state.budgetTier = this.dataset.budget;
+                });
             });
         }
 
@@ -1199,7 +1206,7 @@
                 calories: state.calories,
                 meal_types: state.mealTypes,
                 dish_counts: state.dishCounts,
-                budget_mode: state.budgetMode,
+                budget_tier: state.budgetTier,
                 selected_ingredients: state.selectedIngredients,
                 excluded_ingredients: state.excludedIngredients,
             };
@@ -1375,7 +1382,7 @@
                 body: JSON.stringify({
                     goal: state.goal,
                     calories: state.calories,
-                    budget_mode: state.budgetMode,
+                    budget_tier: state.budgetTier,
                     plan_items: planItems,
                 }),
             })

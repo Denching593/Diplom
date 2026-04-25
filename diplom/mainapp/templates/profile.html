@@ -552,8 +552,10 @@
                             {% if plan.goal == 'lose' %}Похудение{% elif plan.goal == 'gain' %}Набор массы{% else %}Поддержание{% endif %}
                         </span>
                         <span class="meal-plan-badge badge-budget">&#128293; {{ plan.target_calories }} ккал</span>
-                        {% if plan.budget_mode %}
-                        <span class="meal-plan-badge badge-budget">&#128176; Эконом режим</span>
+                        {% if plan.budget_tier == 'economy' %}
+                        <span class="meal-plan-badge badge-budget">&#128176; Эконом</span>
+                        {% elif plan.budget_tier == 'premium' %}
+                        <span class="meal-plan-badge badge-budget">&#128142; Премиум</span>
                         {% endif %}
                     </div>
                     <div class="meal-plan-items">

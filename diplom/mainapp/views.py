@@ -6,14 +6,55 @@ from django.views.decorators.http import require_POST, require_GET
 from django.conf import settings
 from .models import Recipes, Ingredients, MealPlan, MealPlanItem, ShoppingList, UserPreference, UserSettings
 from .forms import UserLoginForm, RegistrationForm
+from functools import lru_cache
 import logging
 import requests
 import random
 import json
+import time
 from googletrans import Translator
 
 logger = logging.getLogger(__name__)
 translator = Translator()
+
+
+def translate_text(text, dest='ru', src=None, max_retries=3):
+    """
+    Надёжный перевод текста с повторными попытками.
+    
+    Args:
+        text: Текст для перевода
+        dest: Язык назначения (по умолчанию 'ru')
+        src: Исходный язык (None = автоопределение)
+        max_retries: Максимальное количество попыток
+    
+    Returns:
+        Переведённый текст или оригинал при ошибке
+    """
+    if not text or not isinstance(text, str):
+        return text
+    
+    text = text.strip()
+    if not text:
+        return text
+    
+    for attempt in range(max_retries):
+        try:
+            kwargs = {'dest': dest}
+            if src:
+                kwargs['src'] = src
+            
+            result = translator.translate(text, **kwargs)
+            if result and hasattr(result, 'text') and result.text:
+                return result.text
+        except Exception as e:
+            logger.debug(f'Попытка {attempt + 1} перевода не удалась: {e}')
+            if attempt < max_retries - 1:
+                time.sleep(0.5 * (attempt + 1))  # Экспоненциальная задержка
+    
+    # Возвращаем оригинал при всех неудачах
+    logger.warning(f'Не удалось перевести текст после {max_retries} попыток: {text[:50]}...')
+    return text
 
 
 def index(request):
@@ -133,23 +174,14 @@ def recipe_detail(request, recipe_id):
 
         # Переводим название на русский
         if api_recipe_data.get('title'):
-            try:
-                translated = translator.translate(api_recipe_data['title'], dest='ru')
-                api_recipe_data['title_ru'] = translated.text
-            except Exception as e:
-                logger.warning(f'Ошибка перевода названия: {e}')
-                api_recipe_data['title_ru'] = api_recipe_data['title']
+            api_recipe_data['title_ru'] = translate_text(api_recipe_data['title'], dest='ru')
 
         # Переводим ингредиенты
         if api_recipe_data.get('extendedIngredients'):
             for ingredient in api_recipe_data['extendedIngredients']:
                 original_name = ingredient.get('name', '')
                 if original_name:
-                    try:
-                        translated = translator.translate(original_name, dest='ru')
-                        ingredient['name_ru'] = translated.text
-                    except Exception:
-                        ingredient['name_ru'] = original_name
+                    ingredient['name_ru'] = translate_text(original_name, dest='ru')
 
         # Переводим инструкции
         if api_recipe_data.get('analyzedInstructions'):
@@ -158,11 +190,7 @@ def recipe_detail(request, recipe_id):
                     for step in instruction_group['steps']:
                         step_text = step.get('step', '')
                         if step_text:
-                            try:
-                                translated = translator.translate(step_text, dest='ru')
-                                step['step_ru'] = translated.text
-                            except Exception:
-                                step['step_ru'] = step_text
+                            step['step_ru'] = translate_text(step_text, dest='ru')
 
     except ValueError:
         # recipe_id не является числом
@@ -181,45 +209,15 @@ def recipe_detail(request, recipe_id):
     return render(request, 'recipe_detail.html', context)
 
 
-def recipe_cooking(request, recipe_id):
-    """Страница приготовления рецепта с таймером и чекбоксами"""
-    recipe = None
-    is_api_recipe = False
-    is_local_recipe = False
-    api_recipe_data = None
-    recipe_steps = []
+@lru_cache(maxsize=128)
+def _fetch_recipe_details_from_api(recipe_id):
+    """Кэшированное получение деталей рецепта из Spoonacular API.
 
-    # Сначала пробуем найти рецепт в локальной БД (если recipe_id число)
-    if recipe_id.isdigit():
-        recipe = Recipes.objects.filter(id=int(recipe_id)).first()
-        if recipe:
-            is_local_recipe = True
-            # Шаги подгружаются из Spoonacular API через AJAX на клиенте
-            # Серверные шаги используются как фоллбэк
-            if recipe.description:
-                import re
-                sentences = re.split(r'(?<=[.!?])\s+', recipe.description)
-                for i, sentence in enumerate(sentences, 1):
-                    if sentence.strip():
-                        recipe_steps.append({
-                            'number': i,
-                            'text': sentence.strip(),
-                            'ingredients': []
-                        })
-            context = {
-                'recipe': recipe,
-                'is_api_recipe': False,
-                'is_local_recipe': True,
-                'api_recipe_data': None,
-                'recipe_steps': recipe_steps,
-                'recipe_id': recipe_id,
-            }
-            return render(request, 'recipe_cooking.html', context)
-
-    # Если локальный рецепт не найден или recipe_id не число — пробуем Spoonacular API
+    Возвращает кортеж: (api_recipe_data, recipe_steps) или (None, None) при ошибке.
+    Кэширует шаги приготовления и ингредиенты для одного рецепта.
+    """
     try:
-        spoonacular_id = int(recipe_id)
-        api_url = f'https://api.spoonacular.com/recipes/{spoonacular_id}/information'
+        api_url = f'https://api.spoonacular.com/recipes/{recipe_id}/information'
         params = {
             'apiKey': settings.SPOONACULAR_API_KEY,
             'includeNutrition': True,
@@ -228,12 +226,11 @@ def recipe_cooking(request, recipe_id):
         response = requests.get(api_url, params=params, timeout=10)
 
         if response.status_code == 404:
-            logger.warning(f'Рецепт с ID {spoonacular_id} не найден в Spoonacular API')
-            return render(request, 'recipe_not_found.html', status=404)
+            logger.warning(f'Рецепт с ID {recipe_id} не найден в Spoonacular API')
+            return None, None
 
         response.raise_for_status()
         api_recipe_data = response.json()
-        is_api_recipe = True
 
         # Переводим название на русский
         if api_recipe_data.get('title'):
@@ -256,6 +253,7 @@ def recipe_cooking(request, recipe_id):
                         ingredient['name_ru'] = original_name
 
         # Получаем шаги из инструкций
+        recipe_steps = []
         if api_recipe_data.get('analyzedInstructions'):
             for instruction_group in api_recipe_data['analyzedInstructions']:
                 if instruction_group.get('steps'):
@@ -296,11 +294,60 @@ def recipe_cooking(request, recipe_id):
                                 'length': step_length
                             })
 
+        return api_recipe_data, recipe_steps
+
+    except requests.RequestException as e:
+        logger.error(f'Ошибка получения рецепта {recipe_id} из Spoonacular: {e}')
+        return None, None
+
+
+def recipe_cooking(request, recipe_id):
+    """Страница приготовления рецепта с таймером и чекбоксами"""
+    recipe = None
+    is_api_recipe = False
+    is_local_recipe = False
+    api_recipe_data = None
+    recipe_steps = []
+
+    # Сначала пробуем найти рецепт в локальной БД (если recipe_id число)
+    if recipe_id.isdigit():
+        recipe = Recipes.objects.filter(id=int(recipe_id)).first()
+        if recipe:
+            is_local_recipe = True
+            # Шаги подгружаются из Spoonacular API через AJAX на клиенте
+            # Серверные шаги используются как фоллбэк
+            if recipe.description:
+                import re
+                sentences = re.split(r'(?<=[.!?])\s+', recipe.description)
+                for i, sentence in enumerate(sentences, 1):
+                    if sentence.strip():
+                        recipe_steps.append({
+                            'number': i,
+                            'text': sentence.strip(),
+                            'ingredients': []
+                        })
+            context = {
+                'recipe': recipe,
+                'is_api_recipe': False,
+                'is_local_recipe': True,
+                'api_recipe_data': None,
+                'recipe_steps': recipe_steps,
+                'recipe_id': recipe_id,
+            }
+            return render(request, 'recipe_cooking.html', context)
+
+    # Если локальный рецепт не найден или recipe_id не число — пробуем Spoonacular API
+    try:
+        spoonacular_id = int(recipe_id)
+        api_recipe_data, recipe_steps = _fetch_recipe_details_from_api(spoonacular_id)
+
+        if api_recipe_data is None:
+            return render(request, 'recipe_not_found.html', status=404)
+
+        is_api_recipe = True
+
     except ValueError:
         logger.warning(f'Неверный формат recipe_id: {recipe_id}')
-        return render(request, 'recipe_not_found.html', status=404)
-    except requests.RequestException as e:
-        logger.error(f'Ошибка получения рецепта из Spoonacular: {e}')
         return render(request, 'recipe_not_found.html', status=404)
 
     context = {
@@ -475,12 +522,12 @@ def generate_meal_plan(request):
         target_calories = int(data.get('calories', 2000))
         meal_types = data.get('meal_types', ['breakfast', 'lunch', 'dinner'])
         dish_counts = data.get('dish_counts', {'breakfast': 2, 'lunch': 2, 'dinner': 2, 'snack': 1})
-        budget_mode = data.get('budget_mode', False)
+        budget_tier = data.get('budget_tier', 'medium')
         selected_ingredients = data.get('selected_ingredients', [])
         excluded_ingredients = data.get('excluded_ingredients', [])
 
         logger.info(
-            f'Генерация рациона: goal={goal}, calories={target_calories}, budget={budget_mode}, meal_types={meal_types}, dish_counts={dish_counts}')
+            f'Генерация рациона: goal={goal}, calories={target_calories}, budget={budget_tier}, meal_types={meal_types}, dish_counts={dish_counts}')
 
         # Определяем распределение калорий по приёмам пищи
         calorie_distribution = {
@@ -534,11 +581,19 @@ def generate_meal_plan(request):
                 )
                 logger.info(f'Исключены рецепты с ингредиентами: {excluded_ingredients}')
 
-        if budget_mode:
-            # В эконом режиме — рецепты с меньшей калорийностью (обычно дешевле: крупы, супы, простые блюда)
-            recipes_query = recipes_query.order_by('calories')
+        # Фильтруем рецепты по уровню бюджета
+        if budget_tier == 'economy':
+            # Эконом — только дешёвые рецепты (cost_level=1)
+            recipes_query = recipes_query.filter(cost_level=1)
+        elif budget_tier == 'premium':
+            # Премиум — только дорогие рецепты (cost_level=3)
+            recipes_query = recipes_query.filter(cost_level=3)
         else:
-            recipes_query = recipes_query.order_by('?')  # случайный порядок
+            # Средний — средние рецепты (cost_level=2), но можно и 1 или 3
+            recipes_query = recipes_query.filter(cost_level=2)
+
+        # Случайный порядок для разнообразия
+        recipes_query = recipes_query.order_by('?')
 
         all_recipes = list(recipes_query)
 
@@ -559,7 +614,7 @@ def generate_meal_plan(request):
                     all_recipes=all_recipes,
                     meal_type=meal_type,
                     target_calories=target_meal_calories,
-                    budget_mode=budget_mode,
+                    budget_tier=budget_tier,
                     selected_ingredients=selected_ingredients,
                     used_recipe_ids=set(r['id'] for r_list in weekly_recipes.values() for r in r_list),
                     goal=goal,
@@ -619,7 +674,7 @@ def save_meal_plan(request):
 
     goal = data.get('goal', 'maintain')
     target_calories = int(data.get('calories', 2000))
-    budget_mode = data.get('budget_mode', False)
+    budget_tier = data.get('budget_tier', 'medium')
     plan_items = data.get('plan_items', [])  # [{day, meal_type, recipe_id, recipe_name, calories, image}, ...]
 
     if not plan_items:
@@ -630,7 +685,7 @@ def save_meal_plan(request):
         user=request.user,
         goal=goal,
         target_calories=target_calories,
-        budget_mode=budget_mode,
+        budget_tier=budget_tier,
         is_saved=True,
     )
 
@@ -674,9 +729,9 @@ def save_meal_plan(request):
                 'calories': recipe.calories,
             })
 
-    # Сохраняем настройки эконом-режима
+    # Сохраняем настройки бюджета
     user_settings, _ = UserSettings.objects.get_or_create(user=request.user)
-    user_settings.budget_mode = budget_mode
+    user_settings.budget_tier = budget_tier
     user_settings.default_goal = goal
     user_settings.default_calories = target_calories
     user_settings.save()
@@ -709,7 +764,7 @@ def get_saved_meal_plans(request):
             'id': plan.id,
             'goal': plan.goal,
             'target_calories': plan.target_calories,
-            'budget_mode': plan.budget_mode,
+            'budget_tier': plan.budget_tier,
             'created_at': plan.created_at.strftime('%d.%m.%Y %H:%M'),
             'items': items,
         })
@@ -1114,10 +1169,9 @@ def logout_view(request):
     logout(request)
     return redirect('index')
 
-
 # === Вспомогательные функции ===
-
-def _fetch_recipes_from_api(budget_mode=False, selected_ingredients=None, number=20):
+@lru_cache
+def _fetch_recipes_from_api(budget_tier='medium', selected_ingredients=None, number=20):
     """Получение рецептов из Spoonacular API"""
     if selected_ingredients is None:
         selected_ingredients = []
@@ -1127,12 +1181,15 @@ def _fetch_recipes_from_api(budget_mode=False, selected_ingredients=None, number
         'number': number,
         'addRecipeInformation': True,
         'addRecipeNutrition': True,
-        'sort': 'calories' if budget_mode else 'random',
+        'sort': 'calories' if budget_tier == 'economy' else 'random',
     }
 
-    # В эконом режиме — дешевле (меньше калорий)
-    if budget_mode:
+    # В эконом режиме — меньше калорий
+    if budget_tier == 'economy':
         params['maxCalories'] = 400
+    # В премиум режиме — более калорийные блюда
+    elif budget_tier == 'premium':
+        params['minCalories'] = 500
 
     # Выбранные ингредиенты
     if selected_ingredients:
@@ -1184,7 +1241,7 @@ def _fetch_recipes_from_api(budget_mode=False, selected_ingredients=None, number
         return []
 
 
-def _select_recipe_for_meal(all_recipes, meal_type, target_calories, budget_mode,
+def _select_recipe_for_meal(all_recipes, meal_type, target_calories, budget_tier,
                             selected_ingredients, used_recipe_ids, goal='maintain'):
     """Выбор рецепта для приёма пищи.
 
@@ -1192,7 +1249,7 @@ def _select_recipe_for_meal(all_recipes, meal_type, target_calories, budget_mode
     - lose: только рецепты с goal_suitability='lose' или 'any'
     - maintain: только рецепты с goal_suitability='maintain' или 'any'
     - gain: только рецепты с goal_suitability='gain' или 'any'
-    - Fallback: если не нашлось — берём ЛЮБОЙ рецепт этого типа
+    - Fallback: если не нашлось — берём ЛЮБОЙ рецепт этого типа, или вообще любой
     """
 
     used_recipe_ids = used_recipe_ids or set()
@@ -1225,12 +1282,32 @@ def _select_recipe_for_meal(all_recipes, meal_type, target_calories, budget_mode
         candidates = goal_matched
     elif any_matched:
         candidates = any_matched
-    else:
+    elif all_by_type:
         # Fallback — берём ВСЕ рецепты этого типа
-        if not all_by_type:
-            logger.warning(f'НЕ НАЙДЕНО рецептов для meal_type={meal_type} (цель: {goal})!')
-            return None
         candidates = all_by_type
+    else:
+        # Второй fallback — нет рецептов с таким meal_type, берём ВСЕ доступные
+        logger.warning(f'НЕ НАЙДЕНО рецептов для meal_type={meal_type} (цель: {goal}), берём любые доступные')
+        for recipe in all_recipes:
+            recipe_id = recipe.get('id') if isinstance(recipe, dict) else recipe.id
+            if recipe_id in used_recipe_ids:
+                continue
+            recipe_goal = recipe.get('goal_suitability') if isinstance(recipe, dict) else getattr(recipe, 'goal_suitability', 'any')
+            if recipe_goal == goal:
+                goal_matched.append(recipe)
+            elif recipe_goal == 'any':
+                any_matched.append(recipe)
+
+        if goal_matched:
+            candidates = goal_matched
+        elif any_matched:
+            candidates = any_matched
+        else:
+            # Третий fallback — вообще любые неиспользованные рецепты
+            candidates = [r for r in all_recipes if (r.get('id') if isinstance(r, dict) else r.id) not in used_recipe_ids]
+            if not candidates:
+                logger.warning(f'Совсем нет доступных рецептов для meal_type={meal_type}!')
+                return None
 
     # Этап 2: Дополнительная фильтрация по калориям в зависимости от цели
     if goal == 'lose':
@@ -1250,11 +1327,7 @@ def _select_recipe_for_meal(all_recipes, meal_type, target_calories, budget_mode
             candidates = filtered
 
     # Для maintain — без дополнительной фильтрации по калориям
-
-    # Этап 3: Эконом-режим — самые дешёвые (меньше калорий = дешевле)
-    if budget_mode:
-        candidates.sort(key=lambda r: r.get('calories', 500) if isinstance(r, dict) else r.calories)
-        candidates = candidates[:min(3, len(candidates))]
+    # Фильтрация по бюджету уже сделана на уровне запроса к БД (cost_level)
 
     if not candidates:
         return None

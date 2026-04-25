@@ -28,6 +28,12 @@ class Recipes(models.Model):
         ('any', 'Любая цель'),
     ]
 
+    COST_LEVELS = [
+        (1, 'Эконом'),
+        (2, 'Средний'),
+        (3, 'Премиум'),
+    ]
+
     name = models.CharField(max_length=50 , verbose_name= 'Название')
     description = models.TextField(verbose_name='Описание')
     calories = models.IntegerField(verbose_name='Калорийность' )
@@ -35,6 +41,8 @@ class Recipes(models.Model):
     KitchennameId = models.ForeignKey(Kitchenname, on_delete=models.CASCADE)
     meal_type = models.CharField(max_length=20, choices=MEAL_TYPES, default='any', verbose_name='Тип приёма пищи')
     goal_suitability = models.CharField(max_length=20, choices=GOAL_SUITABILITY, default='any', verbose_name='Подходит для цели')
+    cost_level = models.IntegerField(choices=COST_LEVELS, default=2, verbose_name='Уровень стоимости')
+    spoonacular_id = models.IntegerField(null=True, blank=True, unique=True, verbose_name='ID в Spoonacular')
 
     def __str__(self):
         return f"{self.name} ({self.calories} ккал)"
@@ -72,8 +80,14 @@ class UserPreference(models.Model):
 
 class UserSettings(models.Model):
     """Настройки пользователя по умолчанию"""
+    BUDGET_TIERS = [
+        ('economy', 'Эконом'),
+        ('medium', 'Средний'),
+        ('premium', 'Премиум'),
+    ]
+
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='settings')
-    budget_mode = models.BooleanField(default=False, verbose_name='Эконом режим')
+    budget_tier = models.CharField(max_length=20, choices=BUDGET_TIERS, default='medium', verbose_name='Бюджет')
     default_goal = models.CharField(max_length=20, default='maintain', verbose_name='Цель по умолчанию')
     default_calories = models.IntegerField(default=2000, verbose_name='Калории по умолчанию')
 
@@ -98,10 +112,16 @@ class CookingHistory(models.Model):
 
 class MealPlan(models.Model):
     """План рациона питания пользователя"""
+    BUDGET_TIERS = [
+        ('economy', 'Эконом'),
+        ('medium', 'Средний'),
+        ('premium', 'Премиум'),
+    ]
+
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
     goal = models.CharField(max_length=20, verbose_name='Цель')  # lose, maintain, gain
     target_calories = models.IntegerField(verbose_name='Целевые калории')
-    budget_mode = models.BooleanField(default=False, verbose_name='Эконом режим')
+    budget_tier = models.CharField(max_length=20, choices=BUDGET_TIERS, default='medium', verbose_name='Бюджет')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     is_saved = models.BooleanField(default=False, verbose_name='Сохранён')
 
