@@ -12,47 +12,30 @@ import requests
 import random
 import json
 import time
-from googletrans import Translator
+from deep_translator import GoogleTranslator
 
 logger = logging.getLogger(__name__)
-translator = Translator()
+google_translator = GoogleTranslator(source='auto', target='ru')
 
 
 def translate_text(text, dest='ru', src=None, max_retries=3):
-    """
-    Надёжный перевод текста с повторными попытками.
-    
-    Args:
-        text: Текст для перевода
-        dest: Язык назначения (по умолчанию 'ru')
-        src: Исходный язык (None = автоопределение)
-        max_retries: Максимальное количество попыток
-    
-    Returns:
-        Переведённый текст или оригинал при ошибке
-    """
     if not text or not isinstance(text, str):
         return text
-    
     text = text.strip()
     if not text:
         return text
     
     for attempt in range(max_retries):
         try:
-            kwargs = {'dest': dest}
-            if src:
-                kwargs['src'] = src
-            
-            result = translator.translate(text, **kwargs)
-            if result and hasattr(result, 'text') and result.text:
-                return result.text
+            source_lang = src if src else 'auto'
+            trans = GoogleTranslator(source=source_lang, target=dest)
+            result = trans.translate(text)
+            if result:
+                return result
         except Exception as e:
             logger.debug(f'Попытка {attempt + 1} перевода не удалась: {e}')
             if attempt < max_retries - 1:
-                time.sleep(0.5 * (attempt + 1))  # Экспоненциальная задержка
-    
-    # Возвращаем оригинал при всех неудачах
+                time.sleep(0.5 * (attempt + 1))
     logger.warning(f'Не удалось перевести текст после {max_retries} попыток: {text[:50]}...')
     return text
 
@@ -66,6 +49,8 @@ def index(request):
         'Венгерский суп-гуляш',
         'Румынское рагу из гороха и курицы',
         'Борщ русский',
+        'Курица терияки с рисом',
+        'Паста Карбонара',
     ]
     recipes = Recipes.objects.filter(name__in=featured_recipe_names)
     return render(request, 'index.html', {'recipes': recipes})
@@ -183,14 +168,25 @@ def recipe_detail(request, recipe_id):
                 if original_name:
                     ingredient['name_ru'] = translate_text(original_name, dest='ru')
 
-        # Переводим инструкции
+        # Переводим инструкции и ингредиенты шагов
         if api_recipe_data.get('analyzedInstructions'):
             for instruction_group in api_recipe_data['analyzedInstructions']:
                 if instruction_group.get('steps'):
                     for step in instruction_group['steps']:
+                        # Переводим текст шага
                         step_text = step.get('step', '')
                         if step_text:
                             step['step_ru'] = translate_text(step_text, dest='ru')
+
+                        # Переводим ингредиенты шага
+                        for ing in step.get('ingredients', []):
+                            ing_name = ing.get('name', '')
+                            if ing_name and not ing.get('name_ru'):
+                                ing['name_ru'] = translate_text(ing_name, dest='ru')
+
+        # Переводим описание (summary)
+        if api_recipe_data.get('summary'):
+            api_recipe_data['summary'] = translate_text(api_recipe_data['summary'], dest='ru')
 
     except ValueError:
         # recipe_id не является числом
@@ -235,8 +231,8 @@ def _fetch_recipe_details_from_api(recipe_id):
         # Переводим название на русский
         if api_recipe_data.get('title'):
             try:
-                translated = translator.translate(api_recipe_data['title'], dest='ru')
-                api_recipe_data['title_ru'] = translated.text
+                translated = translate_text(api_recipe_data['title'], dest='ru')
+                api_recipe_data['title_ru'] = translated
             except Exception as e:
                 logger.warning(f'Ошибка перевода названия: {e}')
                 api_recipe_data['title_ru'] = api_recipe_data['title']
@@ -247,8 +243,8 @@ def _fetch_recipe_details_from_api(recipe_id):
                 original_name = ingredient.get('name', '')
                 if original_name:
                     try:
-                        translated = translator.translate(original_name, dest='ru')
-                        ingredient['name_ru'] = translated.text
+                        translated = translate_text(original_name, dest='ru')
+                        ingredient['name_ru'] = translated
                     except Exception:
                         ingredient['name_ru'] = original_name
 
@@ -260,23 +256,20 @@ def _fetch_recipe_details_from_api(recipe_id):
                     for step in instruction_group['steps']:
                         step_text = step.get('step', '')
                         if step_text:
-                            # Переводим текст шага
                             try:
-                                translated = translator.translate(step_text, dest='ru')
-                                translated_text = translated.text
+                                translated = translate_text(step_text, dest='ru')
+                                translated_text = translated
                             except Exception:
                                 translated_text = step_text
-
-                            # Переводим ингредиенты шага
                             step_ingredients = []
                             for ing in step.get('ingredients', []):
                                 ing_name = ing.get('name') or ''
                                 if ing_name:
                                     try:
-                                        translated_ing = translator.translate(ing_name, dest='ru')
+                                        translated_ing = translate_text(ing_name, dest='ru')
                                         step_ingredients.append({
                                             'name': ing_name,
-                                            'name_ru': translated_ing.text
+                                            'name_ru': translated_ing
                                         })
                                     except Exception:
                                         step_ingredients.append({
@@ -385,23 +378,18 @@ def search_recipes(request):
 
     ingredients_raw = request.GET.get('ingredients', '').strip()
     kitchen = request.GET.get('kitchen', '').strip()
-
-    # Переводим ингредиенты с русского на английский для Spoonacular API
     ingredients = ingredients_raw
     if ingredients_raw:
         try:
-            # Разбиваем по запятым и переводим каждый ингредимент отдельно
             ingr_list = [i.strip() for i in ingredients_raw.split(',') if i.strip()]
             translated_ingrs = []
             for ingr in ingr_list:
-                translated = translator.translate(ingr, src='ru', dest='en')
-                translated_ingrs.append(translated.text.strip())
-            # Объединяем через + для Spoonacular API (это AND-логика)
+                translated = translate_text(ingr, src='ru', dest='en')
+                translated_ingrs.append(translated.strip())
             ingredients = '+'.join(translated_ingrs)
             logger.info(f'Перевод ингредиентов: "{ingredients_raw}" -> "{ingredients}"')
         except Exception as e:
             logger.warning(f'Ошибка перевода ингредиентов: {e}')
-            # Фоллбэк: используем как есть, но заменяем запятые на +
             ingredients = '+'.join([i.strip() for i in ingredients_raw.split(',') if i.strip()])
 
     params = {
@@ -427,8 +415,6 @@ def search_recipes(request):
         )
         response.raise_for_status()
         data = response.json()
-
-        # Если ничего не найдено по всем ингредиентам, пробуем поиск только по кухне
         if not data.get('results') and ingredients:
             logger.info('Ничего не найдено по ингредиентам, пробуем поиск только по кухне')
             fallback_params = {
@@ -452,8 +438,8 @@ def search_recipes(request):
             for recipe in data['results']:
                 if recipe.get('title'):
                     try:
-                        translated = translator.translate(recipe['title'], dest='ru')
-                        recipe['title_ru'] = translated.text
+                        translated = translate_text(recipe['title'], dest='ru')
+                        recipe['title_ru'] = translated
                     except Exception as e:
                         logger.warning(f'Ошибка перевода для "{recipe["title"]}": {e}')
                         recipe['title_ru'] = recipe['title']
@@ -507,16 +493,13 @@ def meal_plan(request):
 @require_POST
 @login_required(login_url='log_in')
 def generate_meal_plan(request):
-    """Генерация плана питания на неделю"""
     import json
     import traceback
-
     try:
         data = json.loads(request.body)
     except json.JSONDecodeError:
         logger.error(f'JSON decode error: {request.body}')
         return JsonResponse({'error': 'Неверный формат данных'}, status=400)
-
     try:
         goal = data.get('goal', 'maintain')
         target_calories = int(data.get('calories', 2000))
@@ -525,22 +508,16 @@ def generate_meal_plan(request):
         budget_tier = data.get('budget_tier', 'medium')
         selected_ingredients = data.get('selected_ingredients', [])
         excluded_ingredients = data.get('excluded_ingredients', [])
-
         logger.info(
             f'Генерация рациона: goal={goal}, calories={target_calories}, budget={budget_tier}, meal_types={meal_types}, dish_counts={dish_counts}')
-
-        # Определяем распределение калорий по приёмам пищи
         calorie_distribution = {
             'breakfast': 0.25,
             'lunch': 0.35,
             'dinner': 0.30,
             'snack': 0.10,
         }
-
         days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
         meal_plan_data = {}
-
-        # Получаем disliked ingredient IDs для исключения
         disliked_ids = []
         if request.user.is_authenticated:
             disliked_ids = list(
@@ -548,27 +525,17 @@ def generate_meal_plan(request):
                     user=request.user, preference_type='dislike'
                 ).values_list('ingredient_id', flat=True)
             )
-
-        # Если режим экономии — сортируем рецепты по калорийности (дешевле = меньше калорий/простые продукты)
-        # ВАЖНО: Не фильтруем жёстко по goal_suitability — используем приоритизацию
-        # чтобы всегда был выбор рецептов для любого типа приёма пищи
         recipes_query = Recipes.objects.all().prefetch_related('recipeingredient_set__ingredient')
-
-        # Исключаем нелюбимые ингредиенты
         if disliked_ids:
             recipes_query = recipes_query.exclude(
                 recipeingredient__ingredient_id__in=disliked_ids
             )
-
-        # Исключаем ингредиенты из списка "Не добавлять"
         if excluded_ingredients:
-            # Находим ingredient IDs по именам (частичное совпадение)
             excluded_ingr_ids = list(
                 Ingredients.objects.filter(
                     name__in=excluded_ingredients
                 ).values_list('id', flat=True)
             )
-            # Также ищем по частичному совпадению (картошка -> картофель)
             for ingr_name in excluded_ingredients:
                 partial_matches = Ingredients.objects.filter(
                     name__icontains=ingr_name
@@ -580,29 +547,16 @@ def generate_meal_plan(request):
                     recipeingredient__ingredient_id__in=set(excluded_ingr_ids)
                 )
                 logger.info(f'Исключены рецепты с ингредиентами: {excluded_ingredients}')
-
-        # Фильтруем рецепты по уровню бюджета
         if budget_tier == 'economy':
-            # Эконом — только дешёвые рецепты (cost_level=1)
             recipes_query = recipes_query.filter(cost_level=1)
         elif budget_tier == 'premium':
-            # Премиум — только дорогие рецепты (cost_level=3)
             recipes_query = recipes_query.filter(cost_level=3)
         else:
-            # Средний — средние рецепты (cost_level=2), но можно и 1 или 3
             recipes_query = recipes_query.filter(cost_level=2)
-
-        # Случайный порядок для разнообразия
         recipes_query = recipes_query.order_by('?')
 
         all_recipes = list(recipes_query)
-
-        # API Spoonacular отключён (лимит бесплатных запросов исчерпан)
-        # Рецепты берутся только из локальной базы данных
-
-        # Генерируем план на неделю
-        # Сначала выбираем рецепты для каждого типа приёма пищи (на всю неделю)
-        weekly_recipes = {}  # {meal_type: [recipe1, recipe2, ...]}
+        weekly_recipes = {}
 
         for meal_type in meal_types:
             count = dish_counts.get(meal_type, 2)
@@ -619,9 +573,7 @@ def generate_meal_plan(request):
                     used_recipe_ids=set(r['id'] for r_list in weekly_recipes.values() for r in r_list),
                     goal=goal,
                 )
-
                 if recipe:
-                    # recipe — это объект Recipes из БД
                     recipe_data = {
                         'id': recipe.id,
                         'name': recipe.name,
@@ -631,31 +583,24 @@ def generate_meal_plan(request):
                         'description': recipe.description[:200] if recipe.description else '',
                     }
                     weekly_recipes[meal_type].append(recipe_data)
-
-        # Теперь распределяем по дням (чередуем рецепты)
         for day in days:
             day_meals = {}
             day_index = days.index(day)
-
             for meal_type in meal_types:
                 recipes_for_type = weekly_recipes.get(meal_type, [])
                 if recipes_for_type:
-                    # Чередуем: каждый день берём следующий рецепт из списка
                     recipe = recipes_for_type[day_index % len(recipes_for_type)]
                     recipe_key = f"{meal_type}_{recipe['id']}_{day_index}"
                     day_meals[recipe_key] = {
                         'recipe': recipe,
                         'is_api_recipe': False,
                     }
-
             meal_plan_data[day] = day_meals
-
         return JsonResponse({
             'success': True,
             'meal_plan': meal_plan_data,
             'target_calories': target_calories,
         })
-
     except Exception as e:
         logger.error(f'Ошибка генерации рациона: {e}\n{traceback.format_exc()}')
         return JsonResponse({'error': f'Ошибка при генерации рациона: {str(e)}'}, status=500)
@@ -905,8 +850,8 @@ def save_to_favorites(request):
             # Переводим название
             title = api_data.get('title', 'Без названия')
             try:
-                translated = translator.translate(title, dest='ru')
-                title_ru = translated.text[:50]
+                translated = translate_text(title, dest='ru')
+                title_ru = translated[:50]
             except Exception:
                 title_ru = title[:50]
 
@@ -914,8 +859,8 @@ def save_to_favorites(request):
             cuisines = api_data.get('cuisines', [])
             kitchen_name = cuisines[0] if cuisines else 'Разное'
             try:
-                translated_kitchen = translator.translate(kitchen_name, dest='ru')
-                kitchen_name = translated_kitchen.text[:50]
+                translated_kitchen = translate_text(kitchen_name, dest='ru')
+                kitchen_name = translated_kitchen[:50]
             except Exception:
                 pass
             default_kitchen, _ = Kitchenname.objects.get_or_create(name=kitchen_name[:50])
@@ -958,7 +903,7 @@ def fetch_recipe_from_api(request, recipe_id):
         if recipe:
             # Локальный рецепт — ищем в Spoonacular по названию
             try:
-                translated_name = translator.translate(recipe.name, src='ru', dest='en').text
+                translated_name = translate_text(recipe.name, src='ru', dest='en')
             except Exception:
                 translated_name = recipe.name
 
@@ -1015,16 +960,16 @@ def fetch_recipe_from_api(request, recipe_id):
         # Переводим название
         if result['title']:
             try:
-                translated = translator.translate(result['title'], dest='ru')
-                result['title_ru'] = translated.text
+                translated = translate_text(result['title'], dest='ru')
+                result['title_ru'] = translated
             except Exception:
                 result['title_ru'] = result['title']
 
         # Переводим summary
         if api_data.get('summary'):
             try:
-                translated = translator.translate(api_data['summary'], dest='ru')
-                result['summary'] = translated.text
+                translated = translate_text(api_data['summary'], dest='ru')
+                result['summary'] = translated
             except Exception:
                 result['summary'] = api_data['summary']
 
@@ -1035,8 +980,8 @@ def fetch_recipe_from_api(request, recipe_id):
                 name_ru = name
                 if name:
                     try:
-                        translated = translator.translate(name, dest='ru')
-                        name_ru = translated.text
+                        translated = translate_text(name, dest='ru')
+                        name_ru = translated
                     except Exception:
                         pass
 
@@ -1061,8 +1006,8 @@ def fetch_recipe_from_api(request, recipe_id):
                         step_text_ru = step_text
                         if step_text:
                             try:
-                                translated = translator.translate(step_text, dest='ru')
-                                step_text_ru = translated.text
+                                translated = translate_text(step_text, dest='ru')
+                                step_text_ru = translated
                             except Exception:
                                 pass
 
@@ -1072,8 +1017,8 @@ def fetch_recipe_from_api(request, recipe_id):
                             ing_name_ru = ing_name
                             if ing_name:
                                 try:
-                                    translated = translator.translate(ing_name, dest='ru')
-                                    ing_name_ru = translated.text
+                                    translated = translate_text(ing_name, dest='ru')
+                                    ing_name_ru = translated
                                 except Exception:
                                     pass
                             step_ingredients.append({'name': ing_name, 'name_ru': ing_name_ru})
@@ -1194,8 +1139,8 @@ def _fetch_recipes_from_api(budget_tier='medium', selected_ingredients=None, num
     # Выбранные ингредиенты
     if selected_ingredients:
         try:
-            translated = translator.translate(', '.join(selected_ingredients), src='ru', dest='en')
-            params['includeIngredients'] = translated.text
+            translated = translate_text(', '.join(selected_ingredients), src='ru', dest='en')
+            params['includeIngredients'] = translated
         except Exception as e:
             logger.warning(f'Ошибка перевода ингредиентов для API: {e}')
 
@@ -1213,8 +1158,8 @@ def _fetch_recipes_from_api(budget_tier='medium', selected_ingredients=None, num
             # Переводим название на русский
             title_ru = r.get('title', '')
             try:
-                translated = translator.translate(title_ru, dest='ru')
-                title_ru = translated.text
+                translated = translate_text(title_ru, dest='ru')
+                title_ru = translated
             except Exception:
                 pass
 

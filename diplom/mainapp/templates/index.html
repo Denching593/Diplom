@@ -14,8 +14,8 @@
     <div class="container">
         <header>
             <div class="header-left">
-                <a href="{% url 'meal_plan' %}" class="btn btn-secondary">☰ Составить рацион</a>
                 <a href="{% url 'compose_dish' %}" class="btn btn-primary">Составить блюда</a>
+                <a href="{% url 'meal_plan' %}" class="btn btn-secondary">☰ Составить рацион</a>
             </div>
             <h1>Что приготовим сегодня</h1>
             <div class="header-right">
@@ -33,7 +33,9 @@
                 {% for recipe in recipes %}
                 <div class="recipe-card">
                     {% if recipe.image %}
-                     <img src="{% static 'images/' %}{{ recipe.image }}" alt="{{ recipe.name }}">
+                     <img src="{{ recipe.image.url }}" alt="{{ recipe.name }}">
+                    {% else %}
+                     <img src="{% static 'images/Diplom_6.png' %}" alt="{{ recipe.name }}">
                     {% endif %}
                     <div class="recipe-card-content">
                         <h3>{{ recipe.name }}</h3>

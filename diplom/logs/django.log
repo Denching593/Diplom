@@ -8771,3 +8771,999 @@ LINE 1: ...oal_suitability", "mainapp_recipes"."cost_level", "mainapp_r...
 [2026-04-25 17:29:53,835] WARNING django.request: Not Found: /media/diplom_1.jpg
 [2026-04-25 17:29:53,835] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6946
 [2026-04-25 17:29:53,867] INFO django.server: "GET /media/recipes/30_%D0%A1%D1%8B%D1%80%D0%BD%D0%B8%D0%BA%D0%B8.jpg HTTP/1.1" 200 15257
+[2026-04-25 17:48:07,425] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-25 17:48:09,190] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-25 17:48:11,781] INFO django.server: "GET /meal-plan/ HTTP/1.1" 200 53733
+[2026-04-25 17:48:15,743] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13718
+[2026-04-25 17:48:20,319] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14780
+[2026-04-25 17:48:20,330] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-25 17:48:20,330] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6946
+[2026-04-25 17:48:20,367] INFO django.server: "GET /media/recipes/16_%D0%91%D0%BE%D1%80%D1%89.jpg HTTP/1.1" 200 13273
+[2026-04-25 17:48:21,538] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14810
+[2026-04-25 17:48:21,546] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-25 17:48:21,546] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6946
+[2026-04-25 17:48:26,847] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14062
+[2026-04-25 17:48:28,050] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13710
+[2026-04-25 17:48:29,903] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14235
+[2026-04-25 17:48:33,227] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13722
+[2026-04-25 17:48:34,883] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13565
+[2026-04-25 17:48:35,554] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13078
+[2026-04-25 17:48:36,390] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14223
+[2026-04-25 17:48:37,644] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13082
+[2026-04-25 17:48:38,775] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14078
+[2026-04-25 17:48:39,797] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13082
+[2026-04-25 17:48:41,183] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14078
+[2026-04-25 17:48:41,708] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14223
+[2026-04-25 17:48:42,496] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14235
+[2026-04-25 17:48:43,080] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13591
+[2026-04-25 17:48:43,709] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13710
+[2026-04-25 17:48:44,475] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13078
+[2026-04-25 17:48:44,951] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13078
+[2026-04-25 17:48:45,473] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13082
+[2026-04-25 17:48:47,679] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14231
+[2026-04-25 17:48:47,687] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-25 17:48:47,687] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6942
+[2026-04-25 17:48:48,717] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14787
+[2026-04-25 17:48:48,727] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-25 17:48:48,727] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6946
+[2026-04-25 17:48:49,361] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13760
+[2026-04-25 17:49:05,262] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15072
+[2026-04-25 17:49:05,271] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-25 17:49:05,271] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6942
+[2026-04-25 17:49:08,817] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13722
+[2026-04-25 17:49:09,492] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13082
+[2026-04-25 17:49:11,815] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13549
+[2026-04-25 17:49:13,493] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14259
+[2026-04-25 17:49:14,159] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13496
+[2026-04-25 17:49:15,765] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14231
+[2026-04-25 17:49:15,775] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-25 17:49:15,775] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6942
+[2026-04-25 17:49:20,351] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14223
+[2026-04-25 17:49:20,356] INFO django.server: "GET /media/recipes/15_%D0%9C%D0%B0%D0%BA%D0%B0%D1%80%D0%BE%D0%BD%D1%8B_%D0%BF%D0%BE-%D1%84%D0%BB%D0%BE%D1%82%D1%81%D0%BA%D0%B8.jpg HTTP/1.1" 304 0
+[2026-04-25 17:49:25,947] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15124
+[2026-04-25 17:49:25,958] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-25 17:49:25,958] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6946
+[2026-04-25 17:49:47,805] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15055
+[2026-04-25 17:49:47,814] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-25 17:49:47,815] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6946
+[2026-04-25 17:49:49,094] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15184
+[2026-04-25 17:49:49,102] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-25 17:49:49,103] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6946
+[2026-04-25 17:49:50,320] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14225
+[2026-04-25 17:49:50,328] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-25 17:49:50,329] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6946
+[2026-04-25 17:49:53,639] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15214
+[2026-04-25 17:49:53,647] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-25 17:49:53,648] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6946
+[2026-04-26 12:20:19,631] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 12:20:23,261] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 12:20:23,504] INFO django.server: "GET /static/css/style.css HTTP/1.1" 304 0
+[2026-04-26 12:20:23,506] INFO django.server: "GET /static/images/diplom_1.jpg HTTP/1.1" 304 0
+[2026-04-26 12:20:23,506] INFO django.server: "GET /static/images/Diplom4.jpg HTTP/1.1" 304 0
+[2026-04-26 12:20:23,508] INFO django.server: "GET /static/images/Diplom_2.jpg HTTP/1.1" 304 0
+[2026-04-26 12:20:23,508] INFO django.server: "GET /static/images/Diplom_5.png HTTP/1.1" 304 0
+[2026-04-26 12:20:23,509] INFO django.server: "GET /static/images/Diplom_3.jpg HTTP/1.1" 304 0
+[2026-04-26 12:20:23,515] INFO django.server: "GET /static/images/Diplom_6.png HTTP/1.1" 304 0
+[2026-04-26 12:20:23,520] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 304 0
+[2026-04-26 12:20:23,737] WARNING django.request: Not Found: /favicon.ico
+[2026-04-26 12:20:23,737] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6697
+[2026-04-26 12:20:32,916] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 20772
+[2026-04-26 12:20:32,953] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-26 12:20:32,954] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6946
+[2026-04-26 12:20:37,151] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 12:20:38,494] INFO django.server: "GET /profile/ HTTP/1.1" 200 55867
+[2026-04-26 12:20:38,532] INFO django.server: "GET /media/recipes/13_%D0%9A%D1%83%D1%80%D0%B8%D0%BD%D0%BE%D0%B5_%D1%84%D0%B8%D0%BB%D0%B5_%D1%81_%D1%80%D0%B8%D1%81%D0%BE%D0%BC.jpg HTTP/1.1" 304 0
+[2026-04-26 12:21:04,925] INFO django.server: "GET /recipe/638382/ HTTP/1.1" 200 49174
+[2026-04-26 12:22:08,756] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 12:22:13,410] INFO django.server: "GET /profile/ HTTP/1.1" 200 55867
+[2026-04-26 12:22:44,449] INFO django.server: "GET /recipe/638382/ HTTP/1.1" 200 49174
+[2026-04-26 12:22:50,924] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 12:22:52,044] INFO django.server: "GET /meal-plan/ HTTP/1.1" 200 53733
+[2026-04-26 12:22:54,271] INFO django.server: "GET /compose/ HTTP/1.1" 200 27686
+[2026-04-26 12:22:54,304] INFO django.server: "GET /media/ingridients/kokososovoe__moloko.png HTTP/1.1" 304 0
+[2026-04-26 12:23:08,569] INFO django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0+%D0%BB%D0%B0%D0%BF%D1%88%D0%B0&kitchen=japanese HTTP/1.1" 200 9569
+[2026-04-26 12:23:36,286] INFO django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0+%D0%BB%D0%B0%D0%BF%D1%88%D0%B0&kitchen=chinese HTTP/1.1" 200 27597
+[2026-04-26 12:23:59,370] INFO django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0+%D0%BB%D0%B0%D0%BF%D1%88%D0%B0&kitchen=chinese HTTP/1.1" 200 27597
+[2026-04-26 12:24:21,044] INFO django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0+%D0%BB%D0%B0%D0%BF%D1%88%D0%B0&kitchen=chinese HTTP/1.1" 200 27597
+[2026-04-26 12:24:39,578] INFO django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 200 27597
+[2026-04-26 12:25:22,225] INFO django.server: "GET /recipe/638714/ HTTP/1.1" 200 41664
+[2026-04-26 14:29:47,586] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 14:29:50,605] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 14:29:52,618] INFO django.server: "GET /meal-plan/ HTTP/1.1" 200 53733
+[2026-04-26 14:29:58,801] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13918
+[2026-04-26 14:29:58,812] INFO django.server: "GET /media/recipes/17_%D0%9A%D1%83%D1%80%D0%B8%D0%BD%D1%8B%D0%B9_%D1%81%D1%83%D0%BF.jpg HTTP/1.1" 304 0
+[2026-04-26 14:29:58,814] INFO django.server: "GET /media/recipes/16_%D0%91%D0%BE%D1%80%D1%89.jpg HTTP/1.1" 304 0
+[2026-04-26 14:29:58,814] INFO django.server: "GET /media/recipes/9_%D0%A2%D0%B2%D0%BE%D1%80%D0%BE%D0%B3_%D1%81%D0%BE_%D1%81%D0%BC%D0%B5%D1%82%D0%B0%D0%BD%D0%BE%D0%B9.jpg HTTP/1.1" 304 0
+[2026-04-26 14:29:58,814] INFO django.server: "GET /media/recipes/27_%D0%96%D0%B0%D1%80%D0%BA%D0%BE%D0%B5_%D0%B8%D0%B7_%D1%81%D0%B2%D0%B8%D0%BD%D0%B8%D0%BD%D1%8B_%D1%81_%D0%BA%D0%B0%D1%80%D1%82%D0%BE%D1%88%D0%BA%D0%BE%D0%B9.jpg HTTP/1.1" 304 0
+[2026-04-26 14:29:58,815] INFO django.server: "GET /media/recipes/11_%D0%91%D1%83%D1%82%D0%B5%D1%80%D0%B1%D1%80%D0%BE%D0%B4_%D1%81_%D1%81%D1%8B%D1%80%D0%BE%D0%BC.jpg HTTP/1.1" 304 0
+[2026-04-26 14:29:58,815] INFO django.server: "GET /media/recipes/34_%D0%9A%D0%BE%D1%82%D0%BB%D0%B5%D1%82%D1%8B_%D0%BF%D0%BE-%D0%BA%D0%B8%D0%B5%D0%B2%D1%81%D0%BA%D0%B8.jpg HTTP/1.1" 304 0
+[2026-04-26 14:30:01,076] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13969
+[2026-04-26 14:30:01,083] INFO django.server: "GET /media/recipes/14_%D0%9F%D0%BB%D0%BE%D0%B2_%D1%81_%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B5%D0%B9.jpg HTTP/1.1" 304 0
+[2026-04-26 14:30:01,659] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15055
+[2026-04-26 14:30:01,681] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:30:01,684] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:30:02,125] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14281
+[2026-04-26 14:30:03,347] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14566
+[2026-04-26 14:30:03,353] INFO django.server: "GET /media/recipes/18_%D0%9A%D0%B0%D1%80%D1%82%D0%BE%D1%84%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5_%D0%BF%D1%8E%D1%80%D0%B5_%D1%81_%D0%BA%D0%BE%D1%82%D0%BB%D0%B5%D1%82%D0%BE%D0%B9.jpg HTTP/1.1" 304 0
+[2026-04-26 14:30:04,144] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15379
+[2026-04-26 14:30:04,153] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-26 14:30:04,154] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:30:05,665] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14503
+[2026-04-26 14:30:06,794] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14566
+[2026-04-26 14:30:08,815] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14692
+[2026-04-26 14:30:08,824] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:30:08,824] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:30:10,595] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14780
+[2026-04-26 14:30:10,603] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-26 14:30:10,603] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:30:11,345] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14810
+[2026-04-26 14:30:11,353] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-26 14:30:11,354] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:30:13,215] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15070
+[2026-04-26 14:30:15,276] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15094
+[2026-04-26 14:30:15,285] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-26 14:30:15,285] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:30:22,840] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15124
+[2026-04-26 14:30:22,850] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-26 14:30:22,850] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:30:32,028] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15025
+[2026-04-26 14:30:32,034] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:30:32,036] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:30:32,774] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14473
+[2026-04-26 14:30:44,780] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14452
+[2026-04-26 14:34:26,735] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14513
+[2026-04-26 14:34:26,745] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:34:26,745] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:34:28,168] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 10316
+[2026-04-26 14:34:28,178] WARNING django.request: Not Found: /media/Diplom_3.jpg
+[2026-04-26 14:34:28,178] INFO django.server: "GET /media/recipes/23_%D0%93%D1%83%D0%BB%D1%8F%D1%88_%D0%B8%D0%B7_%D0%B3%D0%BE%D0%B2%D1%8F%D0%B4%D0%B8%D0%BD%D1%8B_%D1%81_%D0%BF%D1%8E%D1%80%D0%B5.jpg HTTP/1.1" 304 0
+[2026-04-26 14:34:28,178] WARNING django.server: "GET /media/Diplom_3.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:34:30,777] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 17179
+[2026-04-26 14:34:30,789] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-26 14:34:30,790] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 14:34:30,790] INFO django.server: "GET /media/recipes/8_%D0%9E%D0%BC%D0%BB%D0%B5%D1%82.jpg HTTP/1.1" 304 0
+[2026-04-26 14:34:30,791] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6957
+[2026-04-26 14:34:30,791] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 14:34:35,976] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 16118
+[2026-04-26 14:34:35,987] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 14:34:35,987] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 14:34:37,804] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 17106
+[2026-04-26 14:34:37,814] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-26 14:34:37,817] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 14:34:37,817] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6957
+[2026-04-26 14:34:37,817] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 14:34:40,462] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 10316
+[2026-04-26 14:34:40,472] WARNING django.request: Not Found: /media/Diplom_3.jpg
+[2026-04-26 14:34:40,472] WARNING django.server: "GET /media/Diplom_3.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:34:41,832] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 10301
+[2026-04-26 14:34:41,839] WARNING django.request: Not Found: /media/Diplom_3.jpg
+[2026-04-26 14:34:41,839] WARNING django.server: "GET /media/Diplom_3.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:34:42,626] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 10329
+[2026-04-26 14:34:42,635] WARNING django.request: Not Found: /media/Diplom_3.jpg
+[2026-04-26 14:34:42,636] WARNING django.server: "GET /media/Diplom_3.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:34:45,495] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14967
+[2026-04-26 14:34:45,506] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:34:45,507] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:34:47,834] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 10284
+[2026-04-26 14:34:47,845] WARNING django.request: Not Found: /media/Diplom_3.jpg
+[2026-04-26 14:34:47,845] WARNING django.server: "GET /media/Diplom_3.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:02,653] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 10337
+[2026-04-26 14:35:02,661] WARNING django.request: Not Found: /media/Diplom_3.jpg
+[2026-04-26 14:35:02,662] WARNING django.server: "GET /media/Diplom_3.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:03,469] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 10329
+[2026-04-26 14:35:03,479] WARNING django.request: Not Found: /media/Diplom_3.jpg
+[2026-04-26 14:35:03,480] WARNING django.server: "GET /media/Diplom_3.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:06,281] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15124
+[2026-04-26 14:35:06,293] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-26 14:35:06,293] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:09,823] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14255
+[2026-04-26 14:35:09,832] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:35:09,832] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:13,058] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15309
+[2026-04-26 14:35:13,067] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:35:13,067] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:17,162] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14709
+[2026-04-26 14:35:17,172] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:35:17,172] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:21,678] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14482
+[2026-04-26 14:35:22,818] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14913
+[2026-04-26 14:35:22,825] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-26 14:35:22,827] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:23,440] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15409
+[2026-04-26 14:35:23,448] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-26 14:35:23,448] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:23,836] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14255
+[2026-04-26 14:35:23,844] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:35:23,844] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:24,391] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14815
+[2026-04-26 14:35:26,577] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14791
+[2026-04-26 14:35:26,586] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-26 14:35:26,587] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:35,491] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14743
+[2026-04-26 14:35:35,498] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:35:35,498] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:37,151] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14510
+[2026-04-26 14:35:37,161] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:35:37,161] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:38,123] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14513
+[2026-04-26 14:35:38,132] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:35:38,133] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:40,591] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14587
+[2026-04-26 14:35:40,599] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:35:40,599] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:41,343] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15184
+[2026-04-26 14:35:41,351] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:35:41,351] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:43,374] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14967
+[2026-04-26 14:35:43,381] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:35:43,382] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:44,034] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14997
+[2026-04-26 14:35:44,043] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:35:44,044] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:45,545] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14329
+[2026-04-26 14:35:45,551] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:35:45,552] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:46,473] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14768
+[2026-04-26 14:35:46,482] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:35:46,482] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:48,097] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14696
+[2026-04-26 14:35:48,105] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-26 14:35:48,106] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:48,711] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14780
+[2026-04-26 14:35:48,719] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-26 14:35:48,719] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:49,570] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14255
+[2026-04-26 14:35:49,576] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:35:49,577] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:50,334] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14225
+[2026-04-26 14:35:50,342] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:35:50,342] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:52,612] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 10277
+[2026-04-26 14:35:52,620] WARNING django.request: Not Found: /media/Diplom_3.jpg
+[2026-04-26 14:35:52,621] WARNING django.server: "GET /media/Diplom_3.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:54,664] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15051
+[2026-04-26 14:35:54,673] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:35:54,673] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:35:57,331] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15279
+[2026-04-26 14:35:57,340] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:35:57,340] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:36:03,368] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14255
+[2026-04-26 14:36:03,377] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:36:03,377] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:36:05,771] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15051
+[2026-04-26 14:36:05,782] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:36:05,783] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:36:17,467] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14540
+[2026-04-26 14:36:17,475] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:36:17,475] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:36:25,457] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15070
+[2026-04-26 14:36:26,224] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14722
+[2026-04-26 14:36:26,233] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:36:26,234] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:36:27,427] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15214
+[2026-04-26 14:36:27,435] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:36:27,436] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:36:28,099] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14956
+[2026-04-26 14:36:28,107] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:36:28,107] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:36:35,458] INFO django.server: "POST /api/shopping-list/generate/ HTTP/1.1" 200 3365
+[2026-04-26 14:36:39,944] INFO django.server: "POST /api/shopping-list/generate/ HTTP/1.1" 200 3365
+[2026-04-26 14:36:40,824] INFO django.server: "POST /api/shopping-list/generate/ HTTP/1.1" 200 3365
+[2026-04-26 14:36:44,826] INFO django.server: "POST /api/shopping-list/generate/ HTTP/1.1" 200 3365
+[2026-04-26 14:36:46,479] INFO django.server: "POST /api/shopping-list/generate/ HTTP/1.1" 200 3365
+[2026-04-26 14:36:48,125] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15051
+[2026-04-26 14:36:48,133] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:36:48,134] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:36:48,825] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15279
+[2026-04-26 14:36:48,834] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:36:48,834] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:36:50,260] INFO django.server: "POST /api/shopping-list/generate/ HTTP/1.1" 200 3367
+[2026-04-26 14:36:56,750] INFO django.server: "POST /api/shopping-list/generate/ HTTP/1.1" 200 3367
+[2026-04-26 14:37:01,402] INFO django.server: "POST /api/shopping-list/generate/ HTTP/1.1" 200 3367
+[2026-04-26 14:37:09,473] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14359
+[2026-04-26 14:37:09,482] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:37:09,483] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:37:14,865] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14540
+[2026-04-26 14:37:14,875] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:37:14,876] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:37:23,250] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14926
+[2026-04-26 14:37:23,258] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:37:23,259] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:37:27,952] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15051
+[2026-04-26 14:37:27,960] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:37:27,961] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:37:30,468] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15279
+[2026-04-26 14:37:30,475] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:37:30,476] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:37:32,034] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15051
+[2026-04-26 14:37:32,043] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:37:32,043] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:37:47,271] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15186
+[2026-04-26 14:37:47,283] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:37:47,286] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-26 14:37:47,286] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:37:47,287] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:37:59,554] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14966
+[2026-04-26 14:37:59,566] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:37:59,570] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-26 14:37:59,570] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:37:59,570] INFO django.server: "GET /media/recipes/30_%D0%A1%D1%8B%D1%80%D0%BD%D0%B8%D0%BA%D0%B8.jpg HTTP/1.1" 304 0
+[2026-04-26 14:37:59,571] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:38:02,926] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15068
+[2026-04-26 14:38:02,939] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-26 14:38:02,943] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:38:02,943] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:38:02,944] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:38:03,015] INFO django.server: "GET /media/recipes/29_%D0%A1%D0%B0%D0%BB%D0%B0%D1%82_%D0%B8%D0%B7_%D0%BE%D0%B3%D1%83%D1%80%D1%86%D0%BE%D0%B2_%D0%B8_%D0%BF%D0%BE%D0%BC%D0%B8%D0%B4%D0%BE%D1%80%D0%BE%D0%B2.jpg HTTP/1.1" 200 18377
+[2026-04-26 14:38:03,846] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15002
+[2026-04-26 14:38:03,856] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-26 14:38:03,861] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:38:03,861] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:38:03,861] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:38:24,202] INFO django.server: "POST /api/shopping-list/generate/ HTTP/1.1" 200 5271
+[2026-04-26 14:38:34,679] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14810
+[2026-04-26 14:38:34,689] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-26 14:38:34,689] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:38:35,208] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14780
+[2026-04-26 14:38:35,217] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-26 14:38:35,218] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:38:36,677] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14956
+[2026-04-26 14:38:36,687] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:38:36,688] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:38:37,608] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15021
+[2026-04-26 14:38:37,617] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:38:37,617] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:38:41,004] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 17105
+[2026-04-26 14:38:41,014] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 14:38:41,018] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-26 14:38:41,018] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 14:38:41,018] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6957
+[2026-04-26 14:38:47,984] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15930
+[2026-04-26 14:38:47,994] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 14:38:47,994] INFO django.server: "GET /media/recipes/15_%D0%9C%D0%B0%D0%BA%D0%B0%D1%80%D0%BE%D0%BD%D1%8B_%D0%BF%D0%BE-%D1%84%D0%BB%D0%BE%D1%82%D1%81%D0%BA%D0%B8.jpg HTTP/1.1" 304 0
+[2026-04-26 14:38:47,995] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 14:38:52,054] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15214
+[2026-04-26 14:38:52,063] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:38:52,064] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:38:55,160] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15214
+[2026-04-26 14:38:55,170] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 14:38:55,170] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 14:38:58,092] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14301
+[2026-04-26 14:38:58,885] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15706
+[2026-04-26 14:38:58,894] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 14:38:58,895] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 14:39:37,714] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 16949
+[2026-04-26 14:39:37,724] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-26 14:39:37,728] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 14:39:37,728] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6957
+[2026-04-26 14:39:37,728] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 14:39:47,327] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 17354
+[2026-04-26 14:39:47,334] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 14:39:47,335] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 14:40:12,798] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 16262
+[2026-04-26 14:40:12,807] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-26 14:40:12,807] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6957
+[2026-04-26 14:40:40,588] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 14:40:41,408] INFO django.server: "GET /compose/ HTTP/1.1" 200 27686
+[2026-04-26 14:41:03,702] INFO django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 200 27597
+[2026-04-26 14:41:54,166] ERROR django.request: Internal Server Error: /recipe/638714/
+Traceback (most recent call last):
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\defaulttags.py", line 1067, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'recipe_extras'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py", line 209, in recipe_detail
+    return render(request, 'recipe_detail.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\defaulttags.py", line 1129, in load
+    lib = find_library(parser, name)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\defaulttags.py", line 1069, in find_library
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: Template: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\templates\recipe_detail.html, 'recipe_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+tz
+[2026-04-26 14:41:54,169] ERROR django.server: "GET /recipe/638714/ HTTP/1.1" 500 228003
+[2026-04-26 14:42:04,008] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 14:42:05,537] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 14:42:07,164] INFO django.server: "GET /compose/ HTTP/1.1" 200 27686
+[2026-04-26 14:42:16,854] INFO django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 200 27597
+[2026-04-26 14:42:30,312] INFO django.server: "GET /recipe/638714/ HTTP/1.1" 200 43569
+[2026-04-26 14:44:41,124] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-26 14:44:41,625] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 14:45:28,051] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-26 14:45:28,534] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 14:49:42,156] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 14:49:43,619] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 15:10:27,207] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 15:10:28,821] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 15:10:31,625] INFO django.server: "GET /meal-plan/ HTTP/1.1" 200 53733
+[2026-04-26 15:10:36,261] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 16122
+[2026-04-26 15:10:36,272] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-26 15:10:36,273] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6957
+[2026-04-26 15:10:41,617] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15288
+[2026-04-26 15:10:41,626] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-26 15:10:41,627] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6957
+[2026-04-26 15:10:44,168] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14545
+[2026-04-26 15:11:55,550] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-26 15:11:56,050] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 15:12:03,508] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 15:12:05,800] INFO django.server: "GET /meal-plan/ HTTP/1.1" 200 53733
+[2026-04-26 15:12:07,052] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 15:12:07,515] INFO django.server: "GET /compose/ HTTP/1.1" 200 27686
+[2026-04-26 15:12:19,234] INFO django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 200 27597
+[2026-04-26 15:12:34,815] INFO django.server: "GET /recipe/638714/ HTTP/1.1" 200 43569
+[2026-04-26 15:12:47,562] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 15:12:48,529] INFO django.server: "GET /compose/ HTTP/1.1" 200 27686
+[2026-04-26 15:12:49,174] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 15:12:50,497] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-04-26 15:12:50,542] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-26 15:12:50,542] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6957
+[2026-04-26 15:13:25,443] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13653
+[2026-04-26 15:15:28,782] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-26 15:15:29,278] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 15:29:49,918] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-26 15:29:52,611] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 15:29:54,053] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 15:29:57,546] INFO django.server: "GET /meal-plan/ HTTP/1.1" 200 53733
+[2026-04-26 15:29:58,879] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 15:29:59,354] INFO django.server: "GET /compose/ HTTP/1.1" 200 27686
+[2026-04-26 15:30:13,472] INFO django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 200 27597
+[2026-04-26 15:30:36,177] INFO django.server: "GET /recipe/638714/ HTTP/1.1" 200 43569
+[2026-04-26 15:32:13,084] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-26 15:32:13,595] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 15:34:16,073] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-26 15:34:16,539] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 15:34:32,463] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-26 15:34:32,960] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 15:34:47,663] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-26 15:34:48,129] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 15:34:56,672] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-26 15:34:57,118] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 15:35:05,656] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-26 15:35:06,107] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 15:35:13,619] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-26 15:35:14,068] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 15:35:22,622] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-26 15:35:23,087] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 15:35:31,638] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-26 15:35:32,089] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 15:35:40,640] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-26 15:35:41,100] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 15:35:46,595] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-26 15:35:47,069] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 15:35:56,642] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-26 15:35:57,094] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 15:36:04,626] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-26 15:36:05,205] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 15:36:11,804] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-26 15:36:12,406] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 15:36:19,001] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-26 15:36:19,761] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 15:36:27,380] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-26 15:36:27,872] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 15:36:34,390] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-26 15:36:34,866] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 15:36:41,407] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-26 15:36:41,934] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 16:07:09,933] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 16:07:41,161] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 16:07:43,803] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 16:07:46,530] INFO django.server: "GET /compose/ HTTP/1.1" 200 27686
+[2026-04-26 16:08:01,884] INFO django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 200 27597
+[2026-04-26 16:08:34,989] INFO django.server: "GET /recipe/638714/ HTTP/1.1" 200 44259
+[2026-04-26 16:08:48,659] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 20:16:25,100] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 20:24:39,236] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 20:24:41,064] INFO django.server: "GET /meal-plan/ HTTP/1.1" 200 53733
+[2026-04-26 20:24:42,205] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 20:32:00,671] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 20:32:01,950] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 20:32:05,545] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 20:32:05,749] INFO django.server: "GET /static/images/Diplom4.jpg HTTP/1.1" 200 9632
+[2026-04-26 20:32:05,754] INFO django.server: "GET /static/images/Diplom_3.jpg HTTP/1.1" 200 16226
+[2026-04-26 20:32:05,763] INFO django.server: "GET /static/css/style.css HTTP/1.1" 200 11526
+[2026-04-26 20:32:05,763] INFO django.server: "GET /static/images/Diplom_2.jpg HTTP/1.1" 200 13406
+[2026-04-26 20:32:05,763] INFO django.server: "GET /static/images/diplom_1.jpg HTTP/1.1" 200 21609
+[2026-04-26 20:32:05,765] INFO django.server: "GET /static/images/Diplom_5.png HTTP/1.1" 200 175374
+[2026-04-26 20:32:05,766] INFO django.server: "GET /static/images/Diplom_6.png HTTP/1.1" 200 245054
+[2026-04-26 20:32:11,588] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 200 162739
+[2026-04-26 20:32:11,618] WARNING django.request: Not Found: /favicon.ico
+[2026-04-26 20:32:11,618] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6697
+[2026-04-26 20:32:23,232] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 20:32:23,480] INFO django.server: "GET /static/css/style.css HTTP/1.1" 304 0
+[2026-04-26 20:34:20,681] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 20:34:22,004] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 20:34:22,154] INFO django.server: "GET /static/css/style.css HTTP/1.1" 304 0
+[2026-04-26 20:34:42,395] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 20:34:42,576] INFO django.server: "GET /static/css/style.css HTTP/1.1" 200 11526
+[2026-04-26 20:34:42,579] INFO django.server: "GET /static/images/Diplom_2.jpg HTTP/1.1" 200 13406
+[2026-04-26 20:34:42,581] INFO django.server: "GET /static/images/Diplom4.jpg HTTP/1.1" 200 9632
+[2026-04-26 20:34:42,584] INFO django.server: "GET /static/images/Diplom_6.png HTTP/1.1" 200 245054
+[2026-04-26 20:34:42,585] INFO django.server: "GET /static/images/Diplom_3.jpg HTTP/1.1" 200 16226
+[2026-04-26 20:34:42,588] INFO django.server: "GET /static/images/diplom_1.jpg HTTP/1.1" 200 21609
+[2026-04-26 20:34:42,589] INFO django.server: "GET /static/images/Diplom_5.png HTTP/1.1" 200 175374
+[2026-04-26 20:34:42,591] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 200 162739
+[2026-04-26 20:34:42,719] WARNING django.request: Not Found: /favicon.ico
+[2026-04-26 20:34:42,720] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6697
+[2026-04-26 20:34:45,769] INFO django.server: "GET /meal-plan/ HTTP/1.1" 200 53733
+[2026-04-26 20:34:47,732] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 20:34:50,887] INFO django.server: "GET /profile/ HTTP/1.1" 200 62203
+[2026-04-26 20:35:08,186] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 20:35:08,223] INFO django.server: "GET /static/css/style.css HTTP/1.1" 304 0
+[2026-04-26 20:35:08,970] INFO django.server: "GET /meal-plan/ HTTP/1.1" 200 53733
+[2026-04-26 20:35:09,637] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 20:35:10,261] INFO django.server: "GET /meal-plan/ HTTP/1.1" 200 53733
+[2026-04-26 20:35:12,127] INFO django.server: "GET /profile/ HTTP/1.1" 200 62203
+[2026-04-26 20:35:13,285] INFO django.server: "GET /meal-plan/ HTTP/1.1" 200 53733
+[2026-04-26 20:35:15,239] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15379
+[2026-04-26 20:35:15,252] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-26 20:35:15,252] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6957
+[2026-04-26 20:35:18,051] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15184
+[2026-04-26 20:35:18,061] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 20:35:18,062] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 20:35:18,853] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14225
+[2026-04-26 20:35:18,862] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-26 20:35:18,862] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-26 20:35:22,515] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 17105
+[2026-04-26 20:35:22,527] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-26 20:35:22,529] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 20:35:22,530] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6957
+[2026-04-26 20:35:22,530] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 20:35:27,505] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 16191
+[2026-04-26 20:35:27,513] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 20:35:27,514] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 20:35:28,019] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 17021
+[2026-04-26 20:35:28,028] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 20:35:28,031] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-26 20:35:28,031] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 20:35:28,031] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6957
+[2026-04-26 20:35:28,448] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 16122
+[2026-04-26 20:35:28,458] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-26 20:35:28,458] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6957
+[2026-04-26 20:35:28,828] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15358
+[2026-04-26 20:35:28,839] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 20:35:28,840] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 20:35:29,186] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15777
+[2026-04-26 20:35:29,194] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-26 20:35:29,195] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6957
+[2026-04-26 20:35:29,571] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15861
+[2026-04-26 20:35:29,581] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-26 20:35:29,582] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6957
+[2026-04-26 20:35:29,986] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 16034
+[2026-04-26 20:35:29,995] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 20:35:29,995] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 20:35:35,225] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15857
+[2026-04-26 20:35:35,236] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 20:35:35,236] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 20:35:37,094] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15866
+[2026-04-26 20:35:37,102] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-26 20:35:37,103] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6957
+[2026-04-26 20:35:38,187] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15471
+[2026-04-26 20:35:38,195] INFO django.server: "GET /media/recipes/21_%D0%93%D0%BE%D1%80%D0%BE%D1%85%D0%BE%D0%B2%D1%8B%D0%B9_%D1%81%D1%83%D0%BF.jpg HTTP/1.1" 304 0
+[2026-04-26 20:35:38,197] INFO django.server: "GET /media/recipes/6_%D0%9E%D0%B2%D1%81%D1%8F%D0%BD%D0%BA%D0%B0_%D0%BD%D0%B0_%D0%BC%D0%BE%D0%BB%D0%BE%D0%BA%D0%B5.jpg HTTP/1.1" 304 0
+[2026-04-26 20:35:38,197] INFO django.server: "GET /media/recipes/kasha_risovaya.png HTTP/1.1" 304 0
+[2026-04-26 20:35:38,200] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-26 20:35:38,201] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6957
+[2026-04-26 20:35:38,809] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13278
+[2026-04-26 20:35:41,792] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13157
+[2026-04-26 20:35:42,335] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14013
+[2026-04-26 20:35:42,916] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13104
+[2026-04-26 20:35:43,368] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13199
+[2026-04-26 20:35:44,121] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15075
+[2026-04-26 20:35:44,131] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-26 20:35:44,131] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6957
+[2026-04-26 20:35:46,276] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 12840
+[2026-04-26 20:35:46,704] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13104
+[2026-04-26 20:35:47,421] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15215
+[2026-04-26 20:35:47,430] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 20:35:47,431] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 20:35:48,672] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13710
+[2026-04-26 20:35:58,275] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 20:35:58,315] INFO django.server: "GET /static/css/style.css HTTP/1.1" 304 0
+[2026-04-26 20:39:58,486] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-26 20:39:58,991] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 21:14:53,272] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 21:14:54,941] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 21:14:55,171] INFO django.server: "GET /static/css/style.css HTTP/1.1" 200 11683
+[2026-04-26 21:14:58,859] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-04-26 21:14:58,904] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-26 21:14:58,905] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6957
+[2026-04-26 21:15:32,126] INFO django.server: "GET / HTTP/1.1" 200 5775
+[2026-04-26 21:15:32,158] INFO django.server: "GET /static/css/style.css HTTP/1.1" 200 11683
+[2026-04-26 21:15:32,159] INFO django.server: "GET /static/images/Diplom4.jpg HTTP/1.1" 200 9632
+[2026-04-26 21:15:32,164] INFO django.server: "GET /static/images/diplom_1.jpg HTTP/1.1" 200 21609
+[2026-04-26 21:15:32,165] INFO django.server: "GET /static/images/Diplom_3.jpg HTTP/1.1" 200 16226
+[2026-04-26 21:15:32,165] INFO django.server: "GET /static/images/Diplom_2.jpg HTTP/1.1" 200 13406
+[2026-04-26 21:15:32,167] INFO django.server: "GET /static/images/Diplom_5.png HTTP/1.1" 200 175374
+[2026-04-26 21:15:32,168] INFO django.server: "GET /static/images/Diplom_6.png HTTP/1.1" 200 245054
+[2026-04-26 21:15:32,298] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 200 162739
+[2026-04-26 21:15:32,372] WARNING django.request: Not Found: /favicon.ico
+[2026-04-26 21:15:32,372] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6697
+[2026-04-26 21:29:44,928] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-04-26 21:29:44,968] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-26 21:29:44,969] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6957
+[2026-04-26 21:29:44,969] INFO django.server: "GET /static/css/style.css HTTP/1.1" 200 11683
+[2026-04-26 21:29:44,977] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 200 162739
+[2026-04-26 21:36:22,698] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-26 21:36:28,857] INFO django.server: "GET / HTTP/1.1" 200 7088
+[2026-04-26 21:36:29,102] INFO django.server: "GET /static/css/style.css HTTP/1.1" 304 0
+[2026-04-26 21:36:29,251] INFO django.server: "GET /static/images/Diplom4.jpg HTTP/1.1" 200 9632
+[2026-04-26 21:36:29,254] INFO django.server: "GET /static/images/Diplom_6.png HTTP/1.1" 200 245054
+[2026-04-26 21:36:29,257] INFO django.server: "GET /static/images/Diplom_2.jpg HTTP/1.1" 200 13406
+[2026-04-26 21:36:29,259] INFO django.server: "GET /static/images/Diplom_3.jpg HTTP/1.1" 200 16226
+[2026-04-26 21:36:29,259] INFO django.server: "GET /static/images/Diplom_5.png HTTP/1.1" 200 175374
+[2026-04-26 21:36:29,259] INFO django.server: "GET /static/images/diplom_1.jpg HTTP/1.1" 200 21609
+[2026-04-26 21:36:59,256] INFO django.server: "GET /recipe/51/ HTTP/1.1" 200 22418
+[2026-04-26 21:38:19,125] INFO django.server: "GET /api/recipe/fetch/51/ HTTP/1.1" 200 14940
+[2026-04-26 21:40:46,023] INFO django.server: "GET /meal-plan/ HTTP/1.1" 200 53733
+[2026-04-26 21:40:46,839] INFO django.server: "GET / HTTP/1.1" 200 7088
+[2026-04-26 21:40:47,259] INFO django.server: "GET /compose/ HTTP/1.1" 200 27686
+[2026-04-26 21:41:06,446] INFO django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 200 27597
+[2026-04-26 21:41:37,562] INFO django.server: "GET /recipe/638714/ HTTP/1.1" 200 44259
+[2026-04-26 21:42:51,964] INFO django.server: "GET / HTTP/1.1" 200 7088
+[2026-04-26 21:42:52,001] INFO django.server: "GET /static/css/style.css HTTP/1.1" 304 0
+[2026-04-26 21:43:07,778] INFO django.server: "GET /compose/ HTTP/1.1" 200 27686
+[2026-04-26 21:43:10,677] INFO django.server: "GET / HTTP/1.1" 200 7088
+[2026-04-26 21:43:11,858] INFO django.server: "GET /profile/ HTTP/1.1" 200 62203
+[2026-04-26 21:44:13,302] INFO django.server: "GET / HTTP/1.1" 200 7088
+[2026-04-26 21:44:16,026] INFO django.server: "GET /compose/ HTTP/1.1" 200 27686
+[2026-04-26 21:44:17,235] INFO django.server: "GET / HTTP/1.1" 200 7088
+[2026-04-26 21:44:17,682] INFO django.server: "GET /meal-plan/ HTTP/1.1" 200 53733
+[2026-04-26 21:44:21,426] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13763
+[2026-04-26 21:44:21,438] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-26 21:44:21,439] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6957
+[2026-04-26 21:44:29,696] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13760
+[2026-04-26 21:44:29,705] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 21:44:29,705] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 21:44:40,927] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15515
+[2026-04-26 21:44:40,936] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 21:44:40,936] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 21:44:42,630] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15709
+[2026-04-26 21:44:42,640] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-26 21:44:42,641] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6957
+[2026-04-26 21:44:48,299] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 17105
+[2026-04-26 21:44:48,308] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 21:44:48,312] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-26 21:44:48,313] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 21:44:48,313] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6957
+[2026-04-26 21:44:49,136] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15706
+[2026-04-26 21:44:49,145] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 21:44:49,145] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 21:46:02,414] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 16948
+[2026-04-26 21:46:02,426] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 21:46:02,429] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-26 21:46:02,429] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 21:46:02,429] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6957
+[2026-04-26 21:46:04,134] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14618
+[2026-04-26 21:46:05,599] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 17022
+[2026-04-26 21:46:05,607] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-26 21:46:05,610] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 21:46:05,611] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6957
+[2026-04-26 21:46:05,611] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 21:46:06,425] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15930
+[2026-04-26 21:46:06,435] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 21:46:06,435] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 21:46:16,790] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15750
+[2026-04-26 21:46:16,798] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-26 21:46:16,799] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6957
+[2026-04-26 21:46:22,703] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13274
+[2026-04-26 21:46:24,368] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 12642
+[2026-04-26 21:46:25,318] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13113
+[2026-04-26 21:46:34,932] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13113
+[2026-04-26 21:46:35,437] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 12642
+[2026-04-26 21:46:35,958] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 12646
+[2026-04-26 21:46:36,541] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13274
+[2026-04-26 21:46:37,639] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13286
+[2026-04-26 21:46:39,265] INFO django.server: "POST /api/shopping-list/generate/ HTTP/1.1" 200 2464
+[2026-04-26 21:46:45,790] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14454
+[2026-04-26 21:46:45,799] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-26 21:46:45,799] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6957
+[2026-04-26 21:46:51,257] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13203
+[2026-04-26 21:46:53,366] INFO django.server: "POST /api/shopping-list/generate/ HTTP/1.1" 200 2597
+[2026-04-26 21:46:58,643] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13203
+[2026-04-26 21:47:00,489] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14454
+[2026-04-26 21:47:00,498] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-26 21:47:00,498] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6957
+[2026-04-26 21:47:02,337] INFO django.server: "POST /api/shopping-list/generate/ HTTP/1.1" 200 2880
+[2026-04-26 21:47:13,977] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13938
+[2026-04-26 21:47:22,535] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13206
+[2026-04-26 21:47:33,293] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 12732
+[2026-04-26 21:47:34,724] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13203
+[2026-04-26 21:47:44,586] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13206
+[2026-04-26 21:47:54,216] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14451
+[2026-04-26 21:47:54,226] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 21:47:54,226] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 21:48:02,673] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13203
+[2026-04-26 21:48:05,289] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14922
+[2026-04-26 21:48:05,298] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 21:48:05,298] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 21:48:05,927] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13938
+[2026-04-26 21:48:09,253] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13467
+[2026-04-26 21:48:16,712] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14922
+[2026-04-26 21:48:16,722] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 21:48:16,722] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 21:48:20,885] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13203
+[2026-04-26 21:48:33,573] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13938
+[2026-04-26 21:48:50,702] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13203
+[2026-04-26 21:48:52,350] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14451
+[2026-04-26 21:48:52,360] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-26 21:48:52,360] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-26 21:48:53,138] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14925
+[2026-04-26 21:48:53,147] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-26 21:48:53,147] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6957
+[2026-04-26 21:49:03,508] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13938
+[2026-04-26 21:49:09,901] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13206
+[2026-04-26 21:49:18,132] INFO django.server: "POST /api/shopping-list/generate/ HTTP/1.1" 200 2912
+[2026-04-27 18:09:29,996] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-27 18:09:36,363] INFO django.server: "GET / HTTP/1.1" 200 7088
+[2026-04-27 18:09:36,528] INFO django.server: "GET /static/css/style.css HTTP/1.1" 304 0
+[2026-04-27 18:09:36,831] WARNING django.request: Not Found: /favicon.ico
+[2026-04-27 18:09:36,831] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6697
+[2026-04-27 18:09:40,019] INFO django.server: "GET /profile/ HTTP/1.1" 200 53077
+[2026-04-27 18:09:40,062] INFO django.server: "GET /media/recipes/13_%D0%9A%D1%83%D1%80%D0%B8%D0%BD%D0%BE%D0%B5_%D1%84%D0%B8%D0%BB%D0%B5_%D1%81_%D1%80%D0%B8%D1%81%D0%BE%D0%BC.jpg HTTP/1.1" 304 0
+[2026-04-27 18:09:44,764] INFO django.server: "POST /api/shopping-list/clear/ HTTP/1.1" 200 17
+[2026-04-27 18:09:46,658] INFO django.server: "GET / HTTP/1.1" 200 7088
+[2026-04-27 18:09:47,843] INFO django.server: "GET /compose/ HTTP/1.1" 200 27686
+[2026-04-27 18:09:47,883] INFO django.server: "GET /media/ingridients/kokososovoe__moloko.png HTTP/1.1" 304 0
+[2026-04-27 18:10:05,693] INFO django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 200 27597
+[2026-04-27 18:16:14,961] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-27 18:16:15,556] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-27 18:18:12,251] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-27 18:18:13,080] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-27 18:26:10,775] INFO django.server: "GET /recipe/638714/ HTTP/1.1" 200 44259
+[2026-04-27 18:31:49,228] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-04-27 18:31:49,848] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-27 18:31:54,637] INFO django.server: "GET / HTTP/1.1" 200 7088
+[2026-04-27 18:31:58,860] INFO django.server: "GET /compose/ HTTP/1.1" 200 27686
+[2026-04-27 18:32:14,529] INFO django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 200 27597
+[2026-04-27 18:33:34,485] INFO django.server: "GET /recipe/643832/ HTTP/1.1" 200 41189
+[2026-04-27 18:34:15,757] INFO django.server: "GET / HTTP/1.1" 200 7088
+[2026-04-28 13:53:54,770] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-28 13:53:56,647] INFO django.server: "GET / HTTP/1.1" 200 7088
+[2026-04-28 13:53:56,803] INFO django.server: "GET /static/css/style.css HTTP/1.1" 304 0
+[2026-04-28 13:53:56,959] INFO django.server: "GET /static/images/Diplom_5.png HTTP/1.1" 200 175374
+[2026-04-28 13:53:56,960] INFO django.server: "GET /static/images/Diplom_2.jpg HTTP/1.1" 200 13406
+[2026-04-28 13:53:56,961] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 304 0
+[2026-04-28 13:53:56,961] INFO django.server: "GET /static/images/Diplom_3.jpg HTTP/1.1" 200 16226
+[2026-04-28 13:53:56,966] INFO django.server: "GET /static/images/diplom_1.jpg HTTP/1.1" 200 21609
+[2026-04-28 13:53:56,967] INFO django.server: "GET /static/images/Diplom4.jpg HTTP/1.1" 200 9632
+[2026-04-28 13:53:56,981] INFO django.server: "GET /static/images/Diplom_6.png HTTP/1.1" 200 245054
+[2026-04-28 13:53:57,072] WARNING django.request: Not Found: /favicon.ico
+[2026-04-28 13:53:57,072] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6697
+[2026-04-28 13:55:37,617] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\migrations\0013_assign_recipe_images.py changed, reloading.
+[2026-04-28 13:55:38,091] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-28 15:25:52,728] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-28 15:25:55,629] INFO django.server: "GET / HTTP/1.1" 200 7088
+[2026-04-28 15:25:58,776] INFO django.server: "GET / HTTP/1.1" 200 7088
+[2026-04-28 15:25:58,952] INFO django.server: "GET /static/images/Diplom_3.jpg HTTP/1.1" 200 16226
+[2026-04-28 15:25:58,954] INFO django.server: "GET /static/css/style.css HTTP/1.1" 200 11683
+[2026-04-28 15:25:58,962] INFO django.server: "GET /static/images/diplom_1.jpg HTTP/1.1" 200 21609
+[2026-04-28 15:25:58,963] INFO django.server: "GET /static/images/Diplom4.jpg HTTP/1.1" 200 9632
+[2026-04-28 15:25:58,965] INFO django.server: "GET /static/images/Diplom_2.jpg HTTP/1.1" 200 13406
+[2026-04-28 15:25:58,966] INFO django.server: "GET /static/images/Diplom_5.png HTTP/1.1" 200 175374
+[2026-04-28 15:25:58,976] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 200 162739
+[2026-04-28 15:25:58,977] INFO django.server: "GET /static/images/Diplom_6.png HTTP/1.1" 200 245054
+[2026-04-28 15:25:59,045] WARNING django.request: Not Found: /favicon.ico
+[2026-04-28 15:25:59,045] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6697
+[2026-04-28 16:00:59,564] INFO django.server: "GET /admin/ HTTP/1.1" 200 18176
+[2026-04-28 16:00:59,605] INFO django.server: "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 3538
+[2026-04-28 16:00:59,605] INFO django.server: "GET /static/admin/css/base.css HTTP/1.1" 200 23100
+[2026-04-28 16:00:59,608] INFO django.server: "GET /static/admin/css/responsive.css HTTP/1.1" 200 16273
+[2026-04-28 16:00:59,608] INFO django.server: "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+[2026-04-28 16:00:59,609] INFO django.server: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+[2026-04-28 16:00:59,615] INFO django.server: "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+[2026-04-28 16:00:59,632] INFO django.server: "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 978
+[2026-04-28 16:00:59,632] INFO django.server: "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 689
+[2026-04-28 16:00:59,632] INFO django.server: "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 593
+[2026-04-28 16:00:59,636] INFO django.server: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+[2026-04-28 16:01:03,747] INFO django.server: "GET /admin/mainapp/recipes/ HTTP/1.1" 200 49084
+[2026-04-28 16:01:03,795] INFO django.server: "GET /static/admin/css/changelists.css HTTP/1.1" 200 7498
+[2026-04-28 16:01:03,798] INFO django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+[2026-04-28 16:01:03,814] INFO django.server: "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+[2026-04-28 16:01:03,814] INFO django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+[2026-04-28 16:01:03,818] INFO django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+[2026-04-28 16:01:03,820] INFO django.server: "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+[2026-04-28 16:01:03,861] INFO django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 16820
+[2026-04-28 16:01:03,875] INFO django.server: "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+[2026-04-28 16:01:03,890] INFO django.server: "GET /static/admin/img/search.svg HTTP/1.1" 200 607
+[2026-04-28 16:01:03,892] INFO django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+[2026-04-28 16:01:03,910] INFO django.server: "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+[2026-04-28 16:01:03,960] INFO django.server: "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+[2026-04-28 16:01:03,982] INFO django.server: "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 928
+[2026-04-28 16:01:03,982] INFO django.server: "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 593
+[2026-04-28 16:01:08,049] INFO django.server: "GET /admin/mainapp/recipes/53/change/ HTTP/1.1" 200 23470
+[2026-04-28 16:01:08,091] INFO django.server: "GET /static/admin/css/forms.css HTTP/1.1" 200 8831
+[2026-04-28 16:01:08,097] INFO django.server: "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+[2026-04-28 16:01:08,101] INFO django.server: "GET /static/admin/css/widgets.css HTTP/1.1" 200 11811
+[2026-04-28 16:01:08,118] INFO django.server: "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+[2026-04-28 16:01:08,124] INFO django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 16820
+[2026-04-28 16:01:12,266] INFO django.server: "GET /admin/mainapp/recipes/ HTTP/1.1" 200 49084
+[2026-04-28 16:01:18,358] INFO django.server: "GET / HTTP/1.1" 200 7088
+[2026-04-28 16:01:21,044] INFO django.server: "GET /admin/ HTTP/1.1" 200 18176
+[2026-04-28 16:01:22,607] INFO django.server: "GET /admin/mainapp/recipes/ HTTP/1.1" 200 49084
+[2026-04-28 16:01:22,678] INFO django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 16820
+[2026-04-28 16:01:23,970] INFO django.server: "GET /admin/mainapp/recipes/53/change/ HTTP/1.1" 200 23470
+[2026-04-28 16:01:24,037] INFO django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 16820
+[2026-04-28 16:01:54,567] INFO django.server: "POST /admin/mainapp/recipes/53/change/ HTTP/1.1" 302 0
+[2026-04-28 16:01:54,646] INFO django.server: "GET /admin/mainapp/recipes/ HTTP/1.1" 200 49346
+[2026-04-28 16:01:54,734] INFO django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 16820
+[2026-04-28 16:01:54,789] INFO django.server: "GET /static/admin/img/icon-yes-dark.svg HTTP/1.1" 200 558
+[2026-04-28 16:01:58,034] INFO django.server: "GET / HTTP/1.1" 200 7232
+[2026-04-28 16:01:58,068] WARNING django.server: "GET /static/images/recipes/teriakichicken.png HTTP/1.1" 404 2026
+[2026-04-28 16:02:01,434] INFO django.server: "GET / HTTP/1.1" 200 7232
+[2026-04-28 16:02:01,461] INFO django.server: "GET /static/css/style.css HTTP/1.1" 200 11683
+[2026-04-28 16:02:01,463] INFO django.server: "GET /static/images/Diplom4.jpg HTTP/1.1" 200 9632
+[2026-04-28 16:02:01,468] WARNING django.server: "GET /static/images/recipes/teriakichicken.png HTTP/1.1" 404 2026
+[2026-04-28 16:02:01,468] INFO django.server: "GET /static/images/diplom_1.jpg HTTP/1.1" 200 21609
+[2026-04-28 16:02:01,468] INFO django.server: "GET /static/images/Diplom_2.jpg HTTP/1.1" 200 13406
+[2026-04-28 16:02:01,469] INFO django.server: "GET /static/images/Diplom_3.jpg HTTP/1.1" 200 16226
+[2026-04-28 16:02:01,471] INFO django.server: "GET /static/images/Diplom_5.png HTTP/1.1" 200 175374
+[2026-04-28 16:02:01,473] INFO django.server: "GET /static/images/Diplom_6.png HTTP/1.1" 200 245054
+[2026-04-28 16:02:01,591] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 200 162739
+[2026-04-28 16:02:01,663] WARNING django.request: Not Found: /favicon.ico
+[2026-04-28 16:02:01,664] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6697
+[2026-04-28 16:06:42,214] INFO django.server: "GET /admin/ HTTP/1.1" 200 18220
+[2026-04-28 16:06:43,700] INFO django.server: "GET /admin/mainapp/recipes/ HTTP/1.1" 200 49084
+[2026-04-28 16:06:43,778] INFO django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 16820
+[2026-04-28 16:06:45,220] INFO django.server: "GET /admin/mainapp/recipes/53/change/ HTTP/1.1" 200 23785
+[2026-04-28 16:06:45,297] INFO django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 16820
+[2026-04-28 16:06:52,537] INFO django.server: "POST /admin/mainapp/recipes/53/change/ HTTP/1.1" 302 0
+[2026-04-28 16:06:52,602] INFO django.server: "GET /admin/mainapp/recipes/ HTTP/1.1" 200 49346
+[2026-04-28 16:06:52,683] INFO django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 16820
+[2026-04-28 16:06:56,826] INFO django.server: "GET / HTTP/1.1" 200 7234
+[2026-04-28 16:06:56,867] WARNING django.server: "GET /static/images/recipes/Chicken_teriyaki.jpg HTTP/1.1" 404 2032
+[2026-04-28 16:06:59,045] INFO django.server: "GET / HTTP/1.1" 200 7234
+[2026-04-28 16:06:59,075] INFO django.server: "GET /static/css/style.css HTTP/1.1" 200 11683
+[2026-04-28 16:06:59,076] INFO django.server: "GET /static/images/Diplom4.jpg HTTP/1.1" 200 9632
+[2026-04-28 16:06:59,083] WARNING django.server: "GET /static/images/recipes/Chicken_teriyaki.jpg HTTP/1.1" 404 2032
+[2026-04-28 16:06:59,084] INFO django.server: "GET /static/images/Diplom_2.jpg HTTP/1.1" 200 13406
+[2026-04-28 16:06:59,084] INFO django.server: "GET /static/images/diplom_1.jpg HTTP/1.1" 200 21609
+[2026-04-28 16:06:59,085] INFO django.server: "GET /static/images/Diplom_3.jpg HTTP/1.1" 200 16226
+[2026-04-28 16:06:59,087] INFO django.server: "GET /static/images/Diplom_5.png HTTP/1.1" 200 175374
+[2026-04-28 16:06:59,088] INFO django.server: "GET /static/images/Diplom_6.png HTTP/1.1" 200 245054
+[2026-04-28 16:06:59,099] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 200 162739
+[2026-04-28 16:06:59,327] WARNING django.request: Not Found: /favicon.ico
+[2026-04-28 16:06:59,327] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6697
+[2026-04-28 16:07:19,887] INFO django.server: "GET / HTTP/1.1" 200 7234
+[2026-04-28 16:07:19,918] INFO django.server: "GET /static/css/style.css HTTP/1.1" 200 11683
+[2026-04-28 16:07:19,919] INFO django.server: "GET /static/images/Diplom4.jpg HTTP/1.1" 200 9632
+[2026-04-28 16:07:19,923] INFO django.server: "GET /static/images/Diplom_2.jpg HTTP/1.1" 200 13406
+[2026-04-28 16:07:19,923] WARNING django.server: "GET /static/images/recipes/Chicken_teriyaki.jpg HTTP/1.1" 404 2032
+[2026-04-28 16:07:19,924] INFO django.server: "GET /static/images/diplom_1.jpg HTTP/1.1" 200 21609
+[2026-04-28 16:07:19,924] INFO django.server: "GET /static/images/Diplom_3.jpg HTTP/1.1" 200 16226
+[2026-04-28 16:07:19,927] INFO django.server: "GET /static/images/Diplom_5.png HTTP/1.1" 200 175374
+[2026-04-28 16:07:19,927] INFO django.server: "GET /static/images/Diplom_6.png HTTP/1.1" 200 245054
+[2026-04-28 16:07:19,939] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 200 162739
+[2026-04-28 16:07:20,083] WARNING django.request: Not Found: /favicon.ico
+[2026-04-28 16:07:20,083] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6697
+[2026-04-28 16:07:25,227] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-28 16:07:27,077] INFO django.server: "GET / HTTP/1.1" 200 7234
+[2026-04-28 16:07:27,264] WARNING django.server: "GET /static/images/recipes/Chicken_teriyaki.jpg HTTP/1.1" 404 2032
+[2026-04-28 16:09:25,665] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-28 16:09:27,010] INFO django.server: "GET / HTTP/1.1" 200 7234
+[2026-04-28 16:09:27,222] WARNING django.server: "GET /static/images/recipes/Chicken_teriyaki.jpg HTTP/1.1" 404 2032
+[2026-04-28 16:09:35,409] INFO django.server: "GET /admin/ HTTP/1.1" 200 18301
+[2026-04-28 16:09:36,676] INFO django.server: "GET /admin/mainapp/recipes/ HTTP/1.1" 200 49084
+[2026-04-28 16:09:36,757] INFO django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 16820
+[2026-04-28 16:09:38,011] INFO django.server: "GET /admin/mainapp/recipes/53/change/ HTTP/1.1" 200 23789
+[2026-04-28 16:09:38,086] INFO django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 16820
+[2026-04-28 16:10:10,246] INFO django.server: "POST /admin/mainapp/recipes/53/change/ HTTP/1.1" 302 0
+[2026-04-28 16:10:10,310] INFO django.server: "GET /admin/mainapp/recipes/ HTTP/1.1" 200 49346
+[2026-04-28 16:10:10,395] INFO django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 16820
+[2026-04-28 16:10:13,124] INFO django.server: "GET / HTTP/1.1" 200 7242
+[2026-04-28 16:10:13,159] WARNING django.server: "GET /static/images/recipes/Chicken_teriyaki_R0mQvFS.jpg HTTP/1.1" 404 2056
+[2026-04-28 16:10:16,324] INFO django.server: "GET / HTTP/1.1" 200 7242
+[2026-04-28 16:10:16,366] WARNING django.server: "GET /static/images/recipes/Chicken_teriyaki_R0mQvFS.jpg HTTP/1.1" 404 2056
+[2026-04-28 16:10:16,480] INFO django.server: "GET /static/images/Diplom4.jpg HTTP/1.1" 200 9632
+[2026-04-28 16:10:16,492] INFO django.server: "GET /static/images/Diplom_6.png HTTP/1.1" 200 245054
+[2026-04-28 16:10:16,509] INFO django.server: "GET /static/images/diplom_1.jpg HTTP/1.1" 200 21609
+[2026-04-28 16:10:16,511] INFO django.server: "GET /static/css/style.css HTTP/1.1" 200 11683
+[2026-04-28 16:10:16,512] INFO django.server: "GET /static/images/Diplom_2.jpg HTTP/1.1" 200 13406
+[2026-04-28 16:10:16,514] INFO django.server: "GET /static/images/Diplom_5.png HTTP/1.1" 200 175374
+[2026-04-28 16:10:16,515] INFO django.server: "GET /static/images/Diplom_3.jpg HTTP/1.1" 200 16226
+[2026-04-28 16:10:16,528] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 200 162739
+[2026-04-28 16:10:16,759] WARNING django.request: Not Found: /favicon.ico
+[2026-04-28 16:10:16,759] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6697
+[2026-04-28 16:11:42,015] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-28 16:11:43,160] INFO django.server: "GET / HTTP/1.1" 200 7304
+[2026-04-28 16:11:43,340] WARNING django.request: Not Found: /media/diplom_1.jpg
+[2026-04-28 16:11:43,342] WARNING django.request: Not Found: /media/Diplom4.jpg
+[2026-04-28 16:11:43,347] WARNING django.request: Not Found: /media/Diplom_2.jpg
+[2026-04-28 16:11:43,347] WARNING django.server: "GET /media/diplom_1.jpg HTTP/1.1" 404 6957
+[2026-04-28 16:11:43,348] WARNING django.server: "GET /media/Diplom4.jpg HTTP/1.1" 404 6953
+[2026-04-28 16:11:43,351] WARNING django.request: Not Found: /media/Diplom_5.png
+[2026-04-28 16:11:43,352] WARNING django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 404 6957
+[2026-04-28 16:11:43,357] WARNING django.request: Not Found: /media/Diplom_6.png
+[2026-04-28 16:11:43,357] WARNING django.server: "GET /media/Diplom_5.png HTTP/1.1" 404 6957
+[2026-04-28 16:11:43,359] WARNING django.request: Not Found: /media/Diplom_3.jpg
+[2026-04-28 16:11:43,360] WARNING django.server: "GET /media/Diplom_6.png HTTP/1.1" 404 6957
+[2026-04-28 16:11:43,360] WARNING django.server: "GET /media/Diplom_3.jpg HTTP/1.1" 404 6957
+[2026-04-28 16:11:43,403] INFO django.server: "GET /media/recipes/Chicken_teriyaki_R0mQvFS.jpg HTTP/1.1" 200 136236
+[2026-04-28 16:13:14,876] INFO django.server: "GET / HTTP/1.1" 200 7304
+[2026-04-28 16:13:14,909] INFO django.server: "GET /media/recipes/Chicken_teriyaki_R0mQvFS.jpg HTTP/1.1" 304 0
+[2026-04-28 16:13:14,910] INFO django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 200 13406
+[2026-04-28 16:13:14,910] INFO django.server: "GET /media/Diplom_3.jpg HTTP/1.1" 200 16226
+[2026-04-28 16:13:14,910] INFO django.server: "GET /media/Diplom4.jpg HTTP/1.1" 200 9632
+[2026-04-28 16:13:14,911] INFO django.server: "GET /media/diplom_1.jpg HTTP/1.1" 200 21609
+[2026-04-28 16:13:14,912] INFO django.server: "GET /media/Diplom_5.png HTTP/1.1" 200 175374
+[2026-04-28 16:13:14,925] INFO django.server: "GET /media/Diplom_6.png HTTP/1.1" 200 245054
+[2026-04-28 16:14:48,124] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-04-28 16:14:53,383] INFO django.server: "GET / HTTP/1.1" 200 7304
+[2026-04-28 16:14:53,565] INFO django.server: "GET /media/diplom_1.jpg HTTP/1.1" 304 0
+[2026-04-28 16:14:53,565] INFO django.server: "GET /media/Diplom4.jpg HTTP/1.1" 304 0
+[2026-04-28 16:14:53,568] INFO django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 304 0
+[2026-04-28 16:14:53,569] INFO django.server: "GET /media/Diplom_5.png HTTP/1.1" 304 0
+[2026-04-28 16:14:53,569] INFO django.server: "GET /media/Diplom_3.jpg HTTP/1.1" 304 0
+[2026-04-28 16:14:53,569] INFO django.server: "GET /media/recipes/Chicken_teriyaki_R0mQvFS.jpg HTTP/1.1" 304 0
+[2026-04-28 16:14:53,571] INFO django.server: "GET /media/Diplom_6.png HTTP/1.1" 304 0
+[2026-04-28 16:18:20,946] INFO django.server: "GET /admin/ HTTP/1.1" 200 18382
+[2026-04-28 16:18:22,210] INFO django.server: "GET /admin/mainapp/recipes/ HTTP/1.1" 200 49084
+[2026-04-28 16:18:22,393] INFO django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 16820
+[2026-04-28 16:18:23,407] INFO django.server: "GET /admin/mainapp/recipes/54/change/ HTTP/1.1" 200 23454
+[2026-04-28 16:18:23,479] INFO django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 16820
+[2026-04-28 16:18:37,313] INFO django.server: "POST /admin/mainapp/recipes/54/change/ HTTP/1.1" 302 0
+[2026-04-28 16:18:37,379] INFO django.server: "GET /admin/mainapp/recipes/ HTTP/1.1" 200 49334
+[2026-04-28 16:18:37,459] INFO django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 16820
+[2026-04-28 16:18:40,378] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-04-28 16:18:40,420] INFO django.server: "GET /media/diplom_1.jpg HTTP/1.1" 304 0
+[2026-04-28 16:18:40,421] INFO django.server: "GET /media/Diplom4.jpg HTTP/1.1" 304 0
+[2026-04-28 16:18:40,421] INFO django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 304 0
+[2026-04-28 16:18:40,421] INFO django.server: "GET /media/Diplom_5.png HTTP/1.1" 304 0
+[2026-04-28 16:18:40,422] INFO django.server: "GET /media/recipes/Chicken_teriyaki_R0mQvFS.jpg HTTP/1.1" 304 0
+[2026-04-28 16:18:40,426] INFO django.server: "GET /media/Diplom_3.jpg HTTP/1.1" 304 0
+[2026-04-28 16:18:40,428] INFO django.server: "GET /media/Diplom_6.png HTTP/1.1" 304 0
+[2026-04-28 16:18:40,524] INFO django.server: "GET /media/recipes/pasta-karbonara.jpg HTTP/1.1" 200 231354

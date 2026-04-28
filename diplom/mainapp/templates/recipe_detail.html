@@ -1,4 +1,5 @@
 {% load static %}
+{% load recipe_extras %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -321,7 +322,7 @@
                         {% if api_recipe_data.cuisines %}
                         <div class="meta-item">
                             <span class="meta-icon">&#127758;</span>
-                            <span class="meta-value">{{ api_recipe_data.cuisines|join:", " }}</span>
+                            <span class="meta-value">{{ api_recipe_data.cuisines|translate_cuisines_list }}</span>
                         </div>
                         {% endif %}
                     </div>
@@ -577,6 +578,42 @@
 
         // Рендеринг данных из API для локальных рецептов
         function renderApiDetails(data) {
+            // Словарь перевода кухонь
+            var cuisineTranslations = {
+                'Asian': 'Азиатская',
+                'Chinese': 'Китайская',
+                'Japanese': 'Японская',
+                'Korean': 'Корейская',
+                'Thai': 'Тайская',
+                'Vietnamese': 'Вьетнамская',
+                'Indian': 'Индийская',
+                'Middle Eastern': 'Ближневосточная',
+                'Mediterranean': 'Средиземноморская',
+                'European': 'Европейская',
+                'French': 'Французская',
+                'Italian': 'Итальянская',
+                'Spanish': 'Испанская',
+                'Greek': 'Греческая',
+                'German': 'Немецкая',
+                'British': 'Британская',
+                'Eastern European': 'Восточноевропейская',
+                'Russian': 'Русская',
+                'Polish': 'Польская',
+                'Hungarian': 'Венгерская',
+                'American': 'Американская',
+                'Mexican': 'Мексиканская',
+                'South American': 'Южноамериканская',
+                'African': 'Африканская',
+                'Nordic': 'Скандинавская',
+                'Australian': 'Австралийская',
+                'Caribbean': 'Карибская',
+                'Cajun': 'Каджунская',
+                'Southern/Soul Food': 'Южная кухня',
+                'Pacific Rim': 'Тихоокеанская',
+            };
+            function translateCuisine(name) {
+                return cuisineTranslations[name] || name;
+            }
             // Питательные вещества
             var nutrientsSection = document.getElementById('api-nutrients-section');
             var nutrientsRow = document.getElementById('api-nutrients-row');
@@ -652,7 +689,7 @@
             var extras = [];
             if (data.readyInMinutes) extras.push('Время приготовления: ' + data.readyInMinutes + ' мин');
             if (data.servings) extras.push('Порций: ' + data.servings);
-            if (data.cuisines && data.cuisines.length > 0) extras.push('Кухня: ' + data.cuisines.join(', '));
+            if (data.cuisines && data.cuisines.length > 0) extras.push('Кухня: ' + data.cuisines.map(translateCuisine).join(', '));
             if (extras.length > 0) {
                 extraInfo.innerHTML = extras.map(function(e) { return '<p>' + e + '</p>'; }).join('');
                 extraSection.style.display = 'block';

@@ -64,8 +64,8 @@ class Favorite(models.Model):
 
 class UserPreference(models.Model):
     PREFERENCE_CHOICES = [
-        ('like', 'Like'),
-        ('dislike', 'Dislike'),
+        ('like', 'Нравится'),
+        ('dislike', 'Не нравится'),
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)

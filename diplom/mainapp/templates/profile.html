@@ -583,7 +583,7 @@
                 <div class="shopping-list-toolbar">
                     <h3 class="section-title" style="margin-bottom:0;">Список покупок</h3>
                     <div>
-                        <span class="item-count" id="shopping-count">{{ shopping_list|length }} items</span>
+                        <span class="item-count" id="shopping-count">{{ shopping_list|length }} элементов</span>
                         {% if shopping_list %}
                         <button class="btn-clear-list" onclick="clearShoppingList()">Очистить список</button>
                         {% endif %}
@@ -741,7 +741,7 @@
         function updateShoppingCount() {
             var count = document.querySelectorAll('.shopping-item').length;
             var el = document.getElementById('shopping-count');
-            if (el) el.textContent = count + ' items';
+            if (el) el.textContent = count + ' элементов';
         }
     </script>
 </body>
