@@ -48,6 +48,7 @@ urlpatterns = [
     path('api/shopping-list/generate/', views.generate_shopping_list, name='generate_shopping_list'),
     path('api/shopping-list/', views.get_shopping_list, name='get_shopping_list'),
     path('api/favorites/save/', views.save_to_favorites, name='save_to_favorites'),
+    path('api/cooking-history/save/', views.save_cooking_history, name='save_cooking_history'),
     #path('get_ingredients/', views.get_ingredients, name='get_ingredients'),
 ]
 

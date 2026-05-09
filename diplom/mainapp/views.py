@@ -3,8 +3,12 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST, require_GET
+from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
-from .models import Recipes, Ingredients, MealPlan, MealPlanItem, ShoppingList, UserPreference, UserSettings
+from django.db import models
+from django.utils import timezone
+from .models import Recipes, Ingredients, MealPlan, MealPlanItem, ShoppingList, UserPreference, UserSettings, \
+    CookingHistory
 from .forms import UserLoginForm, RegistrationForm
 from functools import lru_cache
 import logging
@@ -90,7 +94,7 @@ def register(request):
 
 @login_required(login_url='log_in')
 def profile(request):
-    """Профиль пользователя: избранные блюда, рационы, список покупок"""
+    """Профиль пользователя: избранные блюда, рационы, список покупок, история приготовлений"""
     user = request.user
 
     # Избранные блюда
@@ -103,6 +107,10 @@ def profile(request):
     # Список покупок
     shopping_list = ShoppingList.objects.filter(user=user).select_related('ingredient')
 
+    # История приготовлений
+    from .models import CookingHistory
+    cooking_history = CookingHistory.objects.filter(user=user).select_related('recipe').order_by('-cooked_at')[:20]
+
     # Настройки пользователя
     user_settings, _ = UserSettings.objects.get_or_create(user=user)
 
@@ -111,6 +119,7 @@ def profile(request):
         'favorites': favorites,
         'meal_plans': meal_plans,
         'shopping_list': shopping_list,
+        'cooking_history': cooking_history,
         'user_settings': user_settings,
     }
     return render(request, 'profile.html', context)
@@ -997,8 +1006,8 @@ def fetch_recipe_from_api(request, recipe_id):
                 })
 
         # Переводим инструкции
-        if api_data.get('analyalyzedInstructions') or api_data.get('analyzedInstructions'):
-            instructions_data = api_data.get('analyalyzedInstructions') or api_data.get('analyzedInstructions', [])
+        if api_data.get('analyzedInstructions'):
+            instructions_data = api_data.get('analyzedInstructions', [])
             for group in instructions_data:
                 if group.get('steps'):
                     for step in group['steps']:
@@ -1106,6 +1115,115 @@ def clear_shopping_list(request):
     """Очистка всего списка покупок"""
     ShoppingList.objects.filter(user=request.user).delete()
     return JsonResponse({'success': True})
+
+
+@require_POST
+@login_required(login_url='log_in')
+def save_cooking_history(request):
+    """Сохранение блюда в историю приготовлений"""
+    import json
+
+    try:
+        data = json.loads(request.body)
+    except json.JSONDecodeError:
+        return JsonResponse({'error': 'Неверный формат данных'}, status=400)
+
+    recipe_id = data.get('recipe_id')
+
+    if not recipe_id:
+        return JsonResponse({'error': 'ID рецепта не указан'}, status=400)
+
+    from .models import Kitchenname
+
+    # Проверяем, существует ли рецепт с таким ID в локальной БД
+    recipe = Recipes.objects.filter(id=recipe_id).first()
+
+    if not recipe:
+        # Рецепта нет в БД — получаем данные из Spoonacular API и создаём запись
+        try:
+            api_url = f'https://api.spoonacular.com/recipes/{recipe_id}/information'
+            params = {
+                'apiKey': settings.SPOONACULAR_API_KEY,
+                'includeNutrition': True,
+            }
+            response = requests.get(api_url, params=params, timeout=10)
+
+            if response.status_code == 404:
+                return JsonResponse({'error': 'Рецепт не найден в Spoonacular API'}, status=404)
+
+            response.raise_for_status()
+            api_data = response.json()
+
+            # Получаем калории
+            calories = 0
+            if api_data.get('nutrition', {}).get('nutrients'):
+                for n in api_data['nutrition']['nutrients']:
+                    if n.get('name') == 'Calories':
+                        calories = int(n.get('amount', 0))
+                        break
+
+            # Переводим название
+            title = api_data.get('title', 'Без названия')
+            try:
+                translated = translate_text(title, dest='ru')
+                title_ru = translated[:50]
+            except Exception:
+                title_ru = title[:50]
+
+            # Находим или создаём кухню
+            cuisines = api_data.get('cuisines', [])
+            kitchen_name = cuisines[0] if cuisines else 'Разное'
+            try:
+                translated_kitchen = translate_text(kitchen_name, dest='ru')
+                kitchen_name = translated_kitchen[:50]
+            except Exception:
+                pass
+            default_kitchen, _ = Kitchenname.objects.get_or_create(name=kitchen_name[:50])
+
+            # Создаём рецепт в локальной БД
+            recipe = Recipes.objects.create(
+                name=title_ru,
+                description=api_data.get('summary', '')[:500] if api_data.get('summary') else '',
+                calories=calories,
+                image='',
+                KitchennameId=default_kitchen,
+                spoonacular_id=recipe_id,
+            )
+            logger.info(f'Создан рецепт из Spoonacular API: {recipe.name} (spoonacular_id={recipe_id})')
+
+        except requests.RequestException as e:
+            logger.error(f'Ошибка Spoonacular API при добавлении в историю: {e}')
+            return JsonResponse({'error': 'Ошибка при проверке рецепта в Spoonacular API'}, status=502)
+
+    # Проверяем, не добавлен ли уже сегодня
+    from django.utils import timezone
+    today = timezone.now().date()
+    existing = CookingHistory.objects.filter(
+        user=request.user,
+        recipe=recipe,
+        cooked_at__date=today
+    ).exists()
+
+    if existing:
+        return JsonResponse({
+            'success': True,
+            'message': 'Это блюдо уже добавлено в историю сегодня',
+            'already_exists': True
+        })
+
+    # Создаём запись в истории
+    try:
+        cooking_history = CookingHistory.objects.create(user=request.user, recipe=recipe)
+        logger.info(f'Пользователь {request.user} добавил в историю приготовления {recipe.name}')
+        return JsonResponse({
+            'success': True,
+            'recipe_name': recipe.name,
+            'message': f'Блюдо "{recipe.name}" добавлено в историю приготовлений!',
+            'cooking_history_id': cooking_history.id
+        })
+    except Exception as e:
+        logger.error(f'Ошибка при сохранении в историю приготовлений: {e}')
+        return JsonResponse({'error': 'Ошибка при сохранении в историю приготовлений'}, status=500)
 
 
 def logout_view(request):

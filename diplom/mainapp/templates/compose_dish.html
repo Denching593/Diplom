@@ -103,7 +103,7 @@
             <h2 class="recommendation-title" id="results-title" style="display: none; margin-top: 40px;">Найденные блюда</h2>
             <div id="search-results" class="recipe-grid" style="display: none;"></div>
             <div id="search-loading" style="display: none; text-align: center; padding: 40px;">
-                <p style="font-size: 18px;">🔍 Ищем подходя блюда...</p>
+                <p style="font-size: 18px;">🔍 Ищем подходящие блюда...</p>
             </div>
         </main>
     </div>
@@ -215,7 +215,7 @@
             resultsDiv.style.display = 'none';
             resultsTitle.style.display = 'none';
             loadingDiv.style.display = 'block';
-            loadingDiv.innerHTML = '<p style="font-size: 18px;">🔍 Ищем подходя блюда...</p>';
+            loadingDiv.innerHTML = '<p style="font-size: 18px;">🔍 Ищем подходящие блюда...</p>';
 
             const params = new URLSearchParams();
             if (ingredients) params.set('ingredients', ingredients);

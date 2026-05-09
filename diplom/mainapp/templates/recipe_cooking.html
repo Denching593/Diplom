@@ -249,7 +249,6 @@
         <!-- Загрузка шагов из API -->
         <div class="api-loader" id="api-loader">
             <div class="spinner"></div>
-            <p>Загрузка пошаговой инструкции...</p>
         </div>
 
         <!-- Progressive Step View (скрыт до загрузки) -->
@@ -281,6 +280,16 @@
         </div>
     </div>
 
+    <!-- Cooking History Modal -->
+    <div class="completion-modal" id="history-modal">
+        <div class="completion-content">
+            <div class="completion-icon">&#128161;</div>
+            <h2 class="completion-title" style="color: #e76f51;">Сохранено в историю!</h2>
+            <p class="completion-text" id="history-message">Блюдо успешно добавлено в вашу историю приготовлений.</p>
+            <button class="btn-step-action btn-finish" onclick="closeHistoryModal()">Отлично</button>
+        </div>
+    </div>
+
     <script>
         (function() {
             var currentStep = 1;
@@ -307,6 +316,7 @@
             // Если рецепт локальный — подгружаем из Spoonacular
             var isLocalRecipe = {{ is_local_recipe|yesno:"true,false" }};
             var recipeId = "{{ recipe_id }}";
+            var recipeName = "{% if is_api_recipe and api_recipe_data.title_ru %}{{ api_recipe_data.title_ru|escapejs }}{% elif recipe.name %}{{ recipe.name|escapejs }}{% else %}Неизвестно{% endif %}";
 
             if (isLocalRecipe) {
                 // Локальный рецепт — подгружаем инструкции из Spoonacular API
@@ -435,6 +445,7 @@
                     html += '<button type="button" class="btn-step-action btn-continue" onclick="goToStep(' + (stepNum + 1) + ')">&#10003; Выполнено, далее &rarr;</button>';
                 } else {
                     html += '<button type="button" class="btn-step-action btn-finish" onclick="goToStep(' + (stepNum + 1) + ')">&#10003; Завершить приготовление</button>';
+                    html += '<button type="button" class="btn-step-action btn-finish" onclick="saveToCookingHistory()">💾 Сохранить в историю приготовлений</button>';
                 }
                 actionsDiv.innerHTML = html;
 
@@ -462,6 +473,47 @@
             window.closeCompletionModal = function() {
                 document.getElementById('completion-modal').style.display = 'none';
                 showStep(1);
+            };
+
+            // Добавление в историю приготовлений
+            window.saveToCookingHistory = function() {
+                var btn = event.target;
+                btn.disabled = true;
+                btn.textContent = 'Сохранение...';
+
+                fetch('{% url "save_cooking_history" %}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}',
+                    },
+                    body: JSON.stringify({ recipe_id: recipeId }),
+                })
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                    if (data.error) {
+                        alert(data.error);
+                        btn.disabled = false;
+                        btn.innerHTML = '&#128196; Сохранить в историю';
+                    } else {
+                        if (data.already_exists) {
+                            alert('Это блюдо уже добавлено в историю сегодня.');
+                        } else {
+                            alert('Блюдо "' + data.recipe_name + '" добавлено в историю приготовлений!');
+                        }
+                        btn.innerHTML = '&#10003; В истории';
+                        btn.disabled = true;
+                    }
+                })
+                .catch(function(err) {
+                    alert('Ошибка при сохранении в историю');
+                    btn.disabled = false;
+                    btn.innerHTML = '&#128196; Сохранить в историю';
+                });
+            }
+
+            window.closeHistoryModal = function() {
+                document.getElementById('history-modal').style.display = 'none';
             };
         })();
     </script>

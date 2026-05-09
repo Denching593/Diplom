@@ -9767,3 +9767,1104 @@ tz
 [2026-04-28 16:18:40,426] INFO django.server: "GET /media/Diplom_3.jpg HTTP/1.1" 304 0
 [2026-04-28 16:18:40,428] INFO django.server: "GET /media/Diplom_6.png HTTP/1.1" 304 0
 [2026-04-28 16:18:40,524] INFO django.server: "GET /media/recipes/pasta-karbonara.jpg HTTP/1.1" 200 231354
+[2026-05-01 15:12:41,371] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-01 15:12:42,454] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-01 15:12:44,788] INFO django.server: "GET /meal-plan/ HTTP/1.1" 200 53733
+[2026-05-01 15:12:50,186] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 16775
+[2026-05-01 15:12:51,474] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14709
+[2026-05-01 15:12:52,577] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 17495
+[2026-05-01 15:12:53,306] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 16172
+[2026-05-01 15:12:53,861] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15051
+[2026-05-01 15:12:55,783] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14483
+[2026-05-01 15:12:56,699] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14483
+[2026-05-01 15:12:59,174] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15279
+[2026-05-01 15:13:00,335] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14780
+[2026-05-01 15:13:01,210] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14810
+[2026-05-01 15:13:02,643] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 19004
+[2026-05-01 15:13:03,473] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 17087
+[2026-05-01 15:13:05,357] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14956
+[2026-05-01 15:13:07,827] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14709
+[2026-05-01 15:13:11,047] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 17237
+[2026-05-01 15:13:17,031] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 22074
+[2026-05-01 15:13:17,099] INFO django.server: "GET /media/recipes/30_%D0%A1%D1%8B%D1%80%D0%BD%D0%B8%D0%BA%D0%B8.jpg HTTP/1.1" 200 15257
+[2026-05-01 15:13:17,100] INFO django.server: "GET /media/recipes/29_%D0%A1%D0%B0%D0%BB%D0%B0%D1%82_%D0%B8%D0%B7_%D0%BE%D0%B3%D1%83%D1%80%D1%86%D0%BE%D0%B2_%D0%B8_%D0%BF%D0%BE%D0%BC%D0%B8%D0%B4%D0%BE%D1%80%D0%BE%D0%B2.jpg HTTP/1.1" 200 18377
+[2026-05-01 15:13:22,067] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 19755
+[2026-05-01 15:13:22,074] INFO django.server: "GET /media/recipes/28_%D0%91%D0%B0%D0%BD%D0%B0%D0%BD%D0%BE%D0%B2%D1%8B%D0%B9_%D1%81%D0%BC%D1%83%D0%B7%D0%B8.jpg HTTP/1.1" 200 11197
+[2026-05-01 15:13:23,147] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20020
+[2026-05-01 15:13:24,498] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 19232
+[2026-05-01 15:13:25,436] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 22029
+[2026-05-01 15:13:26,173] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 21176
+[2026-05-01 15:13:28,692] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20986
+[2026-05-01 15:13:29,843] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20065
+[2026-05-01 15:13:30,827] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20451
+[2026-05-01 15:17:38,382] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 19073
+[2026-05-01 15:17:39,088] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 21484
+[2026-05-01 15:17:43,751] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 17522
+[2026-05-01 15:17:46,260] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 17183
+[2026-05-01 15:17:47,158] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 16460
+[2026-05-01 15:17:48,616] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 16477
+[2026-05-01 15:17:48,999] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14696
+[2026-05-01 15:17:50,061] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15396
+[2026-05-01 15:17:56,201] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13393
+[2026-05-01 15:17:59,869] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13685
+[2026-05-01 15:18:00,566] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13998
+[2026-05-01 15:22:25,615] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14543
+[2026-05-01 15:22:26,284] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15040
+[2026-05-01 15:22:31,691] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15246
+[2026-05-01 15:22:32,136] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13752
+[2026-05-01 15:22:37,004] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 16122
+[2026-05-01 15:22:37,518] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 15288
+[2026-05-01 15:22:48,301] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 19940
+[2026-05-01 15:22:48,306] INFO django.server: "GET /media/recipes/32_%D0%91%D1%83%D1%82%D0%B5%D1%80%D0%B1%D1%80%D0%BE%D0%B4_%D1%81_%D0%B2%D0%B5%D1%82%D1%87%D0%B8%D0%BD%D0%BE%D0%B9.jpg HTTP/1.1" 200 17530
+[2026-05-01 15:25:11,543] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 19110
+[2026-05-01 15:25:12,051] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20686
+[2026-05-01 15:25:23,184] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 19937
+[2026-05-01 15:25:25,778] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20445
+[2026-05-01 15:25:30,987] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20094
+[2026-05-01 15:25:32,079] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20352
+[2026-05-01 15:25:37,024] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20582
+[2026-05-01 15:25:37,479] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 19940
+[2026-05-01 15:25:38,086] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20097
+[2026-05-01 15:25:39,573] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20352
+[2026-05-01 15:25:48,528] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20158
+[2026-05-01 15:25:53,522] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20085
+[2026-05-01 15:25:53,894] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 21745
+[2026-05-01 15:25:57,433] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20155
+[2026-05-01 15:25:58,135] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20158
+[2026-05-01 15:26:00,673] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20501
+[2026-05-01 15:26:01,858] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 21818
+[2026-05-01 15:26:02,807] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 17848
+[2026-05-01 15:26:03,547] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 19123
+[2026-05-01 15:26:05,528] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 19214
+[2026-05-01 15:26:06,123] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20369
+[2026-05-01 15:26:08,494] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 17848
+[2026-05-01 15:26:57,739] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 19719
+[2026-05-01 15:26:58,436] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 19994
+[2026-05-01 15:27:00,525] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 19772
+[2026-05-01 15:27:01,695] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 19719
+[2026-05-01 15:27:02,315] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 18585
+[2026-05-01 15:27:05,227] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 18162
+[2026-05-01 15:28:30,730] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20085
+[2026-05-01 15:28:32,885] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20501
+[2026-05-01 15:28:36,531] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20082
+[2026-05-01 15:28:38,651] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20085
+[2026-05-01 15:28:46,162] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 21818
+[2026-05-01 15:28:49,759] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 21746
+[2026-05-01 15:28:53,785] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 21819
+[2026-05-01 15:28:56,499] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20155
+[2026-05-01 15:28:57,268] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20155
+[2026-05-01 15:29:02,197] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20082
+[2026-05-01 15:29:02,391] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20497
+[2026-05-01 15:29:02,984] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20158
+[2026-05-01 15:29:03,906] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 21818
+[2026-05-05 12:58:52,445] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-05 12:58:54,781] INFO django.server: "GET / HTTP/1.1" 200 7303
+[2026-05-05 12:58:54,915] INFO django.server: "GET /static/css/style.css HTTP/1.1" 304 0
+[2026-05-05 12:58:54,918] INFO django.server: "GET /media/Diplom4.jpg HTTP/1.1" 304 0
+[2026-05-05 12:58:54,918] INFO django.server: "GET /media/Diplom_5.png HTTP/1.1" 304 0
+[2026-05-05 12:58:54,919] INFO django.server: "GET /media/recipes/pasta-karbonara.jpg HTTP/1.1" 304 0
+[2026-05-05 12:58:54,927] INFO django.server: "GET /media/recipes/Chicken_teriyaki_R0mQvFS.jpg HTTP/1.1" 304 0
+[2026-05-05 12:58:54,940] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 304 0
+[2026-05-05 12:58:55,007] INFO django.server: "GET /media/diplom_1.jpg HTTP/1.1" 200 21609
+[2026-05-05 12:58:55,011] INFO django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 200 13406
+[2026-05-05 12:58:55,027] INFO django.server: "GET /media/Diplom_3.jpg HTTP/1.1" 200 16226
+[2026-05-05 12:58:55,098] INFO django.server: "GET /media/Diplom_6.png HTTP/1.1" 200 245054
+[2026-05-05 12:58:55,137] WARNING django.request: Not Found: /favicon.ico
+[2026-05-05 12:58:55,137] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6697
+[2026-05-05 12:58:58,611] INFO django.server: "GET /login/ HTTP/1.1" 200 2146
+[2026-05-05 12:59:00,970] INFO django.server: "POST /login/ HTTP/1.1" 302 0
+[2026-05-05 12:59:01,021] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-05 12:59:04,385] INFO django.server: "GET /profile/ HTTP/1.1" 200 29682
+[2026-05-05 12:59:05,154] INFO django.server: "GET /logout/ HTTP/1.1" 302 0
+[2026-05-05 12:59:05,199] INFO django.server: "GET / HTTP/1.1" 200 7303
+[2026-05-05 12:59:06,065] INFO django.server: "GET /login/ HTTP/1.1" 200 2146
+[2026-05-05 12:59:09,689] INFO django.server: "POST /login/ HTTP/1.1" 200 2410
+[2026-05-05 12:59:47,009] INFO django.server: "POST /login/ HTTP/1.1" 302 0
+[2026-05-05 12:59:47,054] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-05 12:59:50,043] INFO django.server: "GET /profile/ HTTP/1.1" 200 29682
+[2026-05-05 12:59:53,070] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-05 12:59:53,708] INFO django.server: "GET /compose/ HTTP/1.1" 200 27686
+[2026-05-05 12:59:53,754] INFO django.server: "GET /media/ingridients/kokososovoe__moloko.png HTTP/1.1" 200 57958
+[2026-05-05 13:00:14,005] INFO django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 200 27915
+[2026-05-05 13:01:06,423] INFO django.server: "GET /recipe/638714/ HTTP/1.1" 200 44259
+[2026-05-05 13:01:39,866] INFO django.server: "GET /recipe/638714/cooking/ HTTP/1.1" 200 20965
+[2026-05-05 13:02:56,934] INFO django.server: "GET /recipe/638714/ HTTP/1.1" 200 44259
+[2026-05-05 13:03:01,305] INFO django.server: "GET /recipe/638714/cooking/ HTTP/1.1" 200 20965
+[2026-05-05 13:03:10,774] INFO django.server: "GET /recipe/4/ HTTP/1.1" 200 22586
+[2026-05-05 13:03:15,722] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-05 13:03:18,578] INFO django.server: "GET /recipe/2/ HTTP/1.1" 200 22554
+[2026-05-05 13:03:45,157] INFO django.server: "GET /api/recipe/fetch/2/ HTTP/1.1" 200 9094
+[2026-05-05 13:05:46,218] INFO django.server: "GET /meal-plan/ HTTP/1.1" 200 53733
+[2026-05-05 13:05:50,571] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 16507
+[2026-05-05 13:05:50,581] INFO django.server: "GET /media/recipes/17_%D0%9A%D1%83%D1%80%D0%B8%D0%BD%D1%8B%D0%B9_%D1%81%D1%83%D0%BF.jpg HTTP/1.1" 304 0
+[2026-05-05 13:05:50,582] INFO django.server: "GET /media/recipes/27_%D0%96%D0%B0%D1%80%D0%BA%D0%BE%D0%B5_%D0%B8%D0%B7_%D1%81%D0%B2%D0%B8%D0%BD%D0%B8%D0%BD%D1%8B_%D1%81_%D0%BA%D0%B0%D1%80%D1%82%D0%BE%D1%88%D0%BA%D0%BE%D0%B9.jpg HTTP/1.1" 304 0
+[2026-05-05 13:05:50,583] INFO django.server: "GET /media/recipes/11_%D0%91%D1%83%D1%82%D0%B5%D1%80%D0%B1%D1%80%D0%BE%D0%B4_%D1%81_%D1%81%D1%8B%D1%80%D0%BE%D0%BC.jpg HTTP/1.1" 200 16131
+[2026-05-05 13:05:50,583] INFO django.server: "GET /media/recipes/9_%D0%A2%D0%B2%D0%BE%D1%80%D0%BE%D0%B3_%D1%81%D0%BE_%D1%81%D0%BC%D0%B5%D1%82%D0%B0%D0%BD%D0%BE%D0%B9.jpg HTTP/1.1" 200 14612
+[2026-05-05 13:05:50,583] INFO django.server: "GET /media/recipes/14_%D0%9F%D0%BB%D0%BE%D0%B2_%D1%81_%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B5%D0%B9.jpg HTTP/1.1" 200 13140
+[2026-05-05 13:05:59,361] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 10277
+[2026-05-05 13:05:59,369] INFO django.server: "GET /media/recipes/13_%D0%9A%D1%83%D1%80%D0%B8%D0%BD%D0%BE%D0%B5_%D1%84%D0%B8%D0%BB%D0%B5_%D1%81_%D1%80%D0%B8%D1%81%D0%BE%D0%BC.jpg HTTP/1.1" 200 16382
+[2026-05-05 13:05:59,369] INFO django.server: "GET /media/recipes/23_%D0%93%D1%83%D0%BB%D1%8F%D1%88_%D0%B8%D0%B7_%D0%B3%D0%BE%D0%B2%D1%8F%D0%B4%D0%B8%D0%BD%D1%8B_%D1%81_%D0%BF%D1%8E%D1%80%D0%B5.jpg HTTP/1.1" 200 13406
+[2026-05-05 13:06:02,555] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 10337
+[2026-05-05 13:06:05,924] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13824
+[2026-05-05 13:06:05,934] INFO django.server: "GET /media/recipes/21_%D0%93%D0%BE%D1%80%D0%BE%D1%85%D0%BE%D0%B2%D1%8B%D0%B9_%D1%81%D1%83%D0%BF.jpg HTTP/1.1" 200 10386
+[2026-05-05 13:06:05,934] INFO django.server: "GET /media/recipes/34_%D0%9A%D0%BE%D1%82%D0%BB%D0%B5%D1%82%D1%8B_%D0%BF%D0%BE-%D0%BA%D0%B8%D0%B5%D0%B2%D1%81%D0%BA%D0%B8.jpg HTTP/1.1" 200 19054
+[2026-05-05 13:06:05,935] INFO django.server: "GET /media/recipes/6_%D0%9E%D0%B2%D1%81%D1%8F%D0%BD%D0%BA%D0%B0_%D0%BD%D0%B0_%D0%BC%D0%BE%D0%BB%D0%BE%D0%BA%D0%B5.jpg HTTP/1.1" 200 17443
+[2026-05-05 13:06:07,011] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14444
+[2026-05-05 13:06:07,017] INFO django.server: "GET /media/recipes/8_%D0%9E%D0%BC%D0%BB%D0%B5%D1%82.jpg HTTP/1.1" 200 20294
+[2026-05-05 13:06:18,048] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 19487
+[2026-05-05 13:06:18,055] INFO django.server: "GET /media/recipes/32_%D0%91%D1%83%D1%82%D0%B5%D1%80%D0%B1%D1%80%D0%BE%D0%B4_%D1%81_%D0%B2%D0%B5%D1%82%D1%87%D0%B8%D0%BD%D0%BE%D0%B9.jpg HTTP/1.1" 200 17530
+[2026-05-05 13:06:21,036] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 19063
+[2026-05-05 13:06:21,042] INFO django.server: "GET /media/recipes/18_%D0%9A%D0%B0%D1%80%D1%82%D0%BE%D1%84%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5_%D0%BF%D1%8E%D1%80%D0%B5_%D1%81_%D0%BA%D0%BE%D1%82%D0%BB%D0%B5%D1%82%D0%BE%D0%B9.jpg HTTP/1.1" 304 0
+[2026-05-05 13:06:21,045] INFO django.server: "GET /media/recipes/15_%D0%9C%D0%B0%D0%BA%D0%B0%D1%80%D0%BE%D0%BD%D1%8B_%D0%BF%D0%BE-%D1%84%D0%BB%D0%BE%D1%82%D1%81%D0%BA%D0%B8.jpg HTTP/1.1" 200 22069
+[2026-05-05 13:06:22,690] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 21550
+[2026-05-05 13:06:29,968] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20479
+[2026-05-05 13:06:30,531] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 18819
+[2026-05-05 13:06:31,497] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20151
+[2026-05-05 13:06:31,972] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20563
+[2026-05-05 13:06:37,654] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 19249
+[2026-05-05 13:06:37,661] INFO django.server: "GET /media/recipes/30_%D0%A1%D1%8B%D1%80%D0%BD%D0%B8%D0%BA%D0%B8.jpg HTTP/1.1" 200 15257
+[2026-05-05 13:06:39,408] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 18557
+[2026-05-05 13:06:42,871] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 19154
+[2026-05-05 13:06:47,101] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20311
+[2026-05-05 13:06:48,671] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 20154
+[2026-05-05 13:06:51,224] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 19244
+[2026-05-05 13:06:51,239] INFO django.server: "GET /media/recipes/kasha_risovaya.png HTTP/1.1" 200 595377
+[2026-05-05 13:06:51,895] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 19712
+[2026-05-05 13:06:57,073] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 18006
+[2026-05-05 13:06:57,776] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 19163
+[2026-05-05 13:06:59,967] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 18519
+[2026-05-05 13:07:01,998] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 18519
+[2026-05-05 13:07:10,813] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13710
+[2026-05-05 13:07:37,743] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14235
+[2026-05-05 13:07:39,746] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13078
+[2026-05-05 13:07:40,573] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14078
+[2026-05-05 13:07:51,769] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13710
+[2026-05-05 13:07:53,430] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14062
+[2026-05-05 13:07:55,161] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13591
+[2026-05-05 13:07:57,509] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14705
+[2026-05-05 13:07:58,213] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 12512
+[2026-05-05 13:08:19,501] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 12843
+[2026-05-05 13:08:41,395] INFO django.server: "POST /api/shopping-list/generate/ HTTP/1.1" 200 2905
+[2026-05-05 13:08:50,180] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14231
+[2026-05-05 13:08:51,899] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 14234
+[2026-05-05 13:08:59,766] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 13763
+[2026-05-05 13:09:03,888] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 18455
+[2026-05-05 13:09:04,978] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 19007
+[2026-05-05 13:09:07,238] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 18616
+[2026-05-05 13:09:07,773] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 18115
+[2026-05-05 13:09:08,345] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 19517
+[2026-05-05 13:09:09,161] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 17692
+[2026-05-05 13:09:14,316] INFO django.server: "POST /api/shopping-list/generate/ HTTP/1.1" 200 2748
+[2026-05-05 13:09:18,316] INFO django.server: "POST /api/shopping-list/generate/ HTTP/1.1" 200 2748
+[2026-05-05 13:09:20,531] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 17875
+[2026-05-05 13:09:26,113] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 18598
+[2026-05-05 13:09:26,855] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 19084
+[2026-05-05 13:09:31,965] INFO django.server: "POST /api/shopping-list/generate/ HTTP/1.1" 200 4040
+[2026-05-05 13:09:39,133] INFO django.server: "POST /api/shopping-list/generate/ HTTP/1.1" 200 4040
+[2026-05-05 13:09:41,429] INFO django.server: "POST /api/meal-plan/generate/ HTTP/1.1" 200 19087
+[2026-05-05 13:09:43,433] INFO django.server: "POST /api/shopping-list/generate/ HTTP/1.1" 200 3217
+[2026-05-05 13:11:32,118] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-05 13:11:34,068] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-05 13:11:35,157] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-05 13:12:00,836] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-05 13:12:12,577] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-05 13:12:15,793] INFO django.server: "GET /meal-plan/ HTTP/1.1" 200 53733
+[2026-05-05 13:12:17,021] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-05 13:12:17,389] INFO django.server: "GET /compose/ HTTP/1.1" 200 27686
+[2026-05-05 13:12:23,919] INFO django.server: "GET /compose/ HTTP/1.1" 200 27686
+[2026-05-05 13:12:24,013] INFO django.server: "GET /media/ingridients/kokososovoe__moloko.png HTTP/1.1" 200 57958
+[2026-05-05 13:12:24,026] INFO django.server: "GET /static/css/style.css HTTP/1.1" 200 11683
+[2026-05-05 13:12:24,039] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 200 162739
+[2026-05-05 13:12:24,621] WARNING django.request: Not Found: /favicon.ico
+[2026-05-05 13:12:24,622] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6697
+[2026-05-05 13:12:34,249] INFO django.server: - Broken pipe from ('127.0.0.1', 52965)
+[2026-05-05 13:12:36,245] INFO django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 200 27915
+[2026-05-05 13:12:54,532] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-05 13:12:55,594] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-05 13:12:56,875] INFO django.server: "GET /compose/ HTTP/1.1" 200 27692
+[2026-05-05 13:13:06,831] INFO django.server: "GET /compose/ HTTP/1.1" 200 27692
+[2026-05-05 13:13:06,917] INFO django.server: "GET /static/css/style.css HTTP/1.1" 200 11683
+[2026-05-05 13:13:06,919] INFO django.server: "GET /media/ingridients/kokososovoe__moloko.png HTTP/1.1" 200 57958
+[2026-05-05 13:13:06,947] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 200 162739
+[2026-05-05 13:13:07,243] WARNING django.request: Not Found: /favicon.ico
+[2026-05-05 13:13:07,243] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6697
+[2026-05-05 13:13:10,997] INFO django.server: - Broken pipe from ('127.0.0.1', 58881)
+[2026-05-05 13:13:20,464] INFO django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 200 27915
+[2026-05-05 13:13:41,416] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-05 13:13:42,473] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-05 13:13:48,796] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-05 13:14:02,422] INFO django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 200 27915
+[2026-05-05 13:18:55,350] INFO django.server: "GET /recipe/638714/ HTTP/1.1" 200 44421
+[2026-05-05 13:21:32,883] INFO django.server: "POST /api/favorites/save/ HTTP/1.1" 200 228
+[2026-05-05 13:21:35,729] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-05 13:21:37,174] INFO django.server: "GET /profile/ HTTP/1.1" 200 33524
+[2026-05-05 13:21:37,217] WARNING django.server: "GET /static/images/default_recipe.jpg HTTP/1.1" 404 2002
+[2026-05-05 13:21:54,457] INFO django.server: "GET /recipe/638714/ HTTP/1.1" 200 44421
+[2026-05-05 13:22:14,280] INFO django.server: "GET /recipe/638714/cooking/ HTTP/1.1" 200 20886
+[2026-05-05 15:05:16,477] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-05 15:05:18,204] INFO django.server: "GET / HTTP/1.1" 200 7303
+[2026-05-05 15:05:22,151] INFO django.server: "GET / HTTP/1.1" 200 7303
+[2026-05-05 15:05:22,333] INFO django.server: "GET /static/css/style.css HTTP/1.1" 200 11683
+[2026-05-05 15:05:22,340] INFO django.server: "GET /media/Diplom_3.jpg HTTP/1.1" 200 16226
+[2026-05-05 15:05:22,344] INFO django.server: "GET /media/diplom_1.jpg HTTP/1.1" 200 21609
+[2026-05-05 15:05:22,347] INFO django.server: "GET /media/recipes/Chicken_teriyaki_R0mQvFS.jpg HTTP/1.1" 200 136236
+[2026-05-05 15:05:22,349] INFO django.server: "GET /media/Diplom4.jpg HTTP/1.1" 200 9632
+[2026-05-05 15:05:22,349] INFO django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 200 13406
+[2026-05-05 15:05:22,350] INFO django.server: "GET /media/recipes/pasta-karbonara.jpg HTTP/1.1" 200 231354
+[2026-05-05 15:05:22,351] INFO django.server: "GET /media/Diplom_5.png HTTP/1.1" 200 175374
+[2026-05-05 15:05:22,359] INFO django.server: "GET /media/Diplom_6.png HTTP/1.1" 200 245054
+[2026-05-05 15:05:22,737] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 200 162739
+[2026-05-05 15:05:22,768] WARNING django.request: Not Found: /favicon.ico
+[2026-05-05 15:05:22,768] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6697
+[2026-05-05 15:05:27,003] INFO django.server: "GET /login/ HTTP/1.1" 200 2146
+[2026-05-05 15:05:29,826] INFO django.server: "GET /register/ HTTP/1.1" 200 2613
+[2026-05-07 18:01:26,105] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 18:01:29,582] INFO django.server: "GET / HTTP/1.1" 200 7303
+[2026-05-07 18:01:29,865] INFO django.server: "GET /media/Diplom4.jpg HTTP/1.1" 200 9632
+[2026-05-07 18:01:29,866] INFO django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 200 13406
+[2026-05-07 18:01:29,866] INFO django.server: "GET /media/diplom_1.jpg HTTP/1.1" 200 21609
+[2026-05-07 18:01:29,869] INFO django.server: "GET /media/Diplom_5.png HTTP/1.1" 200 175374
+[2026-05-07 18:01:29,872] INFO django.server: "GET /static/css/style.css HTTP/1.1" 200 11683
+[2026-05-07 18:01:29,874] INFO django.server: "GET /media/recipes/pasta-karbonara.jpg HTTP/1.1" 200 231354
+[2026-05-07 18:01:29,884] INFO django.server: "GET /media/Diplom_3.jpg HTTP/1.1" 200 16226
+[2026-05-07 18:01:29,887] INFO django.server: "GET /media/recipes/Chicken_teriyaki_R0mQvFS.jpg HTTP/1.1" 200 136236
+[2026-05-07 18:01:29,897] INFO django.server: "GET /media/Diplom_6.png HTTP/1.1" 200 245054
+[2026-05-07 18:01:31,700] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 200 162739
+[2026-05-07 18:01:32,350] WARNING django.request: Not Found: /favicon.ico
+[2026-05-07 18:01:32,351] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6697
+[2026-05-07 18:01:34,155] INFO django.server: "GET /login/ HTTP/1.1" 200 2146
+[2026-05-07 18:01:38,911] INFO django.server: "POST /login/ HTTP/1.1" 302 0
+[2026-05-07 18:01:38,958] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 18:01:41,596] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-07 18:02:30,107] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 18:02:31,239] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 18:02:35,778] INFO django.server: "GET /recipe/5/ HTTP/1.1" 200 22542
+[2026-05-07 18:02:46,693] ERROR django.request: Bad Gateway: /api/recipe/fetch/5/
+[2026-05-07 18:02:46,693] ERROR django.server: "GET /api/recipe/fetch/5/ HTTP/1.1" 502 122
+[2026-05-07 18:03:23,102] INFO django.server: "GET /recipe/53/ HTTP/1.1" 200 22623
+[2026-05-07 18:04:40,623] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 18:04:41,946] INFO django.server: "GET /meal-plan/ HTTP/1.1" 200 53733
+[2026-05-07 18:04:42,636] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 18:04:43,098] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-07 18:04:43,147] INFO django.server: "GET /media/ingridients/kokososovoe__moloko.png HTTP/1.1" 304 0
+[2026-05-07 18:06:18,792] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-07 18:06:31,913] INFO django.server: - Broken pipe from ('127.0.0.1', 53409)
+[2026-05-07 18:06:32,012] INFO django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 200 27915
+[2026-05-07 18:06:46,942] INFO django.server: - Broken pipe from ('127.0.0.1', 62459)
+[2026-05-07 18:07:24,257] INFO django.server: - Broken pipe from ('127.0.0.1', 57978)
+[2026-05-07 18:27:03,235] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 18:27:04,520] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 18:27:08,539] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-07 18:27:25,051] ERROR django.request: Bad Gateway: /api/search_recipes/
+[2026-05-07 18:27:25,052] ERROR django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 502 122
+[2026-05-07 18:28:00,199] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 18:28:01,269] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 18:28:03,681] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-07 18:29:53,933] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 18:29:55,016] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 18:29:58,362] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-07 18:32:43,239] INFO django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 200 27915
+[2026-05-07 20:00:34,161] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 20:00:35,706] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 20:04:49,406] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 20:04:50,580] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 20:04:51,664] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-07 20:05:25,339] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 20:05:26,743] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-07 20:05:50,255] ERROR django.request: Bad Gateway: /api/search_recipes/
+[2026-05-07 20:05:50,255] ERROR django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 502 122
+[2026-05-07 20:06:31,929] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 20:06:33,007] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 20:06:35,028] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-07 20:07:46,639] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 20:07:47,643] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 20:07:48,856] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-07 20:10:21,563] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-07 20:10:28,682] INFO django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 200 27915
+[2026-05-07 20:10:38,688] INFO django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 200 27915
+[2026-05-07 20:11:09,899] INFO django.server: - Broken pipe from ('127.0.0.1', 61710)
+[2026-05-07 20:12:14,903] INFO django.server: code 400, message Bad request version ('N\xbbD\xe1\xf7\xce!~u\xb7\xff\xb0}E\xc9\xf0\xc66\xd52')
+[2026-05-07 20:12:14,903] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:14,904] INFO django.server: code 400, message Bad request version ('\\x00\xda\\x00\\x00\\x01\\x00\\x01')
+[2026-05-07 20:12:14,904] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:14,909] INFO django.server: code 400, message Bad request version ('\\x1a\\x1a\\x13\\x01\\x13\\x02\\x13\\x03\xc0+\xc0/\xc0,\xc00\xcc\xa9\xcc\xa8\xc0\\x13\xc0\\x14\\x00\\x9c\\x00\\x9d\\x00/\\x005\\x01\\x00\\x063JJ\\x00\\x00D\xcd\\x00\\x05\\x00\\x03\\x02h2\\x00+\\x00\\x07\\x06')
+[2026-05-07 20:12:14,909] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:14,909] INFO django.server: code 400, message Bad request version ('\\\\\xda{\xb5Qq')
+[2026-05-07 20:12:14,910] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:14,911] INFO django.server: code 400, message Bad request syntax ('\\x16\\x03\\x01\\x07\\x00\\x01\\x00\\x06\xfc\\x03\\x03\xdcjOQ\\x84\xa2p\\x86\\x9d\xd0')
+[2026-05-07 20:12:14,911] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:14,911] INFO django.server: code 400, message Bad request version ('zz\\x13\\x01\\x13\\x02\\x13\\x03\xc0+\xc0/\xc0,\xc00\xcc\xa9\xcc\xa8\xc0\\x13\xc0\\x14\\x00\\x9c\\x00\\x9d\\x00/\\x005\\x01\\x00\\x06S')
+[2026-05-07 20:12:14,911] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:16,779] INFO django.server: code 400, message Bad request version ('`\xd4\xdfu\xc2\xce\xe3')
+[2026-05-07 20:12:16,779] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:16,779] INFO django.server: code 400, message Bad request version ('\\x00\\x02\\x01\\x00\\x00+\\x00\\x07\\x06\xfa\xfa\\x03\\x04\\x03\\x03D\xcd\\x00\\x05\\x00\\x03\\x02h2\\x003\\x04\xef\\x04\xed**\\x00\\x01\\x00\\x11\xec\\x04\xc0\\x82\\x91\\x9a\\x08\\x08\xa9#{Z\xd3\xa4pm\xb22\\x93\xd3j\\x12zg\xa9\xa9$\\x0e\xcbV\xda')
+[2026-05-07 20:12:16,779] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:16,780] INFO django.server: code 400, message Bad request version ('**\\x13\\x01\\x13\\x02\\x13\\x03\xc0+\xc0/\xc0,\xc00\xcc\xa9\xcc\xa8\xc0\\x13\xc0\\x14\\x00\\x9c\\x00\\x9d\\x00/\\x005\\x01\\x00\\x06S')
+[2026-05-07 20:12:16,780] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:16,780] INFO django.server: code 400, message Bad request version ('**\\x13\\x01\\x13\\x02\\x13\\x03\xc0+\xc0/\xc0,\xc00\xcc\xa9\xcc\xa8\xc0\\x13\xc0\\x14\\x00\\x9c\\x00\\x9d\\x00/\\x005\\x01\\x00\\x06\\x93\\x1a\\x1a\\x00\\x00\\x00')
+[2026-05-07 20:12:16,781] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:17,601] INFO django.server: code 400, message Bad request version ('\\x00\\x12\\x00\\x10\\x04\\x03\\x08\\x04\\x04\\x01\\x05\\x03\\x08\\x05\\x05\\x01\\x08\\x06\\x06\\x01\\x00')
+[2026-05-07 20:12:17,601] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:17,601] INFO django.server: code 400, message Bad request version ('\xc3\xc3\xe1n\\x07\\x12s\xb8\\x03OhGi\\x93\xe5ci^o\\x0f\xef\xed\xa3\\x92\xb8\\x00')
+[2026-05-07 20:12:17,601] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:17,602] INFO django.server: code 400, message Bad request version ('J\xf0')
+[2026-05-07 20:12:17,602] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:17,603] INFO django.server: code 400, message Bad request version ('\xa8\xa7s\\x92$\\x83\\x93I2C6!\\x95\xe4]\xdc\xd6\\x9b|\xa7l\\x89u$\\x01%GY\\x10IA\\x81\\x8de*\xab\xea7\xa9\xd2J\\\\\xf0\\x12\\x9a\xf7\\x955')
+[2026-05-07 20:12:17,603] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:18,233] INFO django.server: code 400, message Bad request version ('0N\xcb<\\x15!,Z\\x10\xb5\\x97A\\x9db=\\x87I^4\xc6')
+[2026-05-07 20:12:18,233] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:18,233] INFO django.server: code 400, message Bad request syntax ('\\x16\\x03\\x01\\x07\\x00\\x01\\x00\\x06\xfc\\x03\\x03\xfe')
+[2026-05-07 20:12:18,233] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:18,234] INFO django.server: code 400, message Bad request version ('\xda\xda\\x13\\x01\\x13\\x02\\x13\\x03\xc0+\xc0/\xc0,\xc00\xcc\xa9\xcc\xa8\xc0\\x13\xc0\\x14\\x00\\x9c\\x00\\x9d\\x00/\\x005\\x01\\x00\\x063zz\\x00\\x00\\x00')
+[2026-05-07 20:12:18,234] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:18,234] INFO django.server: code 400, message Bad request version ('\\x11\xbbgq\xfb\\x83\xc9\\x06M[\\x07\\x95\\x9b5A\xdb\xba-dF,L\xdb\\x8d-\\x82c\\x00\\x9eP\\x02n\\x00\\x90!\xb5\\x16\\x05\xac]V,i\xa4\xb7S\xe8\\x9bqC\xf9y)\xe9\\x16*!9\\x01QQ\xf8X%\\x1b\xc5\xe1\xf81-\\x05I\\x1a\xe9\xd1\\x8f\\x9e\\x8a]f\xb0\xb4\xe4Bh\xbd\xc8uQ\xe2[\xc8\\x05\xdd\\x03F')
+[2026-05-07 20:12:18,234] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:18,546] INFO django.server: code 400, message Bad request version ('\\x02h2\\x08http/1.1\\x00\\x1b\\x00\\x03\\x02\\x00\\x02\\x00+\\x00\\x07\\x06zz\\x03\\x04\\x03\\x03\\x00\\x05\\x00\\x05\\x01\\x00\\x00\\x00\\x00\\x00')
+[2026-05-07 20:12:18,546] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:18,547] INFO django.server: code 400, message Bad request version ('**\\x13\\x01\\x13\\x02\\x13\\x03\xc0+\xc0/\xc0,\xc00\xcc\xa9\xcc\xa8\xc0\\x13\xc0\\x14\\x00\\x9c\\x00\\x9d\\x00/\\x005\\x01\\x00\\x06sJJ\\x00\\x00\\x00\\x05\\x00\\x05\\x01\\x00\\x00\\x00\\x00\\x00\\x17\\x00\\x00\\x00#\\x00\\x00\\x00')
+[2026-05-07 20:12:18,547] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:18,548] INFO django.server: code 400, message Bad request version ('\\x8a\\x8a\\x13\\x01\\x13\\x02\\x13\\x03\xc0+\xc0/\xc0,\xc00\xcc\xa9\xcc\xa8\xc0\\x13\xc0\\x14\\x00\\x9c\\x00\\x9d\\x00/\\x005\\x01\\x00\\x06\\x93\\x1a\\x1a\\x00\\x00\\x00')
+[2026-05-07 20:12:18,548] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:18,548] INFO django.server: code 400, message Bad request version ('mGN\\x1b<\xb8\xa5\xb2\\x9b\\x19')
+[2026-05-07 20:12:18,548] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:18,817] INFO django.server: code 400, message Bad request version ('\\x00\\x12\\x00\\x10\\x04\\x03\\x08\\x04\\x04\\x01\\x05\\x03\\x08\\x05\\x05\\x01\\x08\\x06\\x06\\x01\\x003\\x04\xef\\x04\xed')
+[2026-05-07 20:12:18,817] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:18,817] INFO django.server: code 400, message Bad request version ('\\x02h2\\x08http/1.1\\x00')
+[2026-05-07 20:12:18,818] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:18,818] INFO django.server: code 400, message Bad request version ('\\x00\\x02\\x01\\x00\\x00')
+[2026-05-07 20:12:18,819] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:18,819] INFO django.server: code 400, message Bad request version ('\xb79$\\x1b\xba')
+[2026-05-07 20:12:18,819] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:29,281] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 20:12:30,640] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 20:12:52,703] INFO django.server: code 400, message Bad request syntax ('\\x16\\x03\\x01\\x07\\x00\\x01\\x00\\x06\xfc\\x03\\x03\xa6\xc8\xe0')
+[2026-05-07 20:12:52,703] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:52,703] INFO django.server: code 400, message Bad request version ('\xedt\\\\\xc2s\xb8BB\xba?{\xa9\xb3Qf"\\x11\\x82\xe0\xd6\xbe|\xdc')
+[2026-05-07 20:12:52,703] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:52,704] INFO django.server: code 400, message Bad request version ('\\x00\\x02\\x01\\x00\\x00\\x12\\x00\\x00\\x003\\x04\xef\\x04\xed')
+[2026-05-07 20:12:52,704] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:52,704] INFO django.server: code 400, message Bad request version ('\xba\xba\\x13\\x01\\x13\\x02\\x13\\x03\xc0+\xc0/\xc0,\xc00\xcc\xa9\xcc\xa8\xc0\\x13\xc0\\x14\\x00\\x9c\\x00\\x9d\\x00/\\x005\\x01\\x00\\x06\\x93**\\x00\\x00\\x00+\\x00\\x07\\x06jj\\x03\\x04\\x03\\x03\\x00\\x1b\\x00\\x03\\x02\\x00\\x02\\x00\\x05\\x00\\x05\\x01\\x00\\x00\\x00\\x00D\xcd\\x00\\x05\\x00\\x03\\x02h2\\x00')
+[2026-05-07 20:12:52,704] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:55,029] INFO django.server: code 400, message Bad request version ('\\x02h2\\x08http/1.1\\x00#\\x00\\x00\xff\\x01\\x00\\x01\\x00\\x00-\\x00\\x02\\x01\\x01\\x00\\x17\\x00\\x00\\x00')
+[2026-05-07 20:12:55,029] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:55,029] INFO django.server: code 400, message Bad request version ('jQ}`w\\x18Q\xd0V8+M:+\xb2<\\x89')
+[2026-05-07 20:12:55,030] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:55,031] INFO django.server: code 400, message Bad request version ('\\x13s\xee\xc3\xc2\\x06tC\xf3\xd4\xc5p,\\x08\\x8d\xa9r!(xrj')
+[2026-05-07 20:12:55,031] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:12:55,031] INFO django.server: code 400, message Bad request syntax ('\\x16\\x03\\x01\\x07\\x00\\x01\\x00\\x06\xfc\\x03\\x03W\xac\xef\xfd\xab\xc1\\x93a\xed\xc0e5\\x19$^')
+[2026-05-07 20:12:55,031] ERROR django.server: You're accessing the development server over HTTPS, but it only supports HTTP.
+[2026-05-07 20:15:54,356] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 20:19:31,613] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 20:19:32,745] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 20:19:32,809] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 20:40:35,727] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 20:44:44,269] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 20:45:37,081] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 20:45:46,942] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 20:50:28,307] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 21:03:08,047] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 21:03:09,627] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 21:03:25,727] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-07 21:05:37,984] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 21:08:06,696] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 21:22:04,770] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 21:38:12,716] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 21:45:09,742] WARNING django.request: Not Found: /favicon.ico
+[2026-05-07 21:48:08,867] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 21:48:13,210] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 21:48:14,868] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-07 22:00:55,183] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 22:01:33,058] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 22:02:16,035] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 22:02:18,390] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 22:04:15,498] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 22:04:46,046] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 22:04:48,481] INFO django.server: "GET / HTTP/1.1" 200 7303
+[2026-05-07 22:04:48,783] INFO django.server: "GET /static/css/style.css HTTP/1.1" 200 11683
+[2026-05-07 22:04:48,790] INFO django.server: "GET /media/Diplom4.jpg HTTP/1.1" 200 9632
+[2026-05-07 22:04:48,793] INFO django.server: "GET /media/diplom_1.jpg HTTP/1.1" 200 21609
+[2026-05-07 22:04:48,794] INFO django.server: "GET /media/recipes/Chicken_teriyaki_R0mQvFS.jpg HTTP/1.1" 200 136236
+[2026-05-07 22:04:48,794] INFO django.server: "GET /media/Diplom_3.jpg HTTP/1.1" 200 16226
+[2026-05-07 22:04:48,797] INFO django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 200 13406
+[2026-05-07 22:04:48,801] INFO django.server: "GET /media/Diplom_5.png HTTP/1.1" 200 175374
+[2026-05-07 22:04:48,803] INFO django.server: "GET /media/recipes/pasta-karbonara.jpg HTTP/1.1" 200 231354
+[2026-05-07 22:04:48,804] INFO django.server: "GET /media/Diplom_6.png HTTP/1.1" 200 245054
+[2026-05-07 22:04:50,516] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 200 162739
+[2026-05-07 22:04:52,695] WARNING django.request: Not Found: /favicon.ico
+[2026-05-07 22:04:52,695] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6702
+[2026-05-07 22:08:29,355] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\diplom\settings.py changed, reloading.
+[2026-05-07 22:09:15,695] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 22:09:19,356] INFO django.server: "GET / HTTP/1.1" 200 7303
+[2026-05-07 22:09:19,731] INFO django.server: "GET /static/css/style.css HTTP/1.1" 200 11683
+[2026-05-07 22:09:19,732] INFO django.server: "GET /media/diplom_1.jpg HTTP/1.1" 200 21609
+[2026-05-07 22:09:19,734] INFO django.server: "GET /media/Diplom4.jpg HTTP/1.1" 200 9632
+[2026-05-07 22:09:19,735] INFO django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 200 13406
+[2026-05-07 22:09:19,744] INFO django.server: "GET /media/Diplom_3.jpg HTTP/1.1" 200 16226
+[2026-05-07 22:09:19,745] INFO django.server: "GET /media/Diplom_5.png HTTP/1.1" 200 175374
+[2026-05-07 22:09:19,746] INFO django.server: "GET /media/recipes/Chicken_teriyaki_R0mQvFS.jpg HTTP/1.1" 200 136236
+[2026-05-07 22:09:19,746] INFO django.server: "GET /media/recipes/pasta-karbonara.jpg HTTP/1.1" 200 231354
+[2026-05-07 22:09:19,750] INFO django.server: "GET /media/Diplom_6.png HTTP/1.1" 200 245054
+[2026-05-07 22:09:27,410] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 200 162739
+[2026-05-07 22:09:47,106] WARNING django.request: Not Found: /favicon.ico
+[2026-05-07 22:09:47,107] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6701
+[2026-05-07 22:09:53,410] INFO django.server: "GET /compose/ HTTP/1.1" 200 27893
+[2026-05-07 22:09:53,447] INFO django.server: "GET /media/ingridients/kokososovoe__moloko.png HTTP/1.1" 200 57958
+[2026-05-07 22:15:18,169] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 22:16:01,696] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 22:16:12,909] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 22:16:37,731] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 22:16:41,291] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 22:16:41,473] INFO django.server: "GET /static/css/style.css HTTP/1.1" 200 11683
+[2026-05-07 22:16:41,485] INFO django.server: "GET /media/Diplom4.jpg HTTP/1.1" 200 9632
+[2026-05-07 22:16:41,487] INFO django.server: "GET /media/diplom_1.jpg HTTP/1.1" 200 21609
+[2026-05-07 22:16:41,491] INFO django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 200 13406
+[2026-05-07 22:16:41,494] INFO django.server: "GET /media/Diplom_5.png HTTP/1.1" 200 175374
+[2026-05-07 22:16:41,503] INFO django.server: "GET /media/recipes/pasta-karbonara.jpg HTTP/1.1" 200 231354
+[2026-05-07 22:16:41,508] INFO django.server: "GET /media/Diplom_3.jpg HTTP/1.1" 200 16226
+[2026-05-07 22:16:41,510] INFO django.server: "GET /media/recipes/Chicken_teriyaki_R0mQvFS.jpg HTTP/1.1" 200 136236
+[2026-05-07 22:16:41,517] INFO django.server: "GET /media/Diplom_6.png HTTP/1.1" 200 245054
+[2026-05-07 22:16:41,518] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 200 162739
+[2026-05-07 22:16:41,614] WARNING django.request: Not Found: /favicon.ico
+[2026-05-07 22:16:41,615] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6697
+[2026-05-07 22:17:19,999] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 22:17:28,194] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 22:25:14,481] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 22:25:25,738] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 22:25:33,107] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-07 22:25:53,065] ERROR django.request: Bad Gateway: /api/search_recipes/
+[2026-05-07 22:25:53,066] ERROR django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 502 122
+[2026-05-07 22:27:38,602] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 22:28:17,528] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 22:28:18,703] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 22:28:20,561] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-07 22:28:53,910] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 22:28:59,292] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 22:29:04,214] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-07 22:29:04,292] INFO django.server: "GET /media/ingridients/kokososovoe__moloko.png HTTP/1.1" 200 57958
+[2026-05-07 22:29:21,560] ERROR django.request: Bad Gateway: /api/search_recipes/
+[2026-05-07 22:29:21,561] ERROR django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 502 122
+[2026-05-07 22:31:48,061] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 22:31:56,092] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 22:31:57,831] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-07 22:32:18,065] ERROR django.request: Bad Gateway: /api/search_recipes/
+[2026-05-07 22:32:18,066] ERROR django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 502 122
+[2026-05-07 22:35:22,151] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 22:35:34,346] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 22:35:35,685] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-07 22:35:53,375] ERROR django.request: Bad Gateway: /api/search_recipes/
+[2026-05-07 22:35:53,376] ERROR django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 502 122
+[2026-05-07 22:43:46,670] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 23:03:14,805] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-07 23:03:16,863] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-07 23:03:34,125] ERROR django.request: Bad Gateway: /api/search_recipes/
+[2026-05-07 23:03:34,126] ERROR django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 502 122
+[2026-05-07 23:12:39,420] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-07 23:12:40,820] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-08 20:42:20,002] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-08 20:42:57,270] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-08 20:42:57,378] INFO django.server: "GET /static/css/style.css HTTP/1.1" 304 0
+[2026-05-08 20:42:57,378] INFO django.server: "GET /media/Diplom4.jpg HTTP/1.1" 304 0
+[2026-05-08 20:42:57,379] INFO django.server: "GET /media/diplom_1.jpg HTTP/1.1" 304 0
+[2026-05-08 20:42:57,382] INFO django.server: "GET /media/Diplom_2.jpg HTTP/1.1" 304 0
+[2026-05-08 20:42:57,382] INFO django.server: "GET /media/Diplom_5.png HTTP/1.1" 304 0
+[2026-05-08 20:42:57,382] INFO django.server: "GET /media/recipes/pasta-karbonara.jpg HTTP/1.1" 304 0
+[2026-05-08 20:42:57,386] INFO django.server: "GET /media/Diplom_3.jpg HTTP/1.1" 304 0
+[2026-05-08 20:42:57,386] INFO django.server: "GET /media/Diplom_6.png HTTP/1.1" 304 0
+[2026-05-08 20:42:57,386] INFO django.server: "GET /media/recipes/Chicken_teriyaki_R0mQvFS.jpg HTTP/1.1" 304 0
+[2026-05-08 20:42:57,581] WARNING django.request: Not Found: /favicon.ico
+[2026-05-08 20:42:57,581] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6697
+[2026-05-08 20:42:59,223] INFO django.server: "GET /recipe/4/ HTTP/1.1" 200 22586
+[2026-05-08 20:43:22,236] INFO django.server: "GET /api/recipe/fetch/4/ HTTP/1.1" 200 10164
+[2026-05-08 20:45:22,328] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-08 20:45:23,944] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-08 20:45:25,852] INFO django.server: "GET /recipe/2/ HTTP/1.1" 200 22554
+[2026-05-08 20:45:46,942] INFO django.server: "GET /api/recipe/fetch/2/ HTTP/1.1" 200 9094
+[2026-05-08 20:46:03,065] INFO django.server: "GET /recipe/2/cooking/ HTTP/1.1" 200 17611
+[2026-05-08 20:46:25,291] INFO django.server: "GET /api/recipe/fetch/2/ HTTP/1.1" 200 9094
+[2026-05-08 23:04:55,552] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-08 23:04:57,213] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-08 23:04:58,793] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-08 23:05:09,802] INFO django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 200 27915
+[2026-05-08 23:05:29,515] INFO django.server: "GET /recipe/638714/ HTTP/1.1" 200 44415
+[2026-05-08 23:05:55,252] INFO django.server: "GET /recipe/638714/cooking/ HTTP/1.1" 200 20880
+[2026-05-09 00:06:02,367] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 00:06:03,815] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 00:06:06,665] INFO django.server: "GET /recipe/5/ HTTP/1.1" 200 22542
+[2026-05-09 00:06:09,485] WARNING django.request: Not Found: /api/recipe/fetch/5/
+[2026-05-09 00:06:09,486] WARNING django.server: "GET /api/recipe/fetch/5/ HTTP/1.1" 404 122
+[2026-05-09 00:06:17,527] WARNING django.request: Not Found: /api/recipe/fetch/5/
+[2026-05-09 00:06:17,528] WARNING django.server: "GET /api/recipe/fetch/5/ HTTP/1.1" 404 122
+[2026-05-09 00:06:26,356] WARNING django.request: Not Found: /api/recipe/fetch/5/
+[2026-05-09 00:06:26,356] WARNING django.server: "GET /api/recipe/fetch/5/ HTTP/1.1" 404 122
+[2026-05-09 00:06:29,156] WARNING django.request: Not Found: /api/recipe/fetch/5/
+[2026-05-09 00:06:29,157] WARNING django.server: "GET /api/recipe/fetch/5/ HTTP/1.1" 404 122
+[2026-05-09 00:06:33,797] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 00:06:36,087] INFO django.server: "GET /recipe/5/ HTTP/1.1" 200 22542
+[2026-05-09 00:06:37,886] WARNING django.request: Not Found: /api/recipe/fetch/5/
+[2026-05-09 00:06:37,886] WARNING django.server: "GET /api/recipe/fetch/5/ HTTP/1.1" 404 122
+[2026-05-09 00:06:40,897] INFO django.server: "GET /recipe/2/ HTTP/1.1" 200 22554
+[2026-05-09 00:06:57,252] INFO django.server: "GET /api/recipe/fetch/2/ HTTP/1.1" 200 9094
+[2026-05-09 00:07:00,950] ERROR django.request: Internal Server Error: /recipe/2/cooking/
+Traceback (most recent call last):
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py", line 330, in recipe_cooking
+    return render(request, 'recipe_cooking.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'save_to_cooking_history' not found. 'save_to_cooking_history' is not a valid view function or pattern name.
+[2026-05-09 00:07:00,953] ERROR django.server: "GET /recipe/2/cooking/ HTTP/1.1" 500 129450
+[2026-05-09 00:08:00,649] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 00:08:01,689] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 00:08:03,419] INFO django.server: "GET /recipe/2/ HTTP/1.1" 200 22554
+[2026-05-09 00:08:18,421] INFO django.server: "GET /api/recipe/fetch/2/ HTTP/1.1" 200 9094
+[2026-05-09 00:08:21,700] ERROR django.request: Internal Server Error: /recipe/2/cooking/
+Traceback (most recent call last):
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py", line 330, in recipe_cooking
+    return render(request, 'recipe_cooking.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'save_to_cooking_history' not found. 'save_to_cooking_history' is not a valid view function or pattern name.
+[2026-05-09 00:08:21,703] ERROR django.server: "GET /recipe/2/cooking/ HTTP/1.1" 500 129450
+[2026-05-09 00:09:13,778] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 00:09:15,097] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 00:09:16,877] INFO django.server: "GET /recipe/2/ HTTP/1.1" 200 22554
+[2026-05-09 00:09:32,506] INFO django.server: "GET /api/recipe/fetch/2/ HTTP/1.1" 200 9094
+[2026-05-09 00:09:34,635] ERROR django.request: Internal Server Error: /recipe/2/cooking/
+Traceback (most recent call last):
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py", line 330, in recipe_cooking
+    return render(request, 'recipe_cooking.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'save_to_cooking_history' not found. 'save_to_cooking_history' is not a valid view function or pattern name.
+[2026-05-09 00:09:34,638] ERROR django.server: "GET /recipe/2/cooking/ HTTP/1.1" 500 129450
+[2026-05-09 00:10:28,489] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 00:10:29,515] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 00:10:31,595] INFO django.server: "GET /recipe/2/ HTTP/1.1" 200 22554
+[2026-05-09 00:10:49,856] INFO django.server: "GET /api/recipe/fetch/2/ HTTP/1.1" 200 9094
+[2026-05-09 00:10:51,429] INFO django.server: "GET /recipe/2/cooking/ HTTP/1.1" 200 19916
+[2026-05-09 00:11:06,050] INFO django.server: "GET /api/recipe/fetch/2/ HTTP/1.1" 200 9094
+[2026-05-09 00:11:14,241] INFO django.server: "GET /recipe/2/ HTTP/1.1" 200 22554
+[2026-05-09 00:11:23,666] INFO django.server: "GET /meal-plan/ HTTP/1.1" 200 53733
+[2026-05-09 00:11:27,979] INFO django.server: "GET /profile/ HTTP/1.1" 200 33524
+[2026-05-09 00:11:28,017] WARNING django.server: "GET /static/images/default_recipe.jpg HTTP/1.1" 404 2002
+[2026-05-09 00:11:29,357] INFO django.server: "GET /api/recipe/fetch/2/ HTTP/1.1" 200 9094
+[2026-05-09 00:11:33,932] INFO django.server: "POST /api/shopping-list/clear/ HTTP/1.1" 200 17
+[2026-05-09 00:13:30,026] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 00:13:31,367] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 00:13:33,494] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 00:13:54,413] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-09 00:14:07,073] INFO django.server: "GET /recipe/1/cooking/ HTTP/1.1" 200 19927
+[2026-05-09 00:14:20,808] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-09 00:14:48,218] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 00:14:49,257] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 00:14:50,470] INFO django.server: "GET /profile/ HTTP/1.1" 200 23251
+[2026-05-09 00:14:50,503] WARNING django.server: "GET /static/images/default_recipe.jpg HTTP/1.1" 404 2002
+[2026-05-09 00:14:52,890] INFO django.server: "GET /profile/ HTTP/1.1" 200 23251
+[2026-05-09 00:14:52,923] WARNING django.server: "GET /static/images/default_recipe.jpg HTTP/1.1" 404 2002
+[2026-05-09 00:14:52,966] INFO django.server: "GET /static/css/style.css HTTP/1.1" 200 11683
+[2026-05-09 00:14:53,009] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 200 162739
+[2026-05-09 00:14:53,356] WARNING django.request: Not Found: /favicon.ico
+[2026-05-09 00:14:53,356] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6697
+[2026-05-09 00:20:45,974] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 00:20:47,003] ERROR django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py", line 56, in index
+    return render(request, 'index.html', {'recipes': recipes})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Micie456\PycharmProjects\Diplom\.venv\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'cooked_dishes' not found. 'cooked_dishes' is not a valid view function or pattern name.
+[2026-05-09 00:20:47,007] ERROR django.server: "GET / HTTP/1.1" 500 142664
+[2026-05-09 00:21:34,753] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 00:21:35,722] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 00:21:41,146] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 00:21:57,265] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-09 00:22:06,989] INFO django.server: "GET /recipe/1/cooking/ HTTP/1.1" 200 19927
+[2026-05-09 00:22:10,536] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 00:22:11,889] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 00:22:12,590] INFO django.server: "GET /profile/ HTTP/1.1" 200 23251
+[2026-05-09 00:22:12,626] WARNING django.server: "GET /static/images/default_recipe.jpg HTTP/1.1" 404 2002
+[2026-05-09 00:22:21,691] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-09 00:24:13,225] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-05-09 00:24:13,701] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 00:24:33,519] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 00:24:34,535] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 00:24:36,462] INFO django.server: "GET /profile/ HTTP/1.1" 200 23987
+[2026-05-09 00:24:36,500] WARNING django.server: "GET /static/images/default_recipe.jpg HTTP/1.1" 404 2002
+[2026-05-09 00:26:20,385] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 00:26:21,635] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 00:26:36,861] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-09 00:27:08,999] INFO django.server: "GET /recipe/1/cooking/ HTTP/1.1" 200 19927
+[2026-05-09 00:27:32,599] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-09 00:27:41,319] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 00:27:42,341] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 00:27:43,127] INFO django.server: "GET /profile/ HTTP/1.1" 200 23987
+[2026-05-09 00:27:43,181] WARNING django.server: "GET /static/images/default_recipe.jpg HTTP/1.1" 404 2002
+[2026-05-09 00:27:45,050] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 00:27:46,850] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 00:28:27,331] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-09 00:28:30,021] INFO django.server: "GET /recipe/1/cooking/ HTTP/1.1" 200 19927
+[2026-05-09 00:28:31,739] ERROR django.request: Bad Gateway: /api/recipe/fetch/1/
+[2026-05-09 00:28:31,740] ERROR django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 502 122
+[2026-05-09 00:28:44,886] INFO django.server: "GET /recipe/1/cooking/ HTTP/1.1" 200 19927
+[2026-05-09 00:28:46,263] ERROR django.request: Bad Gateway: /api/recipe/fetch/1/
+[2026-05-09 00:28:46,263] ERROR django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 502 122
+[2026-05-09 00:28:51,921] INFO django.server: "GET /profile/ HTTP/1.1" 200 23987
+[2026-05-09 00:28:51,960] WARNING django.server: "GET /static/images/default_recipe.jpg HTTP/1.1" 404 2002
+[2026-05-09 00:28:55,491] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 00:28:56,850] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 00:28:58,407] ERROR django.request: Bad Gateway: /api/recipe/fetch/1/
+[2026-05-09 00:28:58,407] ERROR django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 502 122
+[2026-05-09 00:29:03,487] ERROR django.request: Bad Gateway: /api/recipe/fetch/1/
+[2026-05-09 00:29:03,488] ERROR django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 502 122
+[2026-05-09 00:29:05,133] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 00:29:07,654] ERROR django.request: Bad Gateway: /api/recipe/fetch/1/
+[2026-05-09 00:29:07,654] ERROR django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 502 122
+[2026-05-09 00:29:10,378] INFO django.server: "GET /recipe/54/ HTTP/1.1" 200 22577
+[2026-05-09 00:29:12,688] ERROR django.request: Bad Gateway: /api/recipe/fetch/54/
+[2026-05-09 00:29:12,688] ERROR django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 502 122
+[2026-05-09 00:29:36,108] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 00:29:37,363] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 00:29:39,663] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 00:29:41,291] ERROR django.request: Bad Gateway: /api/recipe/fetch/1/
+[2026-05-09 00:29:41,292] ERROR django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 502 122
+[2026-05-09 00:31:07,279] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\diplom\settings.py changed, reloading.
+[2026-05-09 00:31:07,765] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 00:31:09,427] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 00:31:10,513] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 00:31:12,898] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 00:31:26,551] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-09 00:31:28,817] INFO django.server: "GET /recipe/1/cooking/ HTTP/1.1" 200 19927
+[2026-05-09 00:31:41,801] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-09 00:31:46,767] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 00:31:48,083] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 00:31:48,892] INFO django.server: "GET /profile/ HTTP/1.1" 200 23987
+[2026-05-09 00:31:48,927] WARNING django.server: "GET /static/images/default_recipe.jpg HTTP/1.1" 404 2002
+[2026-05-09 00:31:53,776] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 00:31:55,002] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 00:32:13,094] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-09 00:32:48,576] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 00:34:06,710] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-05-09 00:34:07,177] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 00:34:10,968] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-05-09 00:34:11,428] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 00:34:13,137] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\diplom\urls.py changed, reloading.
+[2026-05-09 00:34:13,621] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 00:34:37,764] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 00:34:38,840] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 00:34:42,005] INFO django.server: "GET /recipe/54/ HTTP/1.1" 200 22577
+[2026-05-09 00:35:08,934] INFO django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 200 15083
+[2026-05-09 00:35:11,807] INFO django.server: "GET /recipe/54/cooking/ HTTP/1.1" 200 21976
+[2026-05-09 00:35:29,649] INFO django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 200 15083
+[2026-05-09 00:35:44,625] INFO django.server: "GET /recipe/54/ HTTP/1.1" 200 22577
+[2026-05-09 00:35:46,324] INFO django.server: "GET /meal-plan/ HTTP/1.1" 200 53733
+[2026-05-09 00:35:47,129] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 00:35:47,529] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-09 00:35:48,070] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 00:35:48,756] INFO django.server: "GET /profile/ HTTP/1.1" 200 23987
+[2026-05-09 00:35:48,795] WARNING django.server: "GET /static/images/default_recipe.jpg HTTP/1.1" 404 2002
+[2026-05-09 00:35:56,233] INFO django.server: "GET /profile/ HTTP/1.1" 200 23987
+[2026-05-09 00:35:56,265] WARNING django.server: "GET /static/images/default_recipe.jpg HTTP/1.1" 404 2002
+[2026-05-09 00:35:56,297] INFO django.server: "GET /static/css/style.css HTTP/1.1" 200 11683
+[2026-05-09 00:35:56,362] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 200 162739
+[2026-05-09 00:35:56,599] WARNING django.request: Not Found: /favicon.ico
+[2026-05-09 00:35:56,599] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6894
+[2026-05-09 00:35:58,863] INFO django.server: "GET /profile/ HTTP/1.1" 200 23987
+[2026-05-09 00:35:58,898] WARNING django.server: "GET /static/images/default_recipe.jpg HTTP/1.1" 404 2002
+[2026-05-09 00:38:12,470] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-05-09 00:38:12,967] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 00:38:14,513] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 00:38:15,883] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 00:38:19,799] INFO django.server: "GET /recipe/54/ HTTP/1.1" 200 22577
+[2026-05-09 00:38:50,035] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-05-09 00:38:50,684] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 00:40:36,752] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 00:40:46,559] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-05-09 00:40:48,344] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 00:40:49,580] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 00:40:51,699] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 00:41:05,696] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-09 00:41:09,294] INFO django.server: "GET /recipe/1/cooking/ HTTP/1.1" 200 21273
+[2026-05-09 00:41:22,599] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-09 00:43:50,794] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 00:43:53,625] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 00:43:55,063] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-09 00:44:10,664] INFO django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 200 27915
+[2026-05-09 00:44:50,339] INFO django.server: "GET /recipe/638714/ HTTP/1.1" 200 44415
+[2026-05-09 00:45:25,228] INFO django.server: "GET /recipe/638714/cooking/ HTTP/1.1" 200 24531
+[2026-05-09 01:04:49,040] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-05-09 01:04:49,514] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 12:34:07,547] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 12:34:09,565] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 12:34:09,852] WARNING django.request: Not Found: /favicon.ico
+[2026-05-09 12:34:09,853] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6894
+[2026-05-09 12:34:13,958] INFO django.server: "GET /recipe/54/ HTTP/1.1" 200 22577
+[2026-05-09 12:34:51,128] INFO django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 200 15083
+[2026-05-09 12:35:23,813] INFO django.server: "GET /recipe/54/cooking/ HTTP/1.1" 200 22042
+[2026-05-09 12:36:13,117] INFO django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 200 15083
+[2026-05-09 12:36:35,591] INFO django.server: "GET /recipe/54/ HTTP/1.1" 200 22577
+[2026-05-09 12:36:37,139] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 12:36:37,850] INFO django.server: "GET /profile/ HTTP/1.1" 200 23987
+[2026-05-09 12:36:37,891] WARNING django.server: "GET /static/images/default_recipe.jpg HTTP/1.1" 404 2002
+[2026-05-09 12:37:07,783] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-05-09 12:37:08,349] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 12:37:47,513] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 12:37:48,646] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 12:37:51,534] INFO django.server: "GET /recipe/54/ HTTP/1.1" 200 22577
+[2026-05-09 12:38:18,115] INFO django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 200 15083
+[2026-05-09 12:38:20,578] INFO django.server: "GET /recipe/54/cooking/ HTTP/1.1" 200 22042
+[2026-05-09 12:38:49,620] INFO django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 200 15083
+[2026-05-09 12:39:38,053] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-05-09 12:39:38,540] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 12:39:39,895] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 12:39:42,343] INFO django.server: "GET /recipe/54/ HTTP/1.1" 200 22577
+[2026-05-09 12:40:26,933] INFO django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 200 15083
+[2026-05-09 12:40:29,148] INFO django.server: "GET /recipe/54/cooking/ HTTP/1.1" 200 22042
+[2026-05-09 12:40:57,089] INFO django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 200 15083
+[2026-05-09 13:46:41,177] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 13:46:43,985] INFO django.server: "GET /recipe/53/ HTTP/1.1" 200 22623
+[2026-05-09 13:47:37,624] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-05-09 13:47:40,384] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 13:47:41,583] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 13:47:44,909] INFO django.server: "GET /recipe/54/ HTTP/1.1" 200 22577
+[2026-05-09 13:48:15,113] INFO django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 200 15083
+[2026-05-09 13:48:49,903] INFO django.server: "GET /recipe/54/cooking/ HTTP/1.1" 200 22042
+[2026-05-09 13:49:18,080] INFO django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 200 15083
+[2026-05-09 13:52:56,666] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-05-09 13:52:57,163] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 13:53:37,064] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 13:54:09,771] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 13:54:12,356] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 13:54:29,818] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-09 13:54:32,968] INFO django.server: "GET /recipe/1/cooking/ HTTP/1.1" 200 21371
+[2026-05-09 13:54:48,967] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-09 13:57:47,550] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-05-09 13:57:48,050] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 13:57:49,251] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 13:57:53,061] INFO django.server: "GET /recipe/54/ HTTP/1.1" 200 22577
+[2026-05-09 13:58:27,318] INFO django.server: - Broken pipe from ('127.0.0.1', 53926)
+[2026-05-09 13:58:31,501] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 13:58:33,704] INFO django.server: "GET /recipe/54/ HTTP/1.1" 200 22577
+[2026-05-09 13:59:06,646] INFO django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 200 15083
+[2026-05-09 13:59:51,868] INFO django.server: "GET /recipe/54/cooking/ HTTP/1.1" 200 22042
+[2026-05-09 14:00:16,567] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-05-09 14:00:17,137] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 14:00:46,711] INFO django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 200 15083
+[2026-05-09 14:02:24,303] WARNING django.request: Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-09 14:02:24,303] WARNING django.server: "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7005
+[2026-05-09 14:02:27,049] INFO django.server: "GET /recipe/54/cooking/ HTTP/1.1" 200 22042
+[2026-05-09 14:02:27,085] WARNING django.request: Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-09 14:02:27,087] WARNING django.server: "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7005
+[2026-05-09 14:02:27,137] INFO django.server: "GET /static/css/style.css HTTP/1.1" 200 11683
+[2026-05-09 14:02:27,199] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 200 162739
+[2026-05-09 14:02:54,553] INFO django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 200 15083
+[2026-05-09 14:07:14,412] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-05-09 14:07:14,886] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 14:07:16,617] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-05-09 14:07:17,103] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 14:07:29,699] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 14:07:36,458] INFO django.server: "GET /recipe/54/ HTTP/1.1" 200 22577
+[2026-05-09 14:08:01,160] INFO django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 200 15083
+[2026-05-09 14:08:09,496] INFO django.server: "GET /recipe/54/cooking/ HTTP/1.1" 200 22042
+[2026-05-09 14:08:28,361] INFO django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 200 15083
+[2026-05-09 14:09:26,532] INFO django.server: "GET /recipe/54/cooking/ HTTP/1.1" 200 22042
+[2026-05-09 14:09:26,620] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 200 162739
+[2026-05-09 14:09:26,641] INFO django.server: "GET /static/css/style.css HTTP/1.1" 200 11683
+[2026-05-09 14:09:27,120] WARNING django.request: Not Found: /favicon.ico
+[2026-05-09 14:09:27,121] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6894
+[2026-05-09 14:09:51,949] INFO django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 200 15083
+[2026-05-09 14:15:14,820] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-05-09 14:15:15,309] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 14:16:04,836] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 14:16:05,794] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 14:16:08,176] INFO django.server: "GET /recipe/54/ HTTP/1.1" 200 22577
+[2026-05-09 14:16:34,020] INFO django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 200 15083
+[2026-05-09 14:16:37,143] INFO django.server: "GET /recipe/54/cooking/ HTTP/1.1" 200 22038
+[2026-05-09 14:17:01,752] INFO django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 200 15083
+[2026-05-09 14:18:15,705] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 14:18:16,849] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 14:18:18,990] INFO django.server: "GET /recipe/54/ HTTP/1.1" 200 22577
+[2026-05-09 14:18:50,117] INFO django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 200 15083
+[2026-05-09 14:18:53,886] INFO django.server: "GET /recipe/54/cooking/ HTTP/1.1" 200 22257
+[2026-05-09 14:19:22,030] INFO django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 200 15083
+[2026-05-09 14:19:30,939] WARNING django.request: Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-09 14:19:30,939] WARNING django.server: "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7005
+[2026-05-09 14:20:57,200] INFO django.server: "GET /recipe/54/cooking/ HTTP/1.1" 200 22257
+[2026-05-09 14:20:57,232] WARNING django.request: Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-09 14:20:57,232] WARNING django.server: "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7005
+[2026-05-09 14:20:57,271] INFO django.server: "GET /static/css/style.css HTTP/1.1" 200 11683
+[2026-05-09 14:20:57,335] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 200 162739
+[2026-05-09 14:20:58,964] ERROR django.request: Bad Gateway: /api/recipe/fetch/54/
+[2026-05-09 14:20:58,964] ERROR django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 502 122
+[2026-05-09 14:22:01,567] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-05-09 14:22:02,067] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 14:22:14,810] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 14:22:15,784] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 14:22:17,826] INFO django.server: "GET /recipe/54/ HTTP/1.1" 200 22577
+[2026-05-09 14:22:18,844] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 14:22:19,718] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 14:22:21,528] ERROR django.request: Bad Gateway: /api/recipe/fetch/1/
+[2026-05-09 14:22:21,528] ERROR django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 502 122
+[2026-05-09 14:22:25,627] ERROR django.request: Bad Gateway: /api/recipe/fetch/1/
+[2026-05-09 14:22:25,627] ERROR django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 502 122
+[2026-05-09 14:23:33,915] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 14:23:34,890] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 14:23:37,012] INFO django.server: "GET /recipe/54/ HTTP/1.1" 200 22577
+[2026-05-09 14:24:02,468] INFO django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 200 15083
+[2026-05-09 14:24:04,357] INFO django.server: "GET /recipe/54/cooking/ HTTP/1.1" 200 22257
+[2026-05-09 14:24:29,499] INFO django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 200 15083
+[2026-05-09 14:24:46,142] WARNING django.request: Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-09 14:24:46,142] WARNING django.server: "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7005
+[2026-05-09 14:29:13,189] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-05-09 14:29:13,667] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 14:30:01,156] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 14:30:02,195] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 14:30:04,995] INFO django.server: "GET /recipe/54/ HTTP/1.1" 200 22577
+[2026-05-09 14:30:06,758] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 14:30:07,738] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 14:30:33,159] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-09 14:30:35,909] INFO django.server: "GET /recipe/1/cooking/ HTTP/1.1" 200 20487
+[2026-05-09 14:30:54,415] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-09 14:31:13,126] INFO django.server: "GET /recipe/1/cooking/ HTTP/1.1" 200 20487
+[2026-05-09 14:31:31,817] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-09 14:31:42,004] WARNING django.request: Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-09 14:31:42,004] WARNING django.server: "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7005
+[2026-05-09 14:33:18,748] INFO django.server: "GET /recipe/1/cooking/ HTTP/1.1" 200 20048
+[2026-05-09 14:33:18,838] INFO django.server: "GET /static/css/style.css HTTP/1.1" 200 11683
+[2026-05-09 14:33:18,839] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 200 162739
+[2026-05-09 14:33:19,293] WARNING django.request: Not Found: /favicon.ico
+[2026-05-09 14:33:19,294] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6894
+[2026-05-09 14:33:31,142] WARNING django.request: Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-09 14:33:31,142] WARNING django.server: "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7005
+[2026-05-09 14:33:37,254] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-09 14:33:41,140] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 14:33:52,170] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 14:34:37,941] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 14:34:39,553] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 14:34:58,278] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-09 14:35:01,938] INFO django.server: "GET /recipe/1/cooking/ HTTP/1.1" 200 20048
+[2026-05-09 14:35:24,688] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-09 14:35:49,993] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 14:36:09,265] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-09 14:36:12,069] INFO django.server: "GET /recipe/1/cooking/ HTTP/1.1" 200 20048
+[2026-05-09 14:36:27,174] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-09 14:38:23,128] INFO django.server: "GET /recipe/1/cooking/ HTTP/1.1" 200 20477
+[2026-05-09 14:38:23,217] INFO django.server: "GET /static/css/style.css HTTP/1.1" 200 11683
+[2026-05-09 14:38:23,218] INFO django.server: "GET /static/images/background.jpg HTTP/1.1" 200 162739
+[2026-05-09 14:38:23,698] WARNING django.request: Not Found: /favicon.ico
+[2026-05-09 14:38:23,699] WARNING django.server: "GET /favicon.ico HTTP/1.1" 404 6894
+[2026-05-09 14:38:36,588] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-09 14:46:05,479] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\mainapp\views.py changed, reloading.
+[2026-05-09 14:46:05,967] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 14:48:44,803] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 14:48:54,432] INFO django.server: "GET /recipe/54/ HTTP/1.1" 200 22577
+[2026-05-09 14:49:18,895] INFO django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 200 15083
+[2026-05-09 14:49:21,463] INFO django.server: "GET /recipe/54/cooking/ HTTP/1.1" 200 21148
+[2026-05-09 14:49:39,735] INFO django.server: "GET /api/recipe/fetch/54/ HTTP/1.1" 200 15083
+[2026-05-09 14:49:52,076] WARNING django.request: Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-09 14:49:52,077] WARNING django.server: "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7005
+[2026-05-09 15:07:34,526] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 15:08:24,139] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 15:08:25,238] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 15:08:28,493] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 15:08:44,345] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-09 15:08:46,354] INFO django.server: "GET /recipe/1/cooking/ HTTP/1.1" 200 20486
+[2026-05-09 15:09:04,670] INFO django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 200 13670
+[2026-05-09 15:09:08,676] INFO django.server: "POST /api/cooking-history/save/ HTTP/1.1" 200 642
+[2026-05-09 15:09:12,584] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 15:09:13,450] INFO django.server: "GET /meal-plan/ HTTP/1.1" 200 53733
+[2026-05-09 15:09:14,442] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 15:09:14,841] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-09 15:09:15,697] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 15:09:16,872] INFO django.server: "GET /profile/ HTTP/1.1" 200 24518
+[2026-05-09 15:09:16,911] WARNING django.server: "GET /static/images/default_recipe.jpg HTTP/1.1" 404 2002
+[2026-05-09 15:11:49,657] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 15:11:51,252] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 15:12:14,538] INFO django.server: "GET /profile/ HTTP/1.1" 200 24518
+[2026-05-09 15:12:14,579] WARNING django.server: "GET /static/images/default_recipe.jpg HTTP/1.1" 404 2002
+[2026-05-09 15:12:59,346] INFO django.server: "POST /api/favorites/remove/13/ HTTP/1.1" 200 17
+[2026-05-09 15:13:03,736] INFO django.server: "GET /profile/ HTTP/1.1" 200 23631
+[2026-05-09 15:43:59,787] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 15:44:03,316] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 15:44:05,670] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-09 15:44:22,707] ERROR django.request: Bad Gateway: /api/search_recipes/
+[2026-05-09 15:44:22,707] ERROR django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 502 122
+[2026-05-09 15:45:24,375] ERROR django.request: Bad Gateway: /api/search_recipes/
+[2026-05-09 15:45:24,376] ERROR django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 502 122
+[2026-05-09 15:45:54,091] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 15:45:56,077] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 15:45:58,488] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-09 15:46:06,002] INFO django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=eastern_european HTTP/1.1" 200 4645
+[2026-05-09 15:46:14,493] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-09 15:46:30,348] ERROR django.request: Bad Gateway: /api/search_recipes/
+[2026-05-09 15:46:30,348] ERROR django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 502 122
+[2026-05-09 15:46:47,850] INFO django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D0%B0%D1%80%D1%82%D0%BE%D1%84%D0%B5%D0%BB%D1%8C+%D0%BC%D0%BE%D1%80%D0%BA%D0%BE%D0%B2%D1%8C&kitchen=eastern_european HTTP/1.1" 200 9366
+[2026-05-09 15:47:27,176] WARNING django.request: Not Found: /recipe/635686/
+[2026-05-09 15:47:27,177] WARNING django.server: "GET /recipe/635686/ HTTP/1.1" 404 1299
+[2026-05-09 15:51:17,818] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 15:51:20,853] INFO django.server: "GET /recipe/1/ HTTP/1.1" 200 22653
+[2026-05-09 15:51:33,704] ERROR django.request: Bad Gateway: /api/recipe/fetch/1/
+[2026-05-09 15:51:33,705] ERROR django.server: "GET /api/recipe/fetch/1/ HTTP/1.1" 502 122
+[2026-05-09 15:57:02,141] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\diplom\settings.py changed, reloading.
+[2026-05-09 15:57:02,666] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 15:57:04,090] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 15:57:19,712] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 15:57:21,528] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 15:57:23,901] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-09 15:57:41,549] ERROR django.request: Bad Gateway: /api/search_recipes/
+[2026-05-09 15:57:41,550] ERROR django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 502 122
+[2026-05-09 15:58:06,288] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\diplom\settings.py changed, reloading.
+[2026-05-09 15:58:06,814] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 15:58:13,167] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 15:58:14,282] INFO django.server: "GET / HTTP/1.1" 200 7311
+[2026-05-09 15:58:15,678] INFO django.server: "GET /compose/ HTTP/1.1" 200 27698
+[2026-05-09 15:58:30,774] ERROR django.request: Bad Gateway: /api/search_recipes/
+[2026-05-09 15:58:30,775] ERROR django.server: "GET /api/search_recipes/?ingredients=%D0%BA%D1%83%D1%80%D0%B8%D1%86%D0%B0&kitchen=chinese HTTP/1.1" 502 122
+[2026-05-09 16:00:19,586] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 16:04:32,908] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 16:15:00,496] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-05-09 16:25:24,474] INFO django.utils.autoreload: C:\Users\Micie456\PycharmProjects\Diplom\diplom\diplom\settings.py changed, reloading.
+[2026-05-09 16:25:24,983] INFO django.utils.autoreload: Watching for file changes with StatReloader

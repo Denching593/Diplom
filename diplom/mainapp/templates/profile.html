@@ -499,6 +499,10 @@
                 <span class="tab-icon">&#128722;</span>
                 Список покупок
             </button>
+            <button class="profile-tab" onclick="switchTab('history')">
+                <span class="tab-icon">&#128230;</span>
+                История приготовлений
+            </button>
         </div>
 
         <!-- Tab: Избранные блюда -->
@@ -609,6 +613,40 @@
                 {% endif %}
             </div>
         </div>
+
+        <!-- Tab: История приготовлений -->
+        <div class="tab-content" id="tab-history">
+            <h3 class="section-title">История приготовленных блюд</h3>
+            {% if cooking_history %}
+            <div class="favorites-grid">
+                {% for history in cooking_history %}
+                <div class="favorite-card" id="hist-{{ history.id }}" onclick="goToRecipe('{% url "recipe_detail" history.recipe.spoonacular_id|default:history.recipe.id %}')">
+                    {% if history.recipe.image %}
+                    <img src="{% if history.recipe.image.url %}{{ history.recipe.image.url }}{% else %}{% static 'images/' %}{{ history.recipe.image }}{% endif %}" alt="{{ history.recipe.name }}">
+                    {% else %}
+                    <img src="{% static 'images/default_recipe.jpg' %}" alt="{{ history.recipe.name }}" style="background:#f0f0f0;">
+                    {% endif %}
+                    <div class="favorite-card-body">
+                        <h4>{{ history.recipe.name }}</h4>
+                        <div class="favorite-card-meta">
+                            <span>&#128293; {{ history.recipe.calories }} ккал</span>
+                            <span>&#128197; {{ history.cooked_at|date:"d.m.Y H:i" }}</span>
+                            {% if history.recipe.spoonacular_id %}
+                            <span style="color:#2a9d8f; font-weight:600;">&#127760; Spoonacular</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="empty-state">
+                <div class="empty-icon">&#128230;</div>
+                <p>Вы ещё не готовили блюда</p>
+                <a href="{% url 'index' %}" class="btn btn-primary">Найти рецепты</a>
+            </div>
+            {% endif %}
+        </div>
     </div>
 
     <script>
@@ -622,7 +660,7 @@
             });
             document.getElementById('tab-' + tabName).classList.add('active');
             var tabs = document.querySelectorAll('.profile-tab');
-            var tabMap = {favorites: 0, mealplans: 1, shopping: 2};
+            var tabMap = {favorites: 0, mealplans: 1, shopping: 2, history: 3};
             if (tabs[tabMap[tabName]]) {
                 tabs[tabMap[tabName]].classList.add('active');
             }
