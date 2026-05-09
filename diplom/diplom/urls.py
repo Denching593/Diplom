@@ -26,11 +26,20 @@ urlpatterns = [
     path('login/', views.log_in, name='log_in'),
     path('register/', views.register, name='register'),
     path('profile/', views.profile, name='profile'),
+    path('logout/', views.logout_view, name='logout'),
+
+    # API для профиля
+    path('api/favorites/remove/<int:fav_id>/', views.remove_favorite, name='remove_favorite'),
+    path('api/meal-plan/delete/<int:plan_id>/', views.delete_meal_plan, name='delete_meal_plan'),
+    path('api/shopping-list/toggle/<int:item_id>/', views.toggle_shopping_item, name='toggle_shopping_item'),
+    path('api/shopping-list/delete/<int:item_id>/', views.delete_shopping_item, name='delete_shopping_item'),
+    path('api/shopping-list/clear/', views.clear_shopping_list, name='clear_shopping_list'),
     path('compose/', views.compose_dish, name='compose_dish'),
     path('meal-plan/', views.meal_plan, name='meal_plan'),
     path('api/search_recipes/', views.search_recipes, name='search_recipes'),
     path('recipe/<str:recipe_id>/', views.recipe_detail, name='recipe_detail'),
-    #path('recipe/<str:recipe_id>/cooking/', views.recipe_cooking, name='recipe_cooking'),
+    path('recipe/<str:recipe_id>/cooking/', views.recipe_cooking, name='recipe_cooking'),
+    path('api/recipe/fetch/<str:recipe_id>/', views.fetch_recipe_from_api, name='fetch_recipe_from_api'),
 
     # API для рациона питания
     path('api/meal-plan/generate/', views.generate_meal_plan, name='generate_meal_plan'),

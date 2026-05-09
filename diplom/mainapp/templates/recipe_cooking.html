@@ -4,28 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Приготовление: {{ api_recipe_data.title_ru|default:recipe.name }}</title>
+    <title>{% if is_api_recipe and api_recipe_data.title_ru %}Приготовление: {{ api_recipe_data.title_ru }}{% elif recipe.name %}Приготовление: {{ recipe.name }}{% else %}Приготовление блюда{% endif %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
         }
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: url('{% static "images/background.jpg" %}') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Montserrat', sans-serif;
             min-height: 100vh;
             margin: 0;
             padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
         }
         .cooking-container {
             max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.92);
+            border-radius: 25px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             overflow: hidden;
+            backdrop-filter: blur(5px);
         }
         .cooking-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #e76f51 0%, #d65a3f 100%);
             color: white;
             padding: 30px 40px;
             display: flex;
@@ -33,152 +42,200 @@
             align-items: center;
         }
         .cooking-title {
-            font-size: 1.8em;
+            font-family: 'Pacifico', cursive;
+            font-size: 2.2em;
             margin: 0;
         }
         .back-link {
-            color: white;
+            color: #555;
             text-decoration: none;
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 8px;
-            transition: background 0.3s;
+            padding: 12px 25px;
+            background: #f0f0f0;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            border: 1px solid #ddd;
         }
         .back-link:hover {
-            background: rgba(255,255,255,0.3);
-        }
-        .timer-section {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            padding: 35px;
-            text-align: center;
-            color: white;
-        }
-        .timer-section h2 {
-            margin: 0 0 20px 0;
-            font-size: 1.5em;
-        }
-        .timer-display {
-            font-size: 5em;
-            font-weight: bold;
-            margin: 20px 0;
-            font-family: 'Courier New', monospace;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-        .timer-controls {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-        .timer-controls button {
-            padding: 14px 28px;
-            font-size: 1.05em;
-            font-weight: bold;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .timer-controls button:hover {
+            background: #e0e0e0;
             transform: translateY(-2px);
         }
-        .btn-start { 
-            background: #27ae60; 
-            color: white; 
-        }
-        .btn-pause { 
-            background: #f39c12; 
-            color: white; 
-        }
-        .btn-reset { 
-            background: #e74c3c; 
-            color: white; 
-        }
-        .btn-preset { 
-            background: rgba(255,255,255,0.25); 
-            color: white; 
-            border: 2px solid rgba(255,255,255,0.5);
-        }
-        .btn-preset:hover {
-            background: rgba(255,255,255,0.35);
-        }
-        
+
+        /* Progressive step mode styles */
         .steps-section {
-            padding: 30px 40px 40px 40px;
+            padding: 40px;
         }
-        .steps-title {
-            color: #667eea;
-            font-size: 1.5em;
-            margin: 0 0 25px 0;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #667eea;
-        }
-        .steps-container {
+        .progress-indicator {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 25px;
+            gap: 10px;
         }
-        .recipe-step {
-            background: white;
-            border: 2px solid #e8e8e8;
-            border-radius: 12px;
-            padding: 22px;
-            display: flex;
-            align-items: flex-start;
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
             transition: all 0.3s;
         }
-        .recipe-step:hover {
-            border-color: #667eea;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.15);
+        .progress-dot.active {
+            background: #e76f51;
+            transform: scale(1.3);
         }
-        .recipe-step.completed {
-            background: linear-gradient(135deg, #f0f9f0 0%, #e8f5e9 100%);
-            border-color: #27ae60;
+        .progress-dot.completed {
+            background: #27ae60;
         }
-        .recipe-step input[type="checkbox"] {
-            margin-right: 20px;
-            margin-top: 6px;
-            transform: scale(1.4);
-            cursor: pointer;
-            accent-color: #27ae60;
+        .progress-text {
+            color: #666;
+            font-size: 0.95em;
         }
-        .step-content {
-            flex-grow: 1;
+        .current-step-view {
+            text-align: center;
         }
-        .step-number {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 6px 14px;
+        .current-step-card {
+            background: white;
+            border: 2px solid #e76f51;
             border-radius: 20px;
+            padding: 40px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .current-step-number {
+            background-color: #e76f51;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 1.3em;
             font-weight: bold;
             display: inline-block;
-            margin-bottom: 12px;
-            font-size: 0.9em;
+            margin-bottom: 25px;
+            font-family: 'Montserrat', sans-serif;
         }
-        .step-text {
-            font-size: 1.1em;
-            line-height: 1.7;
+        .current-step-text {
+            font-size: 1.4em;
+            line-height: 1.8;
             color: #333;
+            margin-bottom: 25px;
         }
-        .recipe-step.completed .step-text {
-            text-decoration: line-through;
-            color: #888;
+        .current-step-ingredients {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            color: #555;
         }
-        .step-timer-btn {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
+        .step-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .btn-step-action {
+            padding: 15px 35px;
+            font-size: 1.1em;
+            font-weight: 500;
             border: none;
-            padding: 10px 18px;
-            border-radius: 8px;
+            border-radius: 30px;
             cursor: pointer;
-            margin-left: 15px;
-            white-space: nowrap;
-            font-weight: bold;
-            transition: transform 0.2s;
+            transition: all 0.3s ease;
+            min-width: 150px;
+            font-family: 'Montserrat', sans-serif;
         }
-        .step-timer-btn:hover {
-            transform: scale(1.05);
+        .btn-step-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .btn-continue {
+            background-color: #e76f51;
+            color: white;
+        }
+        .btn-continue:hover {
+            background-color: #d65a3f;
+        }
+        .btn-back {
+            background-color: #f0f0f0;
+            color: #555;
+            border: 1px solid #ddd;
+        }
+        .btn-back:hover {
+            background-color: #e0e0e0;
+        }
+        .btn-finish {
+            background-color: #27ae60;
+            color: white;
+        }
+        .btn-finish:hover {
+            background-color: #219a52;
+        }
+        .completion-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .completion-content {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            animation: modalSlide 0.4s ease-out;
+        }
+        @keyframes modalSlide {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .completion-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        .completion-title {
+            font-size: 2em;
+            color: #27ae60;
+            margin-bottom: 15px;
+        }
+        .completion-text {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* Loader for API fetch */
+        .api-loader {
+            text-align: center;
+            padding: 40px;
+        }
+        .api-loader .spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #e76f51;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .api-loader p {
+            margin-top: 15px;
+            color: #666;
+            font-size: 1.1em;
         }
     </style>
 </head>
@@ -186,106 +243,227 @@
     <div class="cooking-container">
         <div class="cooking-header">
             <h1 class="cooking-title">Приготовление</h1>
-            <a href="{% url 'recipe_detail' recipe_id %}" class="back-link">← Назад к рецепту</a>
+            <a href="{% url 'recipe_detail' recipe_id %}" class="back-link">&larr; Назад к рецепту</a>
         </div>
 
-        <div class="timer-section">
-            <h2>⏱ Таймер</h2>
-            <div id="timer-display" class="timer-display">00:00</div>
-            <div class="timer-controls">
-                <button class="btn-start" id="timer-start">▶ Старт</button>
-                <button class="btn-pause" id="timer-pause">⏸ Пауза</button>
-                <button class="btn-reset" id="timer-reset">↺ Сброс</button>
-                <button class="btn-preset" onclick="setTimer(5)">5 мин</button>
-                <button class="btn-preset" onclick="setTimer(10)">10 мин</button>
-                <button class="btn-preset" onclick="setTimer(20)">20 мин</button>
-                <button class="btn-preset" onclick="setTimer(30)">30 мин</button>
-                <button class="btn-preset" onclick="setTimer(40)">40 мин</button>
+        <!-- Загрузка шагов из API -->
+        <div class="api-loader" id="api-loader">
+            <div class="spinner"></div>
+            <p>Загрузка пошаговой инструкции...</p>
+        </div>
+
+        <!-- Progressive Step View (скрыт до загрузки) -->
+        <div id="progressive-container" class="steps-section" style="display:none;">
+            <div class="progress-indicator" id="progress-indicator">
+                <span class="progress-text">Шаг <span id="current-step-num">1</span> из <span id="total-steps">0</span></span>
             </div>
-        </div>
-
-        <div class="steps-section">
-            <h2 class="steps-title">Шаги приготовления</h2>
-            <div class="steps-container">
-                {% if api_recipe_data.analyzedInstructions %}
-                    {% for instruction_group in api_recipe_data.analyzedInstructions %}
-                        {% for step in instruction_group.steps %}
-                            <div class="recipe-step">
-                                <input type="checkbox" id="step{{ step.number }}">
-                                <div class="step-content">
-                                    <span class="step-number">Шаг {{ step.number }}</span>
-                                    <p class="step-text">{{ step.step_ru|default:step.step|default:step.step }}</p>
-                                </div>
-                                {% if step.length %}
-                                    <button class="step-timer-btn" onclick="setTimer({{ step.length.number }})">
-                                        ⏱ {{ step.length.number }} мин
-                                    </button>
-                                {% endif %}
-                            </div>
-                        {% endfor %}
-                    {% endfor %}
-                {% else %}
-                    <p>Инструкции для этого рецепта не найдены.</p>
-                {% endif %}
+            <div class="current-step-view">
+                <div class="current-step-card" id="step-card">
+                    <span class="current-step-number" id="step-number">Шаг 1</span>
+                    <p class="current-step-text" id="step-text">Загрузка...</p>
+                    <div class="current-step-ingredients" id="step-ingredients" style="display: none;">
+                    </div>
+                    <div class="step-actions" id="step-actions">
+                        <button type="button" class="btn-step-action btn-continue" id="btn-next" data-action="next">&#10003; Выполнено, далее &rarr;</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- Completion Modal -->
+    <div class="completion-modal" id="completion-modal">
+        <div class="completion-content">
+            <div class="completion-icon">&#127881;</div>
+            <h2 class="completion-title">Рецепт приготовлен!</h2>
+            <p class="completion-text">Поздравляем! Вы завершили приготовление блюда. Приятного аппетита!</p>
+            <button class="btn-step-action btn-finish" onclick="closeCompletionModal()">Отлично</button>
+        </div>
+    </div>
+
     <script>
-        document.querySelectorAll('.recipe-step input[type="checkbox"]').forEach(checkbox => {
-            checkbox.addEventListener('change', function() {
-                this.closest('.recipe-step').classList.toggle('completed', this.checked);
-            });
-        });
+        (function() {
+            var currentStep = 1;
+            var totalSteps = 0;
+            var recipeStepsData = [];
 
-        let timerInterval;
-        let timeInSeconds = 0;
-        const timerDisplay = document.getElementById('timer-display');
+            // Серверные шаги (для API-рецептов, уже загруженных из Spoonacular)
+            var serverSteps = [
+                {% for step in recipe_steps %}
+                {
+                    number: {{ step.number }},
+                    text: "{{ step.text|escapejs }}",
+                    ingredients: [
+                        {% for ing in step.ingredients %}
+                        { name: "{{ ing.name|default:''|escapejs }}", name_ru: "{{ ing.name_ru|default:''|escapejs }}" }{% if not forloop.last %},{% endif %}
+                        {% endfor %}
+                    ]
+                }{% if not forloop.last %},{% endif %}
+                {% endfor %}
+            ];
 
-        function updateDisplay() {
-            const minutes = Math.floor(timeInSeconds / 60);
-            const seconds = timeInSeconds % 60;
-            timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-        }
+            // Определяем, нужен ли запрос к API
+            // Если есть серверные шаги с инструкциями из API — используем их
+            // Если рецепт локальный — подгружаем из Spoonacular
+            var isLocalRecipe = {{ is_local_recipe|yesno:"true,false" }};
+            var recipeId = "{{ recipe_id }}";
 
-        function setTimer(minutes) {
-            clearInterval(timerInterval);
-            timerInterval = null;
-            timeInSeconds = minutes * 60;
-            updateDisplay();
-        }
-
-        document.getElementById('timer-start').addEventListener('click', () => {
-            if (timeInSeconds > 0 && !timerInterval) {
-                timerInterval = setInterval(() => {
-                    timeInSeconds--;
-                    updateDisplay();
-                    if (timeInSeconds <= 0) {
-                        clearInterval(timerInterval);
-                        timerInterval = null;
-                        alert('⏰ Время вышло! Готовность проверьте.');
-                        timeInSeconds = 0;
-                        updateDisplay();
-                    }
-                }, 1000);
-            } else if (timeInSeconds === 0) {
-                alert('Сначала установите время для таймера!');
+            if (isLocalRecipe) {
+                // Локальный рецепт — подгружаем инструкции из Spoonacular API
+                loadStepsFromApi();
+            } else if (serverSteps.length > 0) {
+                // API-рецепт — шаги уже есть с сервера
+                recipeStepsData = serverSteps;
+                initSteps();
+            } else {
+                // Нет шагов
+                showNoSteps();
             }
-        });
 
-        document.getElementById('timer-pause').addEventListener('click', () => {
-            clearInterval(timerInterval);
-            timerInterval = null;
-        });
+            function loadStepsFromApi() {
+                var fetchUrl = '{% url "fetch_recipe_from_api" "RECIPE_ID" %}'.replace('RECIPE_ID', recipeId);
 
-        document.getElementById('timer-reset').addEventListener('click', () => {
-            clearInterval(timerInterval);
-            timerInterval = null;
-            timeInSeconds = 0;
-            updateDisplay();
-        });
+                fetch(fetchUrl)
+                    .then(function(response) {
+                        if (!response.ok) throw new Error('Ошибка сервера');
+                        return response.json();
+                    })
+                    .then(function(data) {
+                        var loader = document.getElementById('api-loader');
+                        loader.style.display = 'none';
 
-        updateDisplay();
+                        if (data.error || !data.instructions || data.instructions.length === 0) {
+                            // Если API не дал инструкций — пробуем серверные шаги
+                            if (serverSteps.length > 0) {
+                                recipeStepsData = serverSteps;
+                                initSteps();
+                            } else {
+                                showNoSteps();
+                            }
+                            return;
+                        }
+
+                        // Используем инструкции из API
+                        recipeStepsData = data.instructions.map(function(step, idx) {
+                            return {
+                                number: step.number || (idx + 1),
+                                text: step.text,
+                                ingredients: step.ingredients || []
+                            };
+                        });
+
+                        initSteps();
+                    })
+                    .catch(function(err) {
+                        var loader = document.getElementById('api-loader');
+                        loader.style.display = 'none';
+
+                        // Фоллбэк на серверные шаги
+                        if (serverSteps.length > 0) {
+                            recipeStepsData = serverSteps;
+                            initSteps();
+                        } else {
+                            showNoSteps();
+                        }
+                    });
+            }
+
+            function showNoSteps() {
+                var loader = document.getElementById('api-loader');
+                loader.style.display = 'none';
+                var container = document.getElementById('progressive-container');
+                container.style.display = 'block';
+                document.getElementById('step-number').textContent = '';
+                document.getElementById('step-text').textContent = 'Пошаговая инструкция недоступна для этого рецепта.';
+                var actionsDiv = document.getElementById('step-actions');
+                actionsDiv.innerHTML = '';
+            }
+
+            function initSteps() {
+                totalSteps = recipeStepsData.length;
+                var container = document.getElementById('progressive-container');
+                container.style.display = 'block';
+                if (totalSteps > 0) {
+                    showStep(1);
+                }
+            }
+
+            function showStep(stepNum) {
+                if (stepNum > totalSteps) {
+                    document.getElementById('completion-modal').style.display = 'flex';
+                    return;
+                }
+
+                var stepData = recipeStepsData[stepNum - 1];
+                if (!stepData) return;
+
+                // Обновляем текст шага
+                document.getElementById('step-number').textContent = 'Шаг ' + stepNum;
+                document.getElementById('step-text').textContent = stepData.text;
+
+                // Обновляем индикатор прогресса
+                var progressText = document.querySelector('#progress-indicator .progress-text');
+                if (progressText) {
+                    progressText.innerHTML = 'Шаг <span id="current-step-num">' + stepNum + '</span> из <span id="total-steps">' + totalSteps + '</span>';
+                }
+
+                // Обновляем точки прогресса
+                updateProgressDots(stepNum);
+
+                // Обновляем ингредиенты
+                var ingDiv = document.getElementById('step-ingredients');
+                if (stepData.ingredients && stepData.ingredients.length > 0) {
+                    var html = '<strong>Ингредиенты:</strong> ';
+                    for (var i = 0; i < stepData.ingredients.length; i++) {
+                        var ing = stepData.ingredients[i];
+                        html += (ing.name_ru || ing.name || '');
+                        if (i < stepData.ingredients.length - 1) html += ', ';
+                    }
+                    ingDiv.innerHTML = html;
+                    ingDiv.style.display = 'block';
+                } else {
+                    ingDiv.style.display = 'none';
+                }
+
+                // Обновляем кнопки
+                var actionsDiv = document.getElementById('step-actions');
+                var html = '';
+                if (stepNum > 1) {
+                    html += '<button type="button" class="btn-step-action btn-back" onclick="goToStep(' + (stepNum - 1) + ')">&larr; Назад</button>';
+                }
+                if (stepNum < totalSteps) {
+                    html += '<button type="button" class="btn-step-action btn-continue" onclick="goToStep(' + (stepNum + 1) + ')">&#10003; Выполнено, далее &rarr;</button>';
+                } else {
+                    html += '<button type="button" class="btn-step-action btn-finish" onclick="goToStep(' + (stepNum + 1) + ')">&#10003; Завершить приготовление</button>';
+                }
+                actionsDiv.innerHTML = html;
+
+                currentStep = stepNum;
+            }
+
+            function updateProgressDots(current) {
+                var container = document.getElementById('progress-indicator');
+                var oldDots = container.querySelectorAll('.progress-dot');
+                oldDots.forEach(function(dot) { dot.remove(); });
+
+                for (var i = totalSteps; i >= 1; i--) {
+                    var dot = document.createElement('div');
+                    dot.className = 'progress-dot';
+                    if (i < current) dot.classList.add('completed');
+                    if (i === current) dot.classList.add('active');
+                    container.insertBefore(dot, container.firstChild);
+                }
+            }
+
+            window.goToStep = function(stepNum) {
+                showStep(stepNum);
+            };
+
+            window.closeCompletionModal = function() {
+                document.getElementById('completion-modal').style.display = 'none';
+                showStep(1);
+            };
+        })();
     </script>
 </body>
 </html>

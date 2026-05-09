@@ -1,4 +1,5 @@
 {% load static %}
+{% load recipe_extras %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -9,17 +10,178 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .view-recipe-action {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+        }
+        .cooking-action {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 15px;
+            display: none;
+        }
+        .btn-large {
+            padding: 15px 40px;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+        /* Loader */
+        .api-loader {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+        .api-loader .spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #e76f51;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .api-loader p {
+            margin-top: 15px;
+            color: #666;
+            font-size: 1.1em;
+        }
+        /* Error message */
+        .api-error {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            background: #fff3f3;
+            border-radius: 15px;
+            border: 1px solid #ffcccc;
+            margin: 20px 0;
+        }
+        .api-error p {
+            color: #c0392b;
+            font-size: 1.05em;
+        }
+        /* API recipe details section */
+        .api-details-section {
+            display: none;
+        }
+        .api-details-section .nutrients-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .api-details-section .nutrient-card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px 20px;
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .api-details-section .nutrient-card .nutrient-value {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #e76f51;
+        }
+        .api-details-section .nutrient-card .nutrient-label {
+            font-size: 0.85em;
+            color: #888;
+            margin-top: 5px;
+        }
+        .api-details-section .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin: 4px;
+        }
+        .badge-healthy { background: #d4edda; color: #155724; }
+        .badge-vegetarian { background: #d1ecf1; color: #0c5460; }
+        .badge-vegan { background: #cce5ff; color: #004085; }
+        .badge-gluten-free { background: #fff3cd; color: #856404; }
+        .badge-dairy-free { background: #f8d7da; color: #721c24; }
+        .badge-cheap { background: #e8f5e9; color: #2e7d32; }
+        /* Favorite button */
+        .btn-favorite {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-size: 1.05em;
+            font-weight: 600;
+            cursor: pointer;
+            border: 2px solid #e76f51;
+            background: white;
+            color: #e76f51;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
+        }
+        .btn-favorite:hover {
+            background: #e76f51;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(231,111,81,0.3);
+        }
+        .btn-favorite.active {
+            background: #e76f51;
+            color: white;
+        }
+        .btn-favorite.active:hover {
+            background: #d65a3f;
+            border-color: #d65a3f;
+        }
+        .favorite-action {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .api-details-section .instruction-step {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+        .api-details-section .instruction-step .step-number {
+            background-color: #e76f51;
+            color: white;
+            min-width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .api-details-section .instruction-step .step-content p {
+            margin: 0;
+            line-height: 1.6;
+        }
+        .api-details-section .instruction-step .step-ingredients {
+            margin-top: 5px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <!-- Навигация -->
         <header>
             <div class="header-left">
-                <a href="{% url 'index' %}" class="btn btn-secondary">← Назад</a>
+                <a href="{% url 'index' %}" class="btn btn-secondary">&larr; Назад</a>
             </div>
             <h1>Рецепт</h1>
             <div class="header-right">
-                <a href="{% url 'meal_plan' %}" class="btn btn-secondary">☰ Составить рацион</a>
+                <a href="{% url 'meal_plan' %}" class="btn btn-secondary">&#9776; Составить рацион</a>
             </div>
         </header>
 
@@ -36,18 +198,18 @@
                     <h2>{{ recipe.name }}</h2>
                     <div class="recipe-meta">
                         <div class="meta-item">
-                            <span class="meta-icon">🔥</span>
+                            <span class="meta-icon">&#128293;</span>
                             <span class="meta-value">{{ recipe.calories }} ккал</span>
                         </div>
                         {% if recipe.meal_type %}
                         <div class="meta-item">
-                            <span class="meta-icon">🍽️</span>
+                            <span class="meta-icon">&#127869;</span>
                             <span class="meta-value">{{ recipe.get_meal_type_display }}</span>
                         </div>
                         {% endif %}
                         {% if recipe.goal_suitability %}
                         <div class="meta-item">
-                            <span class="meta-icon">🎯</span>
+                            <span class="meta-icon">&#127919;</span>
                             <span class="meta-value">{{ recipe.get_goal_suitability_display }}</span>
                         </div>
                         {% endif %}
@@ -55,39 +217,74 @@
                 </div>
             </div>
 
-            <div class="recipe-content-grid">
-                <!-- Ингредиенты -->
-                <div class="recipe-section">
-                    <h3><span class="section-icon">🥘</span> Ингредиенты</h3>
-                    {% if recipe_ingredients %}
-                    <ul class="ingredients-list">
-                        {% for item in recipe_ingredients %}
-                        <li>
-                            <span class="ingredient-name">{{ item.ingredient.name }}</span>
-                            <span class="ingredient-amount">{{ item.amount }} {{ item.ingredient.unit|default:"" }}</span>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                    {% else %}
-                    <p class="no-data">Ингредиенты не указаны</p>
-                    {% endif %}
-                </div>
+            <!-- Кнопка "Посмотреть рецепт" -->
+            <div class="view-recipe-action" id="view-recipe-action">
+                <button type="button" class="btn btn-primary btn-large" id="btn-view-recipe" onclick="fetchRecipeDetails('{{ recipe.id }}')">
+                    Посмотреть рецепт
+                </button>
+            </div>
 
-                <!-- Описание/Инструкции -->
-                <div class="recipe-section">
-                    <h3><span class="section-icon">📝</span> Описание</h3>
-                    {% if recipe.description %}
-                    <div class="recipe-description">
-                        {{ recipe.description|linebreaks }}
+            <!-- Загрузка -->
+            <div class="api-loader" id="api-loader">
+                <div class="spinner"></div>
+                <p>Загрузка рецепта из Spoonacular...</p>
+            </div>
+
+            <!-- Ошибка -->
+            <div class="api-error" id="api-error">
+                <p id="api-error-text">Не удалось загрузить рецепт. Попробуйте позже.</p>
+            </div>
+
+            <!-- Детали из API (скрыты до загрузки) -->
+            <div class="api-details-section" id="api-details-section">
+                <div class="recipe-content-grid">
+                    <!-- Питательные вещества -->
+                    <div class="recipe-section" id="api-nutrients-section" style="display:none;">
+                        <h3><span class="section-icon">&#128170;</span> Пищевая ценность</h3>
+                        <div class="nutrients-row" id="api-nutrients-row"></div>
                     </div>
-                    {% else %}
-                    <p class="no-data">Описание не указано</p>
-                    {% endif %}
+
+                    <!-- Ингредиенты из API -->
+                    <div class="recipe-section" id="api-ingredients-section" style="display:none;">
+                        <h3><span class="section-icon">&#129379;</span> Ингредиенты</h3>
+                        <ul class="ingredients-list" id="api-ingredients-list"></ul>
+                    </div>
+
+                    <!-- Пошаговая инструкция из API -->
+                    <div class="recipe-section" id="api-instructions-section" style="display:none;">
+                        <h3><span class="section-icon">&#128221;</span> Пошаговая инструкция</h3>
+                        <div class="instructions" id="api-instructions-list"></div>
+                    </div>
+
+                    <!-- О блюде из API -->
+                    <div class="recipe-section" id="api-summary-section" style="display:none;">
+                        <h3><span class="section-icon">&#128214;</span> О блюде</h3>
+                        <div class="recipe-description" id="api-summary-text"></div>
+                    </div>
+
+                    <!-- Дополнительная информация -->
+                    <div class="recipe-section" id="api-extra-section" style="display:none;">
+                        <h3><span class="section-icon">&#9889;</span> Дополнительно</h3>
+                        <div id="api-extra-info"></div>
+                    </div>
+
+                    <!-- Особенности (бейджи) -->
+                    <div class="recipe-section" id="api-badges-section" style="display:none;">
+                        <h3><span class="section-icon">&#10024;</span> Особенности</h3>
+                        <div id="api-badges"></div>
+                    </div>
                 </div>
             </div>
 
+            <!-- Кнопка "Перейти к приготовлению" (появляется после загрузки API) -->
+            <div class="cooking-action" id="cooking-action">
+                <a href="{% url 'recipe_cooking' recipe.id %}" class="btn btn-primary btn-large">
+                    Перейти к приготовлению
+                </a>
+            </div>
+
             {% elif api_recipe_data %}
-            <!-- Рецепт из Spoonacular API -->
+            <!-- Рецепт из Spoonacular API (уже загружен) -->
             <div class="recipe-hero">
                 {% if api_recipe_data.image %}
                 <img src="{{ api_recipe_data.image }}"
@@ -101,26 +298,8 @@
                         {% for nutrient in api_recipe_data.nutrition.nutrients %}
                             {% if nutrient.name == "Calories" %}
                             <div class="meta-item">
-                                <span class="meta-icon">🔥</span>
+                                <span class="meta-icon">&#128293;</span>
                                 <span class="meta-value">{{ nutrient.amount|floatformat:0 }} ккал</span>
-                            </div>
-                            {% endif %}
-                            {% if nutrient.name == "Protein" %}
-                            <div class="meta-item">
-                                <span class="meta-icon">💪</span>
-                                <span class="meta-value">Белки: {{ nutrient.amount|floatformat:1 }} г</span>
-                            </div>
-                            {% endif %}
-                            {% if nutrient.name == "Fat" %}
-                            <div class="meta-item">
-                                <span class="meta-icon">🧈</span>
-                                <span class="meta-value">Жиры: {{ nutrient.amount|floatformat:1 }} г</span>
-                            </div>
-                            {% endif %}
-                            {% if nutrient.name == "Carbohydrates" %}
-                            <div class="meta-item">
-                                <span class="meta-icon">🌾</span>
-                                <span class="meta-value">Углеводы: {{ nutrient.amount|floatformat:1 }} г</span>
                             </div>
                             {% endif %}
                         {% endfor %}
@@ -128,120 +307,179 @@
 
                         {% if api_recipe_data.readyInMinutes %}
                         <div class="meta-item">
-                            <span class="meta-icon">⏱️</span>
+                            <span class="meta-icon">&#9201;</span>
                             <span class="meta-value">{{ api_recipe_data.readyInMinutes }} мин</span>
                         </div>
                         {% endif %}
 
                         {% if api_recipe_data.servings %}
                         <div class="meta-item">
-                            <span class="meta-icon">👥</span>
+                            <span class="meta-icon">&#128101;</span>
                             <span class="meta-value">{{ api_recipe_data.servings }} порций</span>
                         </div>
                         {% endif %}
 
-                        {% if api_recipe_data.cuisages %}
+                        {% if api_recipe_data.cuisines %}
                         <div class="meta-item">
-                            <span class="meta-icon">🌍</span>
-                            <span class="meta-value">{{ api_recipe_data.cuisages|join:", " }}</span>
+                            <span class="meta-icon">&#127758;</span>
+                            <span class="meta-value">{{ api_recipe_data.cuisines|translate_cuisines_list }}</span>
                         </div>
                         {% endif %}
                     </div>
                 </div>
             </div>
 
-            <div class="recipe-content-grid">
-                <!-- Ингредиенты из API -->
-                <div class="recipe-section">
-                    <h3><span class="section-icon">🥘</span> Ингредиенты</h3>
-                    {% if api_recipe_data.extendedIngredients %}
-                    <ul class="ingredients-list">
-                        {% for ingredient in api_recipe_data.extendedIngredients %}
-                        <li>
-                            <span class="ingredient-name">{{ ingredient.name_ru|default:ingredient.name }}</span>
-                            <span class="ingredient-amount">
-                                {{ ingredient.amount|floatformat:0 }} {{ ingredient.unit|default:ingredient.measures.metric.unitshort|default:"" }}
-                            </span>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                    {% else %}
-                    <p class="no-data">Ингредиенты не указаны</p>
+            <!-- Кнопка "Посмотреть рецепт" -->
+            <div class="view-recipe-action" id="view-recipe-action">
+                <button type="button" class="btn btn-primary btn-large" id="btn-view-recipe" onclick="showApiRecipeDetails()">
+                    Посмотреть рецепт
+                </button>
+            </div>
+
+            <!-- Детали API-рецепта (скрыты до нажатия) -->
+            <div class="api-details-section" id="api-details-section">
+                <div class="recipe-content-grid">
+                    <!-- Питательные вещества -->
+                    {% if api_recipe_data.nutrition and api_recipe_data.nutrition.nutrients %}
+                    <div class="recipe-section" id="api-nutrients-section">
+                        <h3><span class="section-icon">&#128170;</span> Пищевая ценность</h3>
+                        <div class="nutrients-row">
+                            {% for nutrient in api_recipe_data.nutrition.nutrients %}
+                                {% if nutrient.name == "Calories" %}
+                                <div class="nutrient-card">
+                                    <div class="nutrient-value">{{ nutrient.amount|floatformat:0 }}</div>
+                                    <div class="nutrient-label">Калории (ккал)</div>
+                                </div>
+                                {% endif %}
+                                {% if nutrient.name == "Protein" %}
+                                <div class="nutrient-card">
+                                    <div class="nutrient-value">{{ nutrient.amount|floatformat:1 }}</div>
+                                    <div class="nutrient-label">Белки (г)</div>
+                                </div>
+                                {% endif %}
+                                {% if nutrient.name == "Fat" %}
+                                <div class="nutrient-card">
+                                    <div class="nutrient-value">{{ nutrient.amount|floatformat:1 }}</div>
+                                    <div class="nutrient-label">Жиры (г)</div>
+                                </div>
+                                {% endif %}
+                                {% if nutrient.name == "Carbohydrates" %}
+                                <div class="nutrient-card">
+                                    <div class="nutrient-value">{{ nutrient.amount|floatformat:1 }}</div>
+                                    <div class="nutrient-label">Углеводы (г)</div>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- Ингредиенты из API -->
+                    <div class="recipe-section">
+                        <h3><span class="section-icon">&#129379;</span> Ингредиенты</h3>
+                        {% if api_recipe_data.extendedIngredients %}
+                        <ul class="ingredients-list">
+                            {% for ingredient in api_recipe_data.extendedIngredients %}
+                            <li>
+                                <span class="ingredient-name">{{ ingredient.name_ru|default:ingredient.name }}</span>
+                                <span class="ingredient-amount">
+                                    {{ ingredient.amount|floatformat:0 }} {% if ingredient.unit %}{{ ingredient.unit }}{% elif ingredient.measures.metric.unitshort %}{{ ingredient.measures.metric.unitshort }}{% endif %}
+                                </span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% else %}
+                        <p class="no-data">Ингредиенты не указаны</p>
+                        {% endif %}
+                    </div>
+
+                    <!-- Инструкции из API -->
+                    {% if api_recipe_data.analyzedInstructions %}
+                    <div class="recipe-section">
+                        <h3><span class="section-icon">&#128221;</span> Пошаговая инструкция</h3>
+                        <div class="instructions">
+                            {% for instruction_group in api_recipe_data.analyzedInstructions %}
+                                {% if instruction_group.steps %}
+                                    {% for step in instruction_group.steps %}
+                                    <div class="instruction-step">
+                                        <div class="step-number">{{ step.number }}</div>
+                                        <div class="step-content">
+                                            <p>{{ step.step_ru|default:step.step }}</p>
+                                            {% if step.ingredients %}
+                                            <div class="step-ingredients">
+                                                <small>Ингредиенты:
+                                                    {% for ingr in step.ingredients %}
+                                                        {{ ingr.name_ru|default:ingr.name }}{% if not forloop.last %}, {% endif %}
+                                                    {% endfor %}
+                                                </small>
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- О блюде -->
+                    {% if api_recipe_data.summary %}
+                    <div class="recipe-section">
+                        <h3><span class="section-icon">&#128214;</span> О блюде</h3>
+                        <div class="recipe-description">
+                            {{ api_recipe_data.summary|safe }}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- Особенности -->
+                    {% if api_recipe_data.veryHealthy or api_recipe_data.vegetarian or api_recipe_data.vegan or api_recipe_data.glutenFree %}
+                    <div class="recipe-section">
+                        <h3><span class="section-icon">&#10024;</span> Особенности</h3>
+                        <div class="recipe-badges">
+                            {% if api_recipe_data.veryHealthy %}
+                            <span class="badge badge-healthy">&#10003; Полезно</span>
+                            {% endif %}
+                            {% if api_recipe_data.vegetarian %}
+                            <span class="badge badge-vegetarian">&#127793; Вегетарианское</span>
+                            {% endif %}
+                            {% if api_recipe_data.vegan %}
+                            <span class="badge badge-vegan">&#127807; Веганское</span>
+                            {% endif %}
+                            {% if api_recipe_data.glutenFree %}
+                            <span class="badge badge-gluten-free">&#10003; Без глютена</span>
+                            {% endif %}
+                            {% if api_recipe_data.dairyFree %}
+                            <span class="badge badge-dairy-free">&#10003; Без молока</span>
+                            {% endif %}
+                            {% if api_recipe_data.cheap %}
+                            <span class="badge badge-cheap">&#128176; Бюджетно</span>
+                            {% endif %}
+                        </div>
+                    </div>
                     {% endif %}
                 </div>
+            </div>
 
-                <!-- Инструкции из API -->
-                {% if api_recipe_data.analyzedInstructions %}
-                <div class="recipe-section">
-                    <h3><span class="section-icon">📝</span> Пошаговая инструкция</h3>
-                    <div class="instructions">
-                        {% for instruction_group in api_recipe_data.analyzedInstructions %}
-                            {% if instruction_group.steps %}
-                                {% for step in instruction_group.steps %}
-                                <div class="instruction-step">
-                                    <div class="step-number">{{ step.number }}</div>
-                                    <div class="step-content">
-                                        <p>{{ step.step_ru|default:step.step }}</p>
-                                        {% if step.ingredients %}
-                                        <div class="step-ingredients">
-                                            <small>Ингредиенты:
-                                                {% for ingr in step.ingredients %}
-                                                    {{ ingr.name_ru|default:ingr.name }}{% if not forloop.last %}, {% endif %}
-                                                {% endfor %}
-                                            </small>
-                                        </div>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                {% endfor %}
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                </div>
-                {% endif %}
+            <!-- Кнопка "Перейти к приготовлению" -->
+            <div class="cooking-action" id="cooking-action" style="display:none;">
+                <a href="{% url 'recipe_cooking' api_recipe_data.id %}" class="btn btn-primary btn-large">
+                    Перейти к приготовлению
+                </a>
+            </div>
 
-                <!-- Описание из API -->
-                {% if api_recipe_data.summary %}
-                <div class="recipe-section">
-                    <h3><span class="section-icon">📖</span> О блюде</h3>
-                    <div class="recipe-description">
-                        {{ api_recipe_data.summary|safe }}
-                    </div>
-                </div>
-                {% endif %}
-
-                <!-- Дополнительные свойства -->
-                {% if api_recipe_data.veryHealthy or api_recipe_data.vegetarian or api_recipe_data.vegan or api_recipe_data.glutenFree %}
-                <div class="recipe-section">
-                    <h3><span class="section-icon">✨</span> Особенности</h3>
-                    <div class="recipe-badges">
-                        {% if api_recipe_data.veryHealthy %}
-                        <span class="badge badge-healthy">✓ Полезно</span>
-                        {% endif %}
-                        {% if api_recipe_data.vegetarian %}
-                        <span class="badge badge-vegetarian">🌱 Вегетарианское</span>
-                        {% endif %}
-                        {% if api_recipe_data.vegan %}
-                        <span class="badge badge-vegan">🌿 Веганское</span>
-                        {% endif %}
-                        {% if api_recipe_data.glutenFree %}
-                        <span class="badge badge-gluten-free">✓ Без глютена</span>
-                        {% endif %}
-                        {% if api_recipe_data.dairyFree %}
-                        <span class="badge badge-dairy-free">✓ Без молока</span>
-                        {% endif %}
-                        {% if api_recipe_data.cheap %}
-                        <span class="badge badge-cheap">💰 Бюджетно</span>
-                        {% endif %}
-                    </div>
-                </div>
-                {% endif %}
+            <!-- Кнопка "В избранное" (только для API-рецептов) -->
+            <div class="favorite-action">
+                <button type="button" class="btn-favorite" id="btn-add-favorite" onclick="addToFavorites({{ api_recipe_data.id }})">
+                    &#10084; В избранное
+                </button>
             </div>
 
             {% else %}
             <!-- Рецепт не найден -->
             <div class="recipe-not-found">
-                <div class="not-found-icon">😕</div>
+                <div class="not-found-icon">&#128533;</div>
                 <h2>Рецепт не найден</h2>
                 <p>К сожалению, запрашиваемый рецепт не найден в нашей базе данных.</p>
                 <a href="{% url 'index' %}" class="btn btn-primary">Вернуться на главную</a>
@@ -249,5 +487,229 @@
             {% endif %}
         </main>
     </div>
+
+    <script>
+        // Для локальных рецептов — AJAX-запрос к Spoonacular API
+        function fetchRecipeDetails(recipeId) {
+            var loader = document.getElementById('api-loader');
+            var errorDiv = document.getElementById('api-error');
+            var detailsSection = document.getElementById('api-details-section');
+            var cookingAction = document.getElementById('cooking-action');
+            var viewAction = document.getElementById('view-recipe-action');
+
+            loader.style.display = 'block';
+            errorDiv.style.display = 'none';
+            viewAction.style.display = 'none';
+
+            var fetchUrl = '{% url "fetch_recipe_from_api" "RECIPE_ID" %}'.replace('RECIPE_ID', recipeId);
+
+            fetch(fetchUrl)
+                .then(function(response) {
+                    if (!response.ok) {
+                        throw new Error('Ошибка сервера: ' + response.status);
+                    }
+                    return response.json();
+                })
+                .then(function(data) {
+                    loader.style.display = 'none';
+
+                    if (data.error) {
+                        errorDiv.querySelector('#api-error-text').textContent = data.error;
+                        errorDiv.style.display = 'block';
+                        viewAction.style.display = 'block';
+                        return;
+                    }
+
+                    renderApiDetails(data);
+                    detailsSection.style.display = 'block';
+                    cookingAction.style.display = 'block';
+                })
+                .catch(function(err) {
+                    loader.style.display = 'none';
+                    errorDiv.querySelector('#api-error-text').textContent = 'Не удалось загрузить рецепт. Попробуйте позже.';
+                    errorDiv.style.display = 'block';
+                    viewAction.style.display = 'block';
+                });
+        }
+
+        // Для API-рецептов — показать уже загруженные данные
+        function showApiRecipeDetails() {
+            var detailsSection = document.getElementById('api-details-section');
+            var cookingAction = document.getElementById('cooking-action');
+            var viewAction = document.getElementById('view-recipe-action');
+
+            detailsSection.style.display = 'block';
+            cookingAction.style.display = 'block';
+            viewAction.style.display = 'none';
+        }
+
+        // Добавление в избранное (только для рецептов из Spoonacular API)
+        function addToFavorites(spoonacularId) {
+            var btn = document.getElementById('btn-add-favorite');
+            btn.disabled = true;
+            btn.textContent = 'Добавление...';
+
+            fetch('{% url "save_to_favorites" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}',
+                },
+                body: JSON.stringify({ spoonacular_id: spoonacularId }),
+            })
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (data.error) {
+                    alert(data.error);
+                    btn.disabled = false;
+                    btn.innerHTML = '&#10084; В избранное';
+                } else {
+                    btn.classList.add('active');
+                    btn.innerHTML = '&#10084; В избранном';
+                    btn.disabled = true;
+                }
+            })
+            .catch(function(err) {
+                alert('Ошибка при добавлении в избранное');
+                btn.disabled = false;
+                btn.innerHTML = '&#10084; В избранное';
+            });
+        }
+
+        // Рендеринг данных из API для локальных рецептов
+        function renderApiDetails(data) {
+            // Словарь перевода кухонь
+            var cuisineTranslations = {
+                'Asian': 'Азиатская',
+                'Chinese': 'Китайская',
+                'Japanese': 'Японская',
+                'Korean': 'Корейская',
+                'Thai': 'Тайская',
+                'Vietnamese': 'Вьетнамская',
+                'Indian': 'Индийская',
+                'Middle Eastern': 'Ближневосточная',
+                'Mediterranean': 'Средиземноморская',
+                'European': 'Европейская',
+                'French': 'Французская',
+                'Italian': 'Итальянская',
+                'Spanish': 'Испанская',
+                'Greek': 'Греческая',
+                'German': 'Немецкая',
+                'British': 'Британская',
+                'Eastern European': 'Восточноевропейская',
+                'Russian': 'Русская',
+                'Polish': 'Польская',
+                'Hungarian': 'Венгерская',
+                'American': 'Американская',
+                'Mexican': 'Мексиканская',
+                'South American': 'Южноамериканская',
+                'African': 'Африканская',
+                'Nordic': 'Скандинавская',
+                'Australian': 'Австралийская',
+                'Caribbean': 'Карибская',
+                'Cajun': 'Каджунская',
+                'Southern/Soul Food': 'Южная кухня',
+                'Pacific Rim': 'Тихоокеанская',
+            };
+            function translateCuisine(name) {
+                return cuisineTranslations[name] || name;
+            }
+            // Питательные вещества
+            var nutrientsSection = document.getElementById('api-nutrients-section');
+            var nutrientsRow = document.getElementById('api-nutrients-row');
+            if (data.nutrients && data.nutrients.length > 0) {
+                var nutrientNames = {
+                    'Calories': {label: 'Калории (ккал)', icon: '&#128293;'},
+                    'Protein': {label: 'Белки (г)', icon: '&#128170;'},
+                    'Fat': {label: 'Жиры (г)', icon: '&#129472;'},
+                    'Carbohydrates': {label: 'Углеводы (г)', icon: '&#127806;'}
+                };
+                var html = '';
+                data.nutrients.forEach(function(n) {
+                    var info = nutrientNames[n.name] || {label: n.name, icon: ''};
+                    html += '<div class="nutrient-card">';
+                    html += '<div class="nutrient-value">' + n.amount + '</div>';
+                    html += '<div class="nutrient-label">' + info.label + '</div>';
+                    html += '</div>';
+                });
+                nutrientsRow.innerHTML = html;
+                nutrientsSection.style.display = 'block';
+            }
+
+            // Ингредиенты
+            var ingredientsSection = document.getElementById('api-ingredients-section');
+            var ingredientsList = document.getElementById('api-ingredients-list');
+            if (data.ingredients && data.ingredients.length > 0) {
+                var html = '';
+                data.ingredients.forEach(function(ing) {
+                    html += '<li>';
+                    html += '<span class="ingredient-name">' + (ing.name_ru || ing.name) + '</span>';
+                    html += '<span class="ingredient-amount">' + ing.amount + ' ' + (ing.unit || '') + '</span>';
+                    html += '</li>';
+                });
+                ingredientsList.innerHTML = html;
+                ingredientsSection.style.display = 'block';
+            }
+
+            // Инструкции
+            var instructionsSection = document.getElementById('api-instructions-section');
+            var instructionsList = document.getElementById('api-instructions-list');
+            if (data.instructions && data.instructions.length > 0) {
+                var html = '';
+                data.instructions.forEach(function(step) {
+                    html += '<div class="instruction-step">';
+                    html += '<div class="step-number">' + step.number + '</div>';
+                    html += '<div class="step-content">';
+                    html += '<p>' + step.text + '</p>';
+                    if (step.ingredients && step.ingredients.length > 0) {
+                        html += '<div class="step-ingredients"><small>Ингредиенты: ';
+                        step.ingredients.forEach(function(ing, idx) {
+                            html += (ing.name_ru || ing.name);
+                            if (idx < step.ingredients.length - 1) html += ', ';
+                        });
+                        html += '</small></div>';
+                    }
+                    html += '</div></div>';
+                });
+                instructionsList.innerHTML = html;
+                instructionsSection.style.display = 'block';
+            }
+
+            // О блюде
+            var summarySection = document.getElementById('api-summary-section');
+            var summaryText = document.getElementById('api-summary-text');
+            if (data.summary) {
+                summaryText.textContent = data.summary;
+                summarySection.style.display = 'block';
+            }
+
+            // Дополнительная информация
+            var extraSection = document.getElementById('api-extra-section');
+            var extraInfo = document.getElementById('api-extra-info');
+            var extras = [];
+            if (data.readyInMinutes) extras.push('Время приготовления: ' + data.readyInMinutes + ' мин');
+            if (data.servings) extras.push('Порций: ' + data.servings);
+            if (data.cuisines && data.cuisines.length > 0) extras.push('Кухня: ' + data.cuisines.map(translateCuisine).join(', '));
+            if (extras.length > 0) {
+                extraInfo.innerHTML = extras.map(function(e) { return '<p>' + e + '</p>'; }).join('');
+                extraSection.style.display = 'block';
+            }
+
+            // Бейджи
+            var badgesSection = document.getElementById('api-badges-section');
+            var badgesDiv = document.getElementById('api-badges');
+            var badges = [];
+            if (data.veryHealthy) badges.push('<span class="badge badge-healthy">&#10003; Полезно</span>');
+            if (data.vegetarian) badges.push('<span class="badge badge-vegetarian">&#127793; Вегетарианское</span>');
+            if (data.vegan) badges.push('<span class="badge badge-vegan">&#127807; Веганское</span>');
+            if (data.glutenFree) badges.push('<span class="badge badge-gluten-free">&#10003; Без глютена</span>');
+            if (data.dairyFree) badges.push('<span class="badge badge-dairy-free">&#10003; Без молока</span>');
+            if (data.cheap) badges.push('<span class="badge badge-cheap">&#128176; Бюджетно</span>');
+            if (badges.length > 0) {
+                badgesDiv.innerHTML = badges.join('');
+                badgesSection.style.display = 'block';
+            }
+        }
+    </script>
 </body>
 </html>
