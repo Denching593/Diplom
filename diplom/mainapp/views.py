@@ -512,13 +512,15 @@ def generate_meal_plan(request):
     try:
         goal = data.get('goal', 'maintain')
         target_calories = int(data.get('calories', 2000))
+        # Увеличиваем целевую калорийность на 700 ккал
+        adjusted_calories = target_calories + 700
         meal_types = data.get('meal_types', ['breakfast', 'lunch', 'dinner'])
         dish_counts = data.get('dish_counts', {'breakfast': 2, 'lunch': 2, 'dinner': 2, 'snack': 1})
         budget_tier = data.get('budget_tier', 'medium')
         selected_ingredients = data.get('selected_ingredients', [])
         excluded_ingredients = data.get('excluded_ingredients', [])
         logger.info(
-            f'Генерация рациона: goal={goal}, calories={target_calories}, budget={budget_tier}, meal_types={meal_types}, dish_counts={dish_counts}')
+            f'Генерация рациона: goal={goal}, calories={adjusted_calories} (исх. {target_calories}), budget={budget_tier}, meal_types={meal_types}, dish_counts={dish_counts}')
         calorie_distribution = {
             'breakfast': 0.25,
             'lunch': 0.35,
@@ -569,7 +571,7 @@ def generate_meal_plan(request):
 
         for meal_type in meal_types:
             count = dish_counts.get(meal_type, 2)
-            target_meal_calories = int((target_calories * calorie_distribution.get(meal_type, 0.25)) / count)
+            target_meal_calories = int((adjusted_calories * calorie_distribution.get(meal_type, 0.25)) / count)
             weekly_recipes[meal_type] = []
 
             for i in range(count):

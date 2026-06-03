@@ -1,6 +1,16 @@
 from django import template
+from django.utils.html import strip_tags
 
 register = template.Library()
+
+
+@register.filter
+def remove_html_tags(value):
+    """Удаляет HTML-теги из строки"""
+    if not value:
+        return ''
+    return strip_tags(value)
+
 
 CUISINE_TRANSLATIONS = {
     'Asian': 'Азиатская',

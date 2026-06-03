@@ -323,6 +323,8 @@
                 loadStepsFromApi();
             } else if (serverSteps.length > 0) {
                 // API-рецепт — шаги уже есть с сервера
+                var loader = document.getElementById('api-loader');
+                loader.style.display = 'none';
                 recipeStepsData = serverSteps;
                 initSteps();
             } else {
@@ -467,6 +469,11 @@
             }
 
             window.goToStep = function(stepNum) {
+                // Если переходим на шаг после последнего — перенаправляем на главную
+                if (stepNum > totalSteps) {
+                    window.location.href = '/';
+                    return;
+                }
                 showStep(stepNum);
             };
 
