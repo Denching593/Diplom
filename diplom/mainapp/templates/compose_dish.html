@@ -244,8 +244,7 @@
                             recipeEl.classList.add('recipe-card');
                             const displayName = recipe.title_ru || recipe.title;
                             const recipeUrl = '/recipe/' + recipe.id + '/';
-                            const timeText = (recipe.readyInMinutes ? '⏱ ' + recipe.readyInMinutes + ' мин' : '') +
-                                            (recipe.servings ? ' | 🍽 ' + recipe.servings + ' порц.' : '');
+                            const timeText = (recipe.readyInMinutes ? '⏱ ' + recipe.readyInMinutes + ' мин' : '');
                             recipeEl.innerHTML =
                                 (recipe.image ? '<img src="' + recipe.image + '" alt="' + displayName + '">' : '') +
                                 '<div class="recipe-card-content">' +

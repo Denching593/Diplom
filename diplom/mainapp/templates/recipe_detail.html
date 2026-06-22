@@ -312,13 +312,6 @@
                         </div>
                         {% endif %}
 
-                        {% if api_recipe_data.servings %}
-                        <div class="meta-item">
-                            <span class="meta-icon">&#128101;</span>
-                            <span class="meta-value">{{ api_recipe_data.servings }} порций</span>
-                        </div>
-                        {% endif %}
-
                         {% if api_recipe_data.cuisines %}
                         <div class="meta-item">
                             <span class="meta-icon">&#127758;</span>
@@ -383,7 +376,7 @@
                             <li>
                                 <span class="ingredient-name">{{ ingredient.name_ru|default:ingredient.name }}</span>
                                 <span class="ingredient-amount">
-                                    {{ ingredient.amount|floatformat:0 }} {% if ingredient.unit %}{{ ingredient.unit }}{% elif ingredient.measures.metric.unitshort %}{{ ingredient.measures.metric.unitshort }}{% endif %}
+                                    {{ ingredient.amount|floatformat:0 }} {% if ingredient.unit %}{{ ingredient.unit|translate_unit }}{% elif ingredient.measures.metric.unitshort %}{{ ingredient.measures.metric.unitshort|translate_unit }}{% endif %}
                                 </span>
                             </li>
                             {% endfor %}
@@ -688,7 +681,6 @@
             var extraInfo = document.getElementById('api-extra-info');
             var extras = [];
             if (data.readyInMinutes) extras.push('Время приготовления: ' + data.readyInMinutes + ' мин');
-            if (data.servings) extras.push('Порций: ' + data.servings);
             if (data.cuisines && data.cuisines.length > 0) extras.push('Кухня: ' + data.cuisines.map(translateCuisine).join(', '));
             if (extras.length > 0) {
                 extraInfo.innerHTML = extras.map(function(e) { return '<p>' + e + '</p>'; }).join('');

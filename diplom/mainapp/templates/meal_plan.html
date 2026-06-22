@@ -104,55 +104,6 @@
             background: var(--color-primary-light);
         }
 
-        .calorie-control {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .calorie-control button {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            border: 2px solid var(--color-primary);
-            background: var(--bg-cream);
-            cursor: pointer;
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-            color: var(--color-primary);
-        }
-
-        .calorie-control button:hover {
-            background: var(--color-primary);
-            color: white;
-        }
-
-        .calorie-control input {
-            width: 100px;
-            padding: 8px 10px;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            font-size: 16px;
-            text-align: center;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            color: var(--color-text);
-        }
-
-        .calorie-control input:focus {
-            outline: none;
-            border-color: var(--color-primary);
-        }
-
-        .calorie-control span {
-            font-size: 14px;
-            color: var(--color-text-light);
-            font-weight: 500;
-        }
-
         /* Чекбоксы приёмов пищи */
         .meal-type-checks {
             display: flex;
@@ -782,15 +733,6 @@
                     </div>
                 </div>
                 <div class="setting-row">
-                    <label>🔥 Калории:</label>
-                    <div class="calorie-control">
-                        <button type="button" id="cal-minus">−</button>
-                        <input type="number" id="calories" value="{{ user_settings.default_calories|default:2000 }}">
-                        <span>ккал</span>
-                        <button type="button" id="cal-plus">+</button>
-                    </div>
-                </div>
-                <div class="setting-row">
                     <label>🍽️ Приёмы пищи:</label>
                     <div class="meal-type-checks">
                         <label><input type="checkbox" value="breakfast" checked> Завтрак</label>
@@ -970,7 +912,6 @@
         // === ИНИЦИАЛИЗАЦИЯ ===
         document.addEventListener('DOMContentLoaded', function() {
             initGoalSelector();
-            initCalorieControl();
             initMealTypeCheckboxes();
             initDishCountControls();
             initBudgetSelector();
@@ -995,23 +936,6 @@
                         generatePlan();
                     }
                 });
-            });
-        }
-
-        // === Калории ===
-        function initCalorieControl() {
-            document.getElementById('cal-minus').addEventListener('click', function() {
-                const input = document.getElementById('calories');
-                input.value = Math.max(500, parseInt(input.value) - 100);
-                state.calories = parseInt(input.value);
-            });
-            document.getElementById('cal-plus').addEventListener('click', function() {
-                const input = document.getElementById('calories');
-                input.value = parseInt(input.value) + 100;
-                state.calories = parseInt(input.value);
-            });
-            document.getElementById('calories').addEventListener('change', function() {
-                state.calories = parseInt(this.value) || 2000;
             });
         }
 

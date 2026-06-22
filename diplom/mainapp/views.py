@@ -515,7 +515,7 @@ def generate_meal_plan(request):
         # Увеличиваем целевую калорийность на 700 ккал
         adjusted_calories = target_calories + 700
         meal_types = data.get('meal_types', ['breakfast', 'lunch', 'dinner'])
-        dish_counts = data.get('dish_counts', {'breakfast': 2, 'lunch': 2, 'dinner': 2, 'snack': 1})
+        dish_counts = data.get('dish_counts', {'breakfast': 2, 'lunch': 2, 'dinner': 1, 'snack': 1})
         budget_tier = data.get('budget_tier', 'medium')
         selected_ingredients = data.get('selected_ingredients', [])
         excluded_ingredients = data.get('excluded_ingredients', [])
@@ -581,6 +581,7 @@ def generate_meal_plan(request):
                     target_calories=target_meal_calories,
                     budget_tier=budget_tier,
                     selected_ingredients=selected_ingredients,
+                    excluded_ingredients=excluded_ingredients,
                     used_recipe_ids=set(r['id'] for r_list in weekly_recipes.values() for r in r_list),
                     goal=goal,
                 )
@@ -1307,7 +1308,8 @@ def _fetch_recipes_from_api(budget_tier='medium', selected_ingredients=None, num
 
 
 def _select_recipe_for_meal(all_recipes, meal_type, target_calories, budget_tier,
-                            selected_ingredients, used_recipe_ids, goal='maintain'):
+                            selected_ingredients, used_recipe_ids, goal='maintain',
+                            excluded_ingredients=None):
     """Выбор рецепта для приёма пищи.
 
     Логика выбора по цели:
@@ -1376,7 +1378,6 @@ def _select_recipe_for_meal(all_recipes, meal_type, target_calories, budget_tier
 
     # Этап 2: Дополнительная фильтрация по калориям в зависимости от цели
     if goal == 'lose':
-        # Похудение — низкокалорийные блюда
         candidates.sort(key=lambda r: r.get('calories', 500) if isinstance(r, dict) else r.calories)
         max_cal = int(target_calories * 1.3)
         filtered = [r for r in candidates if (r.get('calories', 500) if isinstance(r, dict) else r.calories) <= max_cal]
@@ -1396,6 +1397,36 @@ def _select_recipe_for_meal(all_recipes, meal_type, target_calories, budget_tier
 
     if not candidates:
         return None
+
+    if excluded_ingredients:
+        excluded_lower = [s.lower() for s in excluded_ingredients]
+
+        def _has_excluded_ingredient(recipe):
+            for ri in recipe.recipeingredient_set.all():
+                ing_name = ri.ingredient.name.lower()
+                for excl in excluded_lower:
+                    if excl in ing_name or ing_name in excl:
+                        return True
+            return False
+
+        candidates = [r for r in candidates if not _has_excluded_ingredient(r)]
+        if not candidates:
+            return None
+
+    if selected_ingredients:
+        selected_lower = [s.lower() for s in selected_ingredients]
+
+        def _matches_selected(recipe):
+            for ri in recipe.recipeingredient_set.all():
+                ing_name = ri.ingredient.name.lower()
+                for sel in selected_lower:
+                    if sel in ing_name or ing_name in sel:
+                        return True
+            return False
+
+        prioritized = [r for r in candidates if _matches_selected(r)]
+        if prioritized:
+            candidates = prioritized
 
     chosen = random.choice(candidates)
     chosen_name = chosen.get('name') if isinstance(chosen, dict) else chosen.name
